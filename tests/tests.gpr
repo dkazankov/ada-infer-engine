@@ -1,0 +1,45 @@
+with "../libaie95.gpr";
+with "gid/gid.gpr";
+
+project Tests is
+
+    for Create_Missing_Dirs use "True";
+    
+    type Build_Mode is ("Release", "Debug");
+
+    for Source_Dirs use (".");
+    for Object_Dir use "../obj";
+    for Exec_Dir use "../bin";
+    for Main use ("alexnet_run.adb");
+
+    BUILD: Build_Mode := External("BUILD", "Debug");
+
+    package Builder is
+        case BUILD is
+            when "Release" =>
+                for Switches ("Ada") use ("-s");
+            when "Debug" =>
+                for Switches ("Ada") use ("-s", "-g");
+        end case;
+    end Builder;
+
+    package Compiler is
+        case BUILD is
+            when "Release" =>
+                for Switches ("Ada") use ("-gnatn", "-gnatp", "-O3", "-Ofast", "-gnatpn", "-ffunction-sections");
+            when "Debug" =>
+                for Switches ("Ada") use ("-g", "-gnatVa", "-gnato", "-fno-inline", "-fstack-check");
+        end case;
+    end Compiler;
+
+    package Linker is
+        -- for Default_Switches ("ada") use ("-Wl,--defsym=__stack_size=1000000000");
+        case BUILD is
+            when "Release" =>
+                for Switches ("Ada") use ("");
+            when "Debug" =>
+                for Switches ("Ada") use ("-g");
+        end case;
+    end Linker;
+
+end Tests;

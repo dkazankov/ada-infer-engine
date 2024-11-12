@@ -1,0 +1,6 @@
+[submodule "tests/gid"]
+	path = tests/gid
+	url = https://github.com/dkazankov/gid_95_ravenscar
+[submodule "tools"]
+	path = tools
+	url = https://github.com/dkazankov/NNEF-CPP-Tools
