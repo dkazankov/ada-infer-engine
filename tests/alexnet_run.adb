@@ -7,6 +7,7 @@ with Ada.Text_IO; use Ada.Text_IO;
 with Ada.Command_Line; use Ada.Command_Line;
 with Ada.Real_Time; use Ada.Real_Time;
 with Generic_Utils;
+with Integer_Arrays;
 procedure AlexNet_Run is
     use AlexNet.Real_Arrays;
     Start_Time: Time := Clock;
@@ -28,6 +29,8 @@ procedure AlexNet_Run is
         Utils.Load_TFF_Data(Argument(2) & Var_Name & ".dat", Tensor);
     end Variable;
     procedure Output (Tensor: Real_Matrix; Var_Name: String) is
+        use Integer_Arrays;
+        use AlexNet.Real_Arrays.Real_Functions;
         Output2: Real_Vector (Tensor'Range(2));
         Sorted: Positive_Vector (Output2'Range);
         Class_Index: Natural;
