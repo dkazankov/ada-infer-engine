@@ -40,7 +40,7 @@ procedure AlexNet_Run is
         Put_Line (Duration'Image (To_Duration (End_Time - Start_Time)) & " s");
 
         Reshape(Tensor, Output2);
-        Arg_Sort (Output2, Gt_Function, Sorted);
+        Arg_Sort (Gt_Function, Output2, Sorted);
 
         for I in reverse Sorted'Last-5..Sorted'Last loop
             Class_Index := Sorted (I);

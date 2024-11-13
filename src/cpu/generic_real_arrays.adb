@@ -3,7 +3,7 @@ pragma Profile (Ravenscar);
 
 package body Generic_Real_Arrays is
 
-    procedure For_Each (X: Real_Vector; F: Unary_Real_Function; Y: out Real_Vector)
+    procedure For_Each (F: Unary_Real_Function; X: Real_Vector; Y: out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -11,7 +11,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X : Real_Matrix; F : Unary_Real_Function; Y: out Real_Matrix)
+    procedure For_Each (F : Unary_Real_Function; X : Real_Matrix; Y: out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -22,7 +22,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_3D; F : Unary_Real_Function; Y : out Real_Tensor_3D)
+       (F : Unary_Real_Function; X : Real_Tensor_3D; Y : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -35,7 +35,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_4D; F : Unary_Real_Function; Y : out Real_Tensor_4D)
+       (F : Unary_Real_Function; X : Real_Tensor_4D; Y : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -50,7 +50,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X, Y : Real_Vector; F : Binary_Real_Function; Z : out Real_Vector)
+       (F : Binary_Real_Function; X, Y : Real_Vector; Z : out Real_Vector)
     is
     begin
         for I in Z'Range loop
@@ -59,7 +59,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X, Y : Real_Matrix; F : Binary_Real_Function; Z : out Real_Matrix)
+       (F : Binary_Real_Function; X, Y : Real_Matrix; Z : out Real_Matrix)
     is
     begin
         for I in Z'Range (1) loop
@@ -69,7 +69,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X, Y : Real_Tensor_3D; F : Binary_Real_Function; Z : out Real_Tensor_3D)
+    procedure For_Each (F : Binary_Real_Function; X, Y : Real_Tensor_3D; Z : out Real_Tensor_3D)
     is
     begin
         for I in Z'Range (1) loop
@@ -82,7 +82,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X, Y : Real_Tensor_4D; F : Binary_Real_Function; Z : out Real_Tensor_4D)
+       (F : Binary_Real_Function; X, Y : Real_Tensor_4D; Z : out Real_Tensor_4D)
     is
     begin
         for I in Z'Range (1) loop
@@ -97,7 +97,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Reduced
-       (X, Y : Real_Vector; F : Binary_Real_Function; Z : out Real_Vector)
+       (F : Binary_Real_Function; X, Y : Real_Vector; Z : out Real_Vector)
     is
         XI: Positive := X'First;
         YI: Positive := Y'First;
@@ -119,7 +119,7 @@ package body Generic_Real_Arrays is
     end For_Reduced;
 
     procedure For_Reduced
-       (X, Y : Real_Matrix; F : Binary_Real_Function; Z : out Real_Matrix)
+       (F : Binary_Real_Function; X, Y : Real_Matrix; Z : out Real_Matrix)
     is
         X_Length: Tiny_Positive_Vector := (X'Length (1), X'Length (2));
         Y_Length: Tiny_Positive_Vector := (Y'Length (1), Y'Length (2));
@@ -151,7 +151,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Reduced;
 
-    procedure For_Reduced (X, Y : Real_Tensor_3D; F : Binary_Real_Function; Z : out Real_Tensor_3D)
+    procedure For_Reduced (F : Binary_Real_Function; X, Y : Real_Tensor_3D; Z : out Real_Tensor_3D)
     is
         X_Length: Tiny_Positive_Vector := (X'Length (1), X'Length (2), X'Length (3));
         Y_Length: Tiny_Positive_Vector := (Y'Length (1), Y'Length (2), Y'Length (3));
@@ -190,7 +190,7 @@ package body Generic_Real_Arrays is
     end For_Reduced;
 
     procedure For_Reduced
-       (X, Y : Real_Tensor_4D; F : Binary_Real_Function; Z : out Real_Tensor_4D)
+       (F : Binary_Real_Function; X, Y : Real_Tensor_4D; Z : out Real_Tensor_4D)
     is
         X_Length: Tiny_Positive_Vector := (X'Length (1), X'Length (2), X'Length (3), X'Length (4));
         Y_Length: Tiny_Positive_Vector := (Y'Length (1), Y'Length (2), Y'Length (3), Y'Length (4));
@@ -235,7 +235,7 @@ package body Generic_Real_Arrays is
     end For_Reduced;
 
     procedure For_Each
-       (X : Real_Vector; Y : Real; F : Binary_Real_Function; Z : out Real_Vector)
+       (F : Binary_Real_Function; X : Real_Vector; Y : Real; Z : out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -244,7 +244,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Matrix; Y : Real; F : Binary_Real_Function; Z : out Real_Matrix)
+       (F : Binary_Real_Function; X : Real_Matrix; Y : Real; Z : out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -255,7 +255,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_3D; Y : Real; F : Binary_Real_Function; Z : out Real_Tensor_3D)
+       (F : Binary_Real_Function; X : Real_Tensor_3D; Y : Real; Z : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -268,7 +268,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_4D; Y : Real; F : Binary_Real_Function; Z : out Real_Tensor_4D)
+       (F : Binary_Real_Function; X : Real_Tensor_4D; Y : Real; Z : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -283,7 +283,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Vector; Y : Integer_Vector; F : Binary_Real_Function; Z : out Real_Vector)
+       (F : Binary_Real_Function; X : Real_Vector; Y : Integer_Vector; Z : out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -292,7 +292,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Matrix; Y : Integer_Matrix; F : Binary_Real_Function; Z : out Real_Matrix)
+       (F : Binary_Real_Function; X : Real_Matrix; Y : Integer_Matrix; Z : out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -303,7 +303,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_3D; Y : Integer_Tensor_3D; F : Binary_Real_Function; Z : out Real_Tensor_3D)
+       (F : Binary_Real_Function; X : Real_Tensor_3D; Y : Integer_Tensor_3D; Z : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -316,7 +316,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_4D; Y : Integer_Tensor_4D; F : Binary_Real_Function; Z : out Real_Tensor_4D)
+       (F : Binary_Real_Function; X : Real_Tensor_4D; Y : Integer_Tensor_4D; Z : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -330,7 +330,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X, A, B: Real_Vector; F: Ternary_Real_Function; Y: out Real_Vector)
+    procedure For_Each (F: Ternary_Real_Function; X, A, B: Real_Vector; Y: out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -338,7 +338,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X, A, B: Real_Matrix; F : Ternary_Real_Function; Y: out Real_Matrix)
+    procedure For_Each (F : Ternary_Real_Function; X, A, B: Real_Matrix; Y: out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -349,7 +349,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X, A, B: Real_Tensor_3D; F : Ternary_Real_Function; Y : out Real_Tensor_3D)
+       (F : Ternary_Real_Function; X, A, B: Real_Tensor_3D; Y : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -362,7 +362,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X, A, B: Real_Tensor_4D; F : Ternary_Real_Function; Y : out Real_Tensor_4D)
+       (F : Ternary_Real_Function; X, A, B: Real_Tensor_4D; Y : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -377,7 +377,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Vector; A, B: Real; F : Ternary_Real_Function; Y: out Real_Vector)
+       (F : Ternary_Real_Function; X : Real_Vector; A, B: Real; Y: out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -386,7 +386,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Matrix; A, B: Real; F : Ternary_Real_Function; Y : out Real_Matrix)
+       (F : Ternary_Real_Function; X : Real_Matrix; A, B: Real; Y : out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -397,7 +397,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_3D; A, B: Real; F : Ternary_Real_Function; Y : out Real_Tensor_3D)
+       (F : Ternary_Real_Function; X : Real_Tensor_3D; A, B: Real; Y : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -410,7 +410,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_4D; A, B: Real; F : Ternary_Real_Function; Y : out Real_Tensor_4D)
+       (F : Ternary_Real_Function; X : Real_Tensor_4D; A, B: Real; Y : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -424,7 +424,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X, Y : Real_Vector; F : Compare_Real_Function; Z : out Boolean_Vector)
+    procedure For_Each (F : Compare_Real_Function; X, Y : Real_Vector; Z : out Boolean_Vector)
     is
     begin
         for I in Z'Range loop
@@ -432,7 +432,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X, Y : Real_Matrix; F : Compare_Real_Function; Z : out Boolean_Matrix)
+    procedure For_Each (F : Compare_Real_Function; X, Y : Real_Matrix; Z : out Boolean_Matrix)
     is
     begin
         for I in Z'Range (1) loop
@@ -442,7 +442,7 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (X, Y : Real_Tensor_3D; F : Compare_Real_Function;  Z : out Boolean_Tensor_3D)
+    procedure For_Each (F : Compare_Real_Function; X, Y : Real_Tensor_3D; Z : out Boolean_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -455,7 +455,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X, Y : Real_Tensor_4D; F : Compare_Real_Function; Z : out Boolean_Tensor_4D)
+       (F : Compare_Real_Function; X, Y : Real_Tensor_4D; Z : out Boolean_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -470,7 +470,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Vector; Y : Real; F : Compare_Real_Function; Z : out Boolean_Vector)
+       (F : Compare_Real_Function; X : Real_Vector; Y : Real; Z : out Boolean_Vector)
     is
     begin
         for I in X'Range loop
@@ -479,7 +479,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Matrix; Y : Real; F : Compare_Real_Function; Z : out Boolean_Matrix)
+       (F : Compare_Real_Function; X : Real_Matrix; Y : Real; Z : out Boolean_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -490,7 +490,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_3D; Y : Real; F : Compare_Real_Function; Z : out Boolean_Tensor_3D)
+       (F : Compare_Real_Function; X : Real_Tensor_3D; Y : Real; Z : out Boolean_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -503,7 +503,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (X : Real_Tensor_4D; Y : Real; F : Compare_Real_Function; Z : out Boolean_Tensor_4D)
+       (F : Compare_Real_Function; X : Real_Tensor_4D; Y : Real; Z : out Boolean_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -518,7 +518,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Vector; X, Y : Real_Vector; F : Select_Real_Function; Z : out Real_Vector)
+       (F : Select_Real_Function; C: Boolean_Vector; X, Y : Real_Vector; Z : out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -527,7 +527,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Matrix; X, Y : Real_Matrix; F : Select_Real_Function; Z : out Real_Matrix)
+       (F : Select_Real_Function; C: Boolean_Matrix; X, Y : Real_Matrix; Z : out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -538,7 +538,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Tensor_3D; X, Y : Real_Tensor_3D; F : Select_Real_Function; Z : out Real_Tensor_3D)
+       (F : Select_Real_Function; C: Boolean_Tensor_3D; X, Y : Real_Tensor_3D; Z : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -551,7 +551,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Tensor_4D; X, Y : Real_Tensor_4D; F : Select_Real_Function; Z : out Real_Tensor_4D)
+       (F : Select_Real_Function; C: Boolean_Tensor_4D; X, Y : Real_Tensor_4D; Z : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -566,7 +566,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Vector; X : Real_Vector; Y : Real; F : Select_Real_Function; Z : out Real_Vector)
+       (F : Select_Real_Function; C: Boolean_Vector; X : Real_Vector; Y : Real; Z : out Real_Vector)
     is
     begin
         for I in X'Range loop
@@ -575,7 +575,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Matrix; X : Real_Matrix; Y : Real; F : Select_Real_Function; Z : out Real_Matrix)
+       (F : Select_Real_Function; C: Boolean_Matrix; X : Real_Matrix; Y : Real; Z : out Real_Matrix)
     is
     begin
         for I in X'Range (1) loop
@@ -586,7 +586,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Tensor_3D; X : Real_Tensor_3D; Y : Real; F : Select_Real_Function; Z : out Real_Tensor_3D)
+       (F : Select_Real_Function; C: Boolean_Tensor_3D; X : Real_Tensor_3D; Y : Real; Z : out Real_Tensor_3D)
     is
     begin
         for I in X'Range (1) loop
@@ -599,7 +599,7 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure For_Each
-       (C: Boolean_Tensor_4D; X : Real_Tensor_4D; Y : Real; F : Select_Real_Function; Z : out Real_Tensor_4D)
+       (F : Select_Real_Function; C: Boolean_Tensor_4D; X : Real_Tensor_4D; Y : Real; Z : out Real_Tensor_4D)
     is
     begin
         for I in X'Range (1) loop
@@ -613,15 +613,16 @@ package body Generic_Real_Arrays is
         end loop;
     end For_Each;
 
-    procedure Reduce (Input: Real_Vector; F: Binary_Real_Function; Output: out Real_Vector) is
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Vector; Output: out Real_Vector) is
+        Value: Real := Input (Input'First);
     begin
-        Output (Output'First) := Input (Input'First);
         for I in Input'First+1..Input'Last loop
-            Output (Output'First) := Call (F, Output (Output'First), Input (I));
+            Value := Call (F, Value, Input (I));
         end loop;
+        Output (Output'First) := Value;
     end Reduce;
 
-    procedure Reduce (Input: Real_Matrix; Axes: Tiny_Positive_Vector; F: Binary_Real_Function; Output: out Real_Matrix)
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Matrix; Axes: Tiny_Positive_Vector; Output: out Real_Matrix)
     is
         First: Tiny_Positive_Vector := (Input'First (1), Input'First (2));
         Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2));
@@ -649,7 +650,7 @@ package body Generic_Real_Arrays is
         end loop;
     end Reduce;
 
-    procedure Reduce (Input: Real_Tensor_3D; Axes: Tiny_Positive_Vector; F: Binary_Real_Function; Output: out Real_Tensor_3D)
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Tensor_3D; Axes: Tiny_Positive_Vector; Output: out Real_Tensor_3D)
     is
         First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3));
         Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3));
@@ -681,7 +682,7 @@ package body Generic_Real_Arrays is
         end loop;
     end Reduce;
 
-    procedure Reduce (Input: Real_Tensor_4D; Axes: Tiny_Positive_Vector; F: Binary_Real_Function; Output: out Real_Tensor_4D)
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Tensor_4D; Axes: Tiny_Positive_Vector; Output: out Real_Tensor_4D)
     is
         First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3), Input'First (4));
         Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3), Input'Last (4));
@@ -717,25 +718,21 @@ package body Generic_Real_Arrays is
         end loop;
     end Reduce;
 
-    procedure Arg_Reduce (Input : Real_Vector; F: Compare_Real_Function; Output: out Natural_Vector) is
-        Input_Value, Arg_Value: Real;
+    procedure Arg_Reduce (F: Compare_Real_Function; Input : Real_Vector; Output: out Natural_Vector) is
+        Arg_Value: Real := Input (Input'First);
+        Value: Natural := 0;
     begin
-        for I in Input'Range loop
-            Input_Value := Input (I);
-            if I = Output'First then
-                Output (Output'First) := (I-Input'First);
-                Arg_Value := Input_Value;
-            else
-                if Call (F, Input_Value, Arg_Value) then
-                    Output (Output'First) := (I-Input'First);
-                    Arg_Value := Input_Value;
-                end if;
+        for I in Input'First+1 .. Input'Last loop
+            if Call (F, Input (I), Arg_Value) then
+                Value := (I-Input'First);
+                Arg_Value := Input (I);
             end if;
         end loop;
+        Output (Output'First) := Value;
     end Arg_Reduce;
 
     procedure Arg_Reduce
-       (Input : Real_Matrix; Axes : Tiny_Positive_Vector; F: Compare_Real_Function; Output: out Natural_Matrix)
+       (F: Compare_Real_Function; Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix)
     is
         First: Tiny_Positive_Vector := (Input'First (1), Input'First (2));
         Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2));
@@ -772,7 +769,7 @@ package body Generic_Real_Arrays is
     end Arg_Reduce;
 
     procedure Arg_Reduce
-       (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; F: Compare_Real_Function; Output: out Natural_Tensor_3D)
+       (F: Compare_Real_Function; Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D)
     is
         First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3));
         Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3));
@@ -813,7 +810,7 @@ package body Generic_Real_Arrays is
     end Arg_Reduce;
 
     procedure Arg_Reduce
-       (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; F: Compare_Real_Function; Output: out Natural_Tensor_4D)
+       (F: Compare_Real_Function; Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D)
     is
         First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3), Input'First (4));
         Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3), Input'Last (4));
@@ -857,7 +854,7 @@ package body Generic_Real_Arrays is
         end loop;
     end Arg_Reduce;
 
-    procedure Arg_Sort (Vector: Real_Vector; F: Compare_Real_Function; Sorted: out Positive_Vector) is
+    procedure Arg_Sort (F: Compare_Real_Function; Vector: Real_Vector; Sorted: out Positive_Vector) is
     begin
         Sorted(Sorted'First) := Vector'First;
         for I in Vector'First+1 .. Vector'Last loop
@@ -2393,57 +2390,65 @@ package body Generic_Real_Arrays is
         end loop;
     end;
 
-    procedure MatMult (A, B : Real_Matrix; TransposeA, TransposeB : Boolean := False; C: out Real_Matrix) is
+    procedure MatMult_TransposeAB (A, B : Real_Matrix; C: out Real_Matrix) is
     begin
-        if TransposeA and then TransposeB then
-            for I in A'Range(2) loop
-                for J in B'Range(1) loop
-                    C(I, J) := 0.0;
-                    for K in A'Range(1) loop
-                        C(I, J) := C(I, J) + A(K, I) * B(J, K);
-                    end loop;
+        for I in A'Range(2) loop
+            for J in B'Range(1) loop
+                C(I, J) := 0.0;
+                for K in A'Range(1) loop
+                    C(I, J) := C(I, J) + A(K, I) * B(J, K);
                 end loop;
             end loop;
-        elsif TransposeA then
-            for I in A'Range(2) loop
-                for J in B'Range(2) loop
-                    C(I, J) := 0.0;
-                    for K in A'Range(1) loop
-                        C(I, J) := C(I, J) + A(K, I) * B(K, J);
-                    end loop;
+        end loop;
+    end MatMult_TransposeAB;
+
+    procedure MatMult_TransposeA (A, B : Real_Matrix; C: out Real_Matrix) is
+    begin
+        for I in A'Range(2) loop
+            for J in B'Range(2) loop
+                C(I, J) := 0.0;
+                for K in A'Range(1) loop
+                    C(I, J) := C(I, J) + A(K, I) * B(K, J);
                 end loop;
             end loop;
-        elsif TransposeB then
-            for I in A'Range(1) loop
-                for J in B'Range(1) loop
-                    C(I, J) := 0.0;
-                    for K in A'Range(2) loop
-                        C(I, J) := C(I, J) + A(I, K) * B(J, K);
-                    end loop;
+        end loop;
+    end MatMult_TransposeA;
+
+    procedure MatMult_TransposeB (A, B : Real_Matrix; C: out Real_Matrix) is
+    begin
+        for I in A'Range(1) loop
+            for J in B'Range(1) loop
+                C(I, J) := 0.0;
+                for K in A'Range(2) loop
+                    C(I, J) := C(I, J) + A(I, K) * B(J, K);
                 end loop;
             end loop;
-        else
-            Inner_Product(A, B, C);
-        end if;
+        end loop;
+    end MatMult_TransposeB;
+
+    procedure MatMult (A, B : Real_Matrix; C: out Real_Matrix) is
+    begin
+        Inner_Product(A, B, C);
     end MatMult;
 
-    procedure MatMult (A: Real_Vector; B : Real_Matrix; TransposeB : Boolean := False; C: out Real_Vector) is
+    procedure MatMult_TransposeB (A: Real_Vector; B : Real_Matrix; C: out Real_Vector) is
     begin
-        if TransposeB then
-            for J in B'Range(1) loop
-                C(J) := 0.0;
-                for I in A'Range loop
-                    C(J) := C(J) + A(I) * B(J, I);
-                end loop;
+        for J in B'Range(1) loop
+            C(J) := 0.0;
+            for I in A'Range loop
+                C(J) := C(J) + A(I) * B(J, I);
             end loop;
-        else
-            for J in B'Range(2) loop
-                C(J) := 0.0;
-                for I in A'Range loop
-                    C(J) := C(J) + A(I) * B(I, J);
-                end loop;
+        end loop;
+    end MatMult_TransposeB;
+
+    procedure MatMult (A: Real_Vector; B : Real_Matrix; C: out Real_Vector) is
+    begin
+        for J in B'Range(2) loop
+            C(J) := 0.0;
+            for I in A'Range loop
+                C(J) := C(J) + A(I) * B(I, J);
             end loop;
-        end if;
+        end loop;
     end MatMult;
 
     --  function Row (A : Real_Matrix; N : Integer) return Real_Matrix is

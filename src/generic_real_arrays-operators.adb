@@ -25,813 +25,785 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Copy (X : Real_Vector; Y: out Real_Vector) is
     begin
-        --  For_Each (X, Copy_Function, Y);
-        For_Each (X, Copy_Function, Y);
+        For_Each (Copy_Function, X, Y);
     end Copy;
     procedure Copy (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Copy_Function, Y);
+        For_Each (Copy_Function, X, Y);
     end Copy;
     procedure Copy (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Copy_Function, Y);
+        For_Each (Copy_Function, X, Y);
     end Copy;
     procedure Copy (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Copy_Function, Y);
+        For_Each (Copy_Function, X, Y);
     end Copy;
 
     procedure Neg (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Neg_Function, Y);
+        For_Each (Neg_Function, X, Y);
     end Neg;
     procedure Neg (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Neg_Function, Y);
+        For_Each (Neg_Function, X, Y);
     end Neg;
     procedure Neg (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Neg_Function, Y);
+        For_Each (Neg_Function, X, Y);
     end Neg;
     procedure Neg (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Neg_Function, Y);
+        For_Each (Neg_Function, X, Y);
     end Neg;
 
     procedure Rcp (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Rcp_Function, Y);
+        For_Each (Rcp_Function, X, Y);
     end Rcp;
     procedure Rcp (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Rcp_Function, Y);
+        For_Each (Rcp_Function, X, Y);
     end Rcp;
     procedure Rcp (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Rcp_Function, Y);
+        For_Each (Rcp_Function, X, Y);
     end Rcp;
     procedure Rcp (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Rcp_Function, Y);
+        For_Each (Rcp_Function, X, Y);
     end Rcp;
 
     procedure Exp (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Exp_Function, Y);
+        For_Each (Exp_Function, X, Y);
     end Exp;
     procedure Exp (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Exp_Function, Y);
+        For_Each (Exp_Function, X, Y);
     end Exp;
     procedure Exp (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Exp_Function, Y);
+        For_Each (Exp_Function, X, Y);
     end Exp;
     procedure Exp (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Exp_Function, Y);
+        For_Each (Exp_Function, X, Y);
     end Exp;
 
     procedure Log (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Log_Function, Y);
+        For_Each (Log_Function, X, Y);
     end Log;
     procedure Log (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Log_Function, Y);
+        For_Each (Log_Function, X, Y);
     end Log;
     procedure Log (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Log_Function, Y);
+        For_Each (Log_Function, X, Y);
     end Log;
     procedure Log (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Log_Function, Y);
+        For_Each (Log_Function, X, Y);
     end Log;
 
     procedure Sin (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Sin_Function, Y);
+        For_Each (Sin_Function, X, Y);
     end Sin;
     procedure Sin (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Sin_Function, Y);
+        For_Each (Sin_Function, X, Y);
     end Sin;
     procedure Sin (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Sin_Function, Y);
+        For_Each (Sin_Function, X, Y);
     end Sin;
     procedure Sin (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Sin_Function, Y);
+        For_Each (Sin_Function, X, Y);
     end Sin;
 
     procedure Cos (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Cos_Function, Y);
+        For_Each (Cos_Function, X, Y);
     end Cos;
     procedure Cos (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Cos_Function, Y);
+        For_Each (Cos_Function, X, Y);
     end Cos;
     procedure Cos (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Cos_Function, Y);
+        For_Each (Cos_Function, X, Y);
     end Cos;
     procedure Cos (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Cos_Function, Y);
+        For_Each (Cos_Function, X, Y);
     end Cos;
 
     procedure Tan (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Tan_Function, Y);
+        For_Each (Tan_Function, X, Y);
     end Tan;
     procedure Tan (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Tan_Function, Y);
+        For_Each (Tan_Function, X, Y);
     end Tan;
     procedure Tan (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Tan_Function, Y);
+        For_Each (Tan_Function, X, Y);
     end Tan;
     procedure Tan (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Tan_Function, Y);
+        For_Each (Tan_Function, X, Y);
     end Tan;
 
     procedure Cot (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Cot_Function, Y);
+        For_Each (Cot_Function, X, Y);
     end Cot;
     procedure Cot (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Cot_Function, Y);
+        For_Each (Cot_Function, X, Y);
     end Cot;
     procedure Cot (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Cot_Function, Y);
+        For_Each (Cot_Function, X, Y);
     end Cot;
     procedure Cot (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Cot_Function, Y);
+        For_Each (Cot_Function, X, Y);
     end Cot;
 
     procedure Sinh (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Sinh_Function, Y);
+        For_Each (Sinh_Function, X, Y);
     end Sinh;
     procedure Sinh (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Sinh_Function, Y);
+        For_Each (Sinh_Function, X, Y);
     end Sinh;
     procedure Sinh (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Sinh_Function, Y);
+        For_Each (Sinh_Function, X, Y);
     end Sinh;
     procedure Sinh (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Sinh_Function, Y);
+        For_Each (Sinh_Function, X, Y);
     end Sinh;
 
     procedure Cosh (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Cosh_Function, Y);
+        For_Each (Cosh_Function, X, Y);
     end Cosh;
     procedure Cosh (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Cosh_Function, Y);
+        For_Each (Cosh_Function, X, Y);
     end Cosh;
     procedure Cosh (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Cosh_Function, Y);
+        For_Each (Cosh_Function, X, Y);
     end Cosh;
     procedure Cosh (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Cosh_Function, Y);
+        For_Each (Cosh_Function, X, Y);
     end Cosh;
 
     procedure Tanh (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Tanh_Function, Y);
+        For_Each (Tanh_Function, X, Y);
     end Tanh;
     procedure Tanh (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Tanh_Function, Y);
+        For_Each (Tanh_Function, X, Y);
     end Tanh;
     procedure Tanh (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Tanh_Function, Y);
+        For_Each (Tanh_Function, X, Y);
     end Tanh;
     procedure Tanh (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Tanh_Function, Y);
+        For_Each (Tanh_Function, X, Y);
     end Tanh;
 
     procedure Coth (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Coth_Function, Y);
+        For_Each (Coth_Function, X, Y);
     end Coth;
     procedure Coth (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Coth_Function, Y);
+        For_Each (Coth_Function, X, Y);
     end Coth;
     procedure Coth (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Coth_Function, Y);
+        For_Each (Coth_Function, X, Y);
     end Coth;
     procedure Coth (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Coth_Function, Y);
+        For_Each (Coth_Function, X, Y);
     end Coth;
 
     procedure Arcsin (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arcsin_Function, Y);
+        For_Each (Arcsin_Function, X, Y);
     end Arcsin;
     procedure Arcsin (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arcsin_Function, Y);
+        For_Each (Arcsin_Function, X, Y);
     end Arcsin;
     procedure Arcsin (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arcsin_Function, Y);
+        For_Each (Arcsin_Function, X, Y);
     end Arcsin;
     procedure Arcsin (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arcsin_Function, Y);
+        For_Each (Arcsin_Function, X, Y);
     end Arcsin;
 
     procedure Arccos (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arccos_Function, Y);
+        For_Each (Arccos_Function, X, Y);
     end Arccos;
     procedure Arccos (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arccos_Function, Y);
+        For_Each (Arccos_Function, X, Y);
     end Arccos;
     procedure Arccos (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arccos_Function, Y);
+        For_Each (Arccos_Function, X, Y);
     end Arccos;
     procedure Arccos (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arccos_Function, Y);
+        For_Each (Arccos_Function, X, Y);
     end Arccos;
 
     procedure Arctan (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arctan_Function, Y);
+        For_Each (Arctan_Function, X, Y);
     end Arctan;
     procedure Arctan (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arctan_Function, Y);
+        For_Each (Arctan_Function, X, Y);
     end Arctan;
     procedure Arctan (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arctan_Function, Y);
+        For_Each (Arctan_Function, X, Y);
     end Arctan;
     procedure Arctan (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arctan_Function, Y);
+        For_Each (Arctan_Function, X, Y);
     end Arctan;
 
     procedure Arccot (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arccot_Function, Y);
+        For_Each (Arccot_Function, X, Y);
     end Arccot;
     procedure Arccot (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arccot_Function, Y);
+        For_Each (Arccot_Function, X, Y);
     end Arccot;
     procedure Arccot (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arccot_Function, Y);
+        For_Each (Arccot_Function, X, Y);
     end Arccot;
     procedure Arccot (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arccot_Function, Y);
+        For_Each (Arccot_Function, X, Y);
     end Arccot;
 
     procedure Arcsinh (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arcsinh_Function, Y);
+        For_Each (Arcsinh_Function, X, Y);
     end Arcsinh;
     procedure Arcsinh (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arcsinh_Function, Y);
+        For_Each (Arcsinh_Function, X, Y);
     end Arcsinh;
     procedure Arcsinh (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arcsinh_Function, Y);
+        For_Each (Arcsinh_Function, X, Y);
     end Arcsinh;
     procedure Arcsinh (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arcsinh_Function, Y);
+        For_Each (Arcsinh_Function, X, Y);
     end Arcsinh;
 
     procedure Arccosh (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arccosh_Function, Y);
+        For_Each (Arccosh_Function, X, Y);
     end Arccosh;
     procedure Arccosh (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arccosh_Function, Y);
+        For_Each (Arccosh_Function, X, Y);
     end Arccosh;
     procedure Arccosh (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arccosh_Function, Y);
+        For_Each (Arccosh_Function, X, Y);
     end Arccosh;
     procedure Arccosh (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arccosh_Function, Y);
+        For_Each (Arccosh_Function, X, Y);
     end Arccosh;
 
     procedure Arctanh (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arctanh_Function, Y);
+        For_Each (Arctanh_Function, X, Y);
     end Arctanh;
     procedure Arctanh (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arctanh_Function, Y);
+        For_Each (Arctanh_Function, X, Y);
     end Arctanh;
     procedure Arctanh (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arctanh_Function, Y);
+        For_Each (Arctanh_Function, X, Y);
     end Arctanh;
     procedure Arctanh (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arctanh_Function, Y);
+        For_Each (Arctanh_Function, X, Y);
     end Arctanh;
 
     procedure Arccoth (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Arccoth_Function, Y);
+        For_Each (Arccoth_Function, X, Y);
     end Arccoth;
     procedure Arccoth (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Arccoth_Function, Y);
+        For_Each (Arccoth_Function, X, Y);
     end Arccoth;
     procedure Arccoth (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Arccoth_Function, Y);
+        For_Each (Arccoth_Function, X, Y);
     end Arccoth;
     procedure Arccoth (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Arccoth_Function, Y);
+        For_Each (Arccoth_Function, X, Y);
     end Arccoth;
 
     procedure Absval (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Abs_Function, Y);
+        For_Each (Abs_Function, X, Y);
     end Absval;
     procedure Absval (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Abs_Function, Y);
+        For_Each (Abs_Function, X, Y);
     end Absval;
     procedure Absval (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Abs_Function, Y);
+        For_Each (Abs_Function, X, Y);
     end Absval;
     procedure Absval (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Abs_Function, Y);
+        For_Each (Abs_Function, X, Y);
     end Absval;
 
     procedure Sign (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Sign_Function, Y);
+        For_Each (Sign_Function, X, Y);
     end Sign;
     procedure Sign (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Sign_Function, Y);
+        For_Each (Sign_Function, X, Y);
     end Sign;
     procedure Sign (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Sign_Function, Y);
+        For_Each (Sign_Function, X, Y);
     end Sign;
     procedure Sign (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Sign_Function, Y);
+        For_Each (Sign_Function, X, Y);
     end Sign;
 
     procedure Floor (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Floor_Function, Y);
+        For_Each (Floor_Function, X, Y);
     end Floor;
     procedure Floor (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Floor_Function, Y);
+        For_Each (Floor_Function, X, Y);
     end Floor;
     procedure Floor (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Floor_Function, Y);
+        For_Each (Floor_Function, X, Y);
     end Floor;
     procedure Floor (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Floor_Function, Y);
+        For_Each (Floor_Function, X, Y);
     end Floor;
 
     procedure Ceil (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Ceil_Function, Y);
+        For_Each (Ceil_Function, X, Y);
     end Ceil;
     procedure Ceil (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Ceil_Function, Y);
+        For_Each (Ceil_Function, X, Y);
     end Ceil;
     procedure Ceil (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Ceil_Function, Y);
+        For_Each (Ceil_Function, X, Y);
     end Ceil;
     procedure Ceil (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Ceil_Function, Y);
+        For_Each (Ceil_Function, X, Y);
     end Ceil;
 
     procedure Round (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Round_Function, Y);
+        For_Each (Round_Function, X, Y);
     end Round;
     procedure Round (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Round_Function, Y);
+        For_Each (Round_Function, X, Y);
     end Round;
     procedure Round (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Round_Function, Y);
+        For_Each (Round_Function, X, Y);
     end Round;
     procedure Round (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Round_Function, Y);
+        For_Each (Round_Function, X, Y);
     end Round;
 
     procedure Add (X, Y : Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
 
     procedure Add (X: Real_Vector; Y : Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X: Real_Matrix; Y : Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X: Real_Tensor_3D; Y : Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X: Real_Tensor_4D; Y : Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
 
     procedure Add (X: Real_Vector; Y : Integer_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X: Real_Matrix; Y : Integer_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X: Real_Tensor_3D; Y : Integer_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
     procedure Add (X: Real_Tensor_4D; Y : Integer_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Add_Function, Z);
+        For_Each (Add_Function, X, Y, Z);
     end Add;
 
     procedure Sub (X, Y : Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
 
     procedure Sub (X: Real_Vector; Y : Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X: Real_Matrix; Y : Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X: Real_Tensor_3D; Y : Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X: Real_Tensor_4D; Y : Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
 
     procedure Sub (X: Real_Vector; Y : Integer_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X: Real_Matrix; Y : Integer_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X: Real_Tensor_3D; Y : Integer_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
     procedure Sub (X: Real_Tensor_4D; Y : Integer_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Sub_Function, Z);
+        For_Each (Sub_Function, X, Y, Z);
     end Sub;
 
     procedure Mul (X, Y : Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
     procedure Mul (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
     procedure Mul (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
     procedure Mul (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
 
     procedure Mul (X: Real_Vector; Y : Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
     procedure Mul (X: Real_Matrix; Y : Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
     procedure Mul (X: Real_Tensor_3D; Y : Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
     procedure Mul (X: Real_Tensor_4D; Y : Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Mul_Function, Z);
+        For_Each (Mul_Function, X, Y, Z);
     end Mul;
 
     procedure Div (X, Y : Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
     procedure Div (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
     procedure Div (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
     procedure Div (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
 
     procedure Div (X: Real_Vector; Y : Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
     procedure Div (X: Real_Matrix; Y : Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
     procedure Div (X: Real_Tensor_3D; Y : Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
     procedure Div (X: Real_Tensor_4D; Y : Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Div_Function, Z);
+        For_Each (Div_Function, X, Y, Z);
     end Div;
 
     procedure Pow (X, Y : Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
     procedure Pow (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
     procedure Pow (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
     procedure Pow (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
 
     procedure Pow (X: Real_Vector; Y : Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
     procedure Pow (X: Real_Matrix; Y : Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
     procedure Pow (X: Real_Tensor_3D; Y : Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
     procedure Pow (X: Real_Tensor_4D; Y : Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Pow_Function, Z);
+        For_Each (Pow_Function, X, Y, Z);
     end Pow;
 
     procedure Lt (X, Y : Real_Vector; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
     procedure Lt (X, Y : Real_Matrix; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
     procedure Lt (X, Y : Real_Tensor_3D; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
     procedure Lt (X, Y : Real_Tensor_4D; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
 
     procedure Lt (X: Real_Vector; Y: Real; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
     procedure Lt (X: Real_Matrix; Y: Real; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
     procedure Lt (X: Real_Tensor_3D; Y: Real; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
     procedure Lt (X: Real_Tensor_4D; Y: Real; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Lt_Function, Z);
+        For_Each (Lt_Function, X, Y, Z);
     end Lt;
 
     procedure Gt (X, Y : Real_Vector; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
     procedure Gt (X, Y : Real_Matrix; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
     procedure Gt (X, Y : Real_Tensor_3D; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
     procedure Gt (X, Y : Real_Tensor_4D; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
 
     procedure Gt (X: Real_Vector; Y: Real; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
     procedure Gt (X: Real_Matrix; Y: Real; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
     procedure Gt (X: Real_Tensor_3D; Y: Real; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
     procedure Gt (X: Real_Tensor_4D; Y: Real; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Gt_Function, Z);
+        For_Each (Gt_Function, X, Y, Z);
     end Gt;
 
     procedure Le (X, Y : Real_Vector; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Le_Function, Z);
+        For_Each (Le_Function, X, Y, Z);
     end Le;
     procedure Le (X, Y : Real_Matrix; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Le_Function, Z);
+        For_Each (Le_Function, X, Y, Z);
     end Le;
     procedure Le (X, Y : Real_Tensor_3D; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Le_Function, Z);
+        For_Each (Le_Function, X, Y, Z);
     end Le;
     procedure Le (X, Y : Real_Tensor_4D; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Le_Function, Z);
+        For_Each (Le_Function, X, Y, Z);
     end Le;
 
     procedure Ge (X, Y : Real_Vector; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Ge_Function, Z);
+        For_Each (Ge_Function, X, Y, Z);
     end Ge;
     procedure Ge (X, Y : Real_Matrix; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Ge_Function, Z);
+        For_Each (Ge_Function, X, Y, Z);
     end Ge;
     procedure Ge (X, Y : Real_Tensor_3D; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Ge_Function, Z);
+        For_Each (Ge_Function, X, Y, Z);
     end Ge;
     procedure Ge (X, Y : Real_Tensor_4D; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Ge_Function, Z);
+        For_Each (Ge_Function, X, Y, Z);
     end Ge;
 
     procedure Eq (X, Y : Real_Vector; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Eq_Function, Z);
+        For_Each (Eq_Function, X, Y, Z);
     end Eq;
     procedure Eq (X, Y : Real_Matrix; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Eq_Function, Z);
+        For_Each (Eq_Function, X, Y, Z);
     end Eq;
     procedure Eq (X, Y : Real_Tensor_3D; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Eq_Function, Z);
+        For_Each (Eq_Function, X, Y, Z);
     end Eq;
     procedure Eq (X, Y : Real_Tensor_4D; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Eq_Function, Z);
+        For_Each (Eq_Function, X, Y, Z);
     end Eq;
 
     procedure Ne (X, Y : Real_Vector; Z: out Boolean_Vector) is
     begin
-        For_Each (X, Y, Ne_Function, Z);
+        For_Each (Ne_Function, X, Y, Z);
     end Ne;
     procedure Ne (X, Y : Real_Matrix; Z: out Boolean_Matrix) is
     begin
-        For_Each (X, Y, Ne_Function, Z);
+        For_Each (Ne_Function, X, Y, Z);
     end Ne;
     procedure Ne (X, Y : Real_Tensor_3D; Z: out Boolean_Tensor_3D) is
     begin
-        For_Each (X, Y, Ne_Function, Z);
+        For_Each (Ne_Function, X, Y, Z);
     end Ne;
     procedure Ne (X, Y : Real_Tensor_4D; Z: out Boolean_Tensor_4D) is
     begin
-        For_Each (X, Y, Ne_Function, Z);
+        For_Each (Ne_Function, X, Y, Z);
     end Ne;
-
-    function Selection (Condition: Boolean; True_Value, False_Value: Integer'Base) return Integer'Base is
-    begin
-        if Condition then
-            return True_Value;
-        else
-            return False_Value;
-        end if;
-    end Selection;
-
-    function Selection (Condition: Boolean; True_Value, False_Value: Positive_Vector) return Positive_Vector is
-    begin
-        if Condition then
-            return True_Value;
-        else
-            return False_Value;
-        end if;
-    end Selection;
-
-    function Selection (Condition: Boolean; True_Value, False_Value: Integer_Vector) return Integer_Vector is
-    begin
-        if Condition then
-            return True_Value;
-        else
-            return False_Value;
-        end if;
-    end Selection;
 
     function Selection (Condition: Boolean; True_Value, False_Value: Padding_Type) return Padding_Type is
     begin
@@ -844,14 +816,14 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Selection(Condition : Boolean_Vector; True_Value, False_Value : Real_Vector; Z : out Real_Vector) is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
        (Condition : Boolean_Matrix; True_Value, False_Value : Real_Matrix; Z : out Real_Matrix)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
@@ -859,7 +831,7 @@ package body Generic_Real_Arrays.Operators is
         True_Value, False_Value : Real_Tensor_3D; Z : out Real_Tensor_3D)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
@@ -867,7 +839,7 @@ package body Generic_Real_Arrays.Operators is
         True_Value, False_Value : Real_Tensor_4D; Z : out Real_Tensor_4D)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
@@ -875,7 +847,7 @@ package body Generic_Real_Arrays.Operators is
         False_Value : Real; Z : out Real_Vector)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
@@ -883,7 +855,7 @@ package body Generic_Real_Arrays.Operators is
         False_Value : Real; Z : out Real_Matrix)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
@@ -891,7 +863,7 @@ package body Generic_Real_Arrays.Operators is
         False_Value : Real; Z : out Real_Tensor_3D)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Selection
@@ -899,182 +871,182 @@ package body Generic_Real_Arrays.Operators is
         False_Value : Real; Z : out Real_Tensor_4D)
     is
     begin
-        For_Each(Condition, True_Value, False_Value, Selection_Function, Z);
+        For_Each(Selection_Function, Condition, True_Value, False_Value, Z);
     end Selection;
 
     procedure Sqr (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Sqr_Function, Y);
+        For_Each (Sqr_Function, X, Y);
     end Sqr;
     procedure Sqr (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Sqr_Function, Y);
+        For_Each (Sqr_Function, X, Y);
     end Sqr;
     procedure Sqr (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Sqr_Function, Y);
+        For_Each (Sqr_Function, X, Y);
     end Sqr;
     procedure Sqr (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Sqr_Function, Y);
+        For_Each (Sqr_Function, X, Y);
     end Sqr;
 
     procedure Sqrt (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Sqrt_Function, Y);
+        For_Each (Sqrt_Function, X, Y);
     end Sqrt;
     procedure Sqrt (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Sqrt_Function, Y);
+        For_Each (Sqrt_Function, X, Y);
     end Sqrt;
     procedure Sqrt (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Sqrt_Function, Y);
+        For_Each (Sqrt_Function, X, Y);
     end Sqrt;
     procedure Sqrt (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Sqrt_Function, Y);
+        For_Each (Sqrt_Function, X, Y);
     end Sqrt;
 
     procedure RSqr (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, RSqr_Function, Y);
+        For_Each (RSqr_Function, X, Y);
     end RSqr;
     procedure RSqr (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, RSqr_Function, Y);
+        For_Each (RSqr_Function, X, Y);
     end RSqr;
     procedure RSqr (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, RSqr_Function, Y);
+        For_Each (RSqr_Function, X, Y);
     end RSqr;
     procedure RSqr (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, RSqr_Function, Y);
+        For_Each (RSqr_Function, X, Y);
     end RSqr;
 
     procedure RSqrt (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, RSqrt_Function, Y);
+        For_Each (RSqrt_Function, X, Y);
     end RSqrt;
     procedure RSqrt (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, RSqrt_Function, Y);
+        For_Each (RSqrt_Function, X, Y);
     end RSqrt;
     procedure RSqrt (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, RSqrt_Function, Y);
+        For_Each (RSqrt_Function, X, Y);
     end RSqrt;
     procedure RSqrt (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, RSqrt_Function, Y);
+        For_Each (RSqrt_Function, X, Y);
     end RSqrt;
 
     procedure Log2 (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Log2_Function, Y);
+        For_Each (Log2_Function, X, Y);
     end Log2;
     procedure Log2 (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Log2_Function, Y);
+        For_Each (Log2_Function, X, Y);
     end Log2;
     procedure Log2 (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Log2_Function, Y);
+        For_Each (Log2_Function, X, Y);
     end Log2;
     procedure Log2 (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Log2_Function, Y);
+        For_Each (Log2_Function, X, Y);
     end Log2;
 
     procedure Min (X, Y: Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
     procedure Min (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
     procedure Min (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
     procedure Min (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
 
     procedure Min (X: Real_Vector; Y: Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
     procedure Min (X: Real_Matrix; Y: Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
     procedure Min (X: Real_Tensor_3D; Y: Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
     procedure Min (X: Real_Tensor_4D; Y: Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Min_Function, Z);
+        For_Each (Min_Function, X, Y, Z);
     end Min;
 
     procedure Max (X, Y: Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
     procedure Max (X, Y : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
     procedure Max (X, Y : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
     procedure Max (X, Y : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
 
     procedure Max (X: Real_Vector; Y: Real; Z: out Real_Vector) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
     procedure Max (X: Real_Matrix; Y: Real; Z: out Real_Matrix) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
     procedure Max (X: Real_Tensor_3D; Y: Real; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
     procedure Max (X: Real_Tensor_4D; Y: Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, Y, Max_Function, Z);
+        For_Each (Max_Function, X, Y, Z);
     end Max;
 
     procedure Clamp (X, A, B : Real_Vector; Z: out Real_Vector) is
     begin
-        For_Each (X, A, B, Clamp_Function, Z);
+        For_Each (Clamp_Function, X, A, B, Z);
     end Clamp;
     procedure Clamp (X, A, B : Real_Matrix; Z: out Real_Matrix) is
     begin
-        For_Each (X, A, B, Clamp_Function, Z);
+        For_Each (Clamp_Function, X, A, B, Z);
     end Clamp;
     procedure Clamp (X, A, B : Real_Tensor_3D; Z: out Real_Tensor_3D) is
     begin
-        For_Each (X, A, B, Clamp_Function, Z);
+        For_Each (Clamp_Function, X, A, B, Z);
     end Clamp;
     procedure Clamp (X, A, B : Real_Tensor_4D; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, A, B, Clamp_Function, Z);
+        For_Each (Clamp_Function, X, A, B, Z);
     end Clamp;
 
     procedure Clamp (X: Real_Tensor_4D; A, B: Real; Z: out Real_Tensor_4D) is
     begin
-        For_Each (X, A, B, Clamp_Function, Z);
+        For_Each (Clamp_Function, X, A, B, Z);
     end Clamp;
 
     function Downscaled_Extent (X, F: Positive; P, Q: Integer; S, D: Positive) return Positive is
@@ -1118,9 +1090,9 @@ package body Generic_Real_Arrays.Operators is
        (Input_Shape, Size : Tiny_Positive_Vector_4; Padding: Padding_Type_4; Stride, Dilation : Tiny_Positive_Vector_4) return Tiny_Positive_Vector_4 is
     begin
         return ( Downscaled_Extent (Input_Shape(1), Size (1), Padding (1)(1), Padding (1)(2), Stride (1), Dilation (1)),
-        Downscaled_Extent (Input_Shape(2), Size (2), Padding (2)(1), Padding (2)(2), Stride (2), Dilation (2)),
-        Downscaled_Extent (Input_Shape(3), Size (3), Padding (3)(1), Padding (3)(2), Stride (3), Dilation (3)),
-        Downscaled_Extent (Input_Shape(4), Size (4), Padding (4)(1), Padding (4)(2), Stride (4), Dilation (4)) );
+            Downscaled_Extent (Input_Shape(2), Size (2), Padding (2)(1), Padding (2)(2), Stride (2), Dilation (2)),
+            Downscaled_Extent (Input_Shape(3), Size (3), Padding (3)(1), Padding (3)(2), Stride (3), Dilation (3)),
+            Downscaled_Extent (Input_Shape(4), Size (4), Padding (4)(1), Padding (4)(2), Stride (4), Dilation (4)) );
     end Downscaled_Output_Shape_4;
 
     function Upscaled_Extent (X, F: Positive; P, Q: Integer; S, D: Positive) return Positive is
@@ -1162,9 +1134,9 @@ package body Generic_Real_Arrays.Operators is
        (Input_Shape, Size : Tiny_Positive_Vector_4; Padding: Padding_Type_4; Stride, Dilation : Tiny_Positive_Vector_4) return Tiny_Positive_Vector_4 is
     begin
         return ( Upscaled_Extent (Input_Shape(1), Size (1), Padding (1)(1), Padding (1)(2), Stride (1), Dilation (1)),
-        Upscaled_Extent (Input_Shape(2), Size (2), Padding (2)(1), Padding (2)(2), Stride (2), Dilation (2)),
-        Upscaled_Extent (Input_Shape(3), Size (3), Padding (3)(1), Padding (3)(2), Stride (3), Dilation (3)),
-        Upscaled_Extent (Input_Shape(4), Size (4), Padding (4)(1), Padding (4)(2), Stride (4), Dilation (4)) );
+            Upscaled_Extent (Input_Shape(2), Size (2), Padding (2)(1), Padding (2)(2), Stride (2), Dilation (2)),
+            Upscaled_Extent (Input_Shape(3), Size (3), Padding (3)(1), Padding (3)(2), Stride (3), Dilation (3)),
+            Upscaled_Extent (Input_Shape(4), Size (4), Padding (4)(1), Padding (4)(2), Stride (4), Dilation (4)) );
     end Upscaled_Output_Shape_4;
 
     function Auto_Padding_Extent (X, F, S, D: Positive) return Padding_Extent is
@@ -1183,6 +1155,32 @@ package body Generic_Real_Arrays.Operators is
         end loop;
         return Padding;
     end Auto_Padding;
+
+    function Auto_Padding_1 (Input_Shape, Size, Stride, Dilation: Tiny_Positive_Vector_1) return Padding_Type_1 is
+    begin
+        return ( 1 => Auto_Padding_Extent (Input_Shape(1), Size (1), Stride (1), Dilation (1)) );
+    end Auto_Padding_1;
+
+    function Auto_Padding_2 (Input_Shape, Size, Stride, Dilation: Tiny_Positive_Vector_2) return Padding_Type_2 is
+    begin
+        return ( Auto_Padding_Extent (Input_Shape(1), Size (1), Stride (1), Dilation (1)),
+            Auto_Padding_Extent (Input_Shape(2), Size (2), Stride (2), Dilation (2)) );
+    end Auto_Padding_2;
+
+    function Auto_Padding_3 (Input_Shape, Size, Stride, Dilation: Tiny_Positive_Vector_3) return Padding_Type_3 is
+    begin
+        return ( Auto_Padding_Extent (Input_Shape(1), Size (1), Stride (1), Dilation (1)),
+            Auto_Padding_Extent (Input_Shape(2), Size (2), Stride (2), Dilation (2)),
+            Auto_Padding_Extent (Input_Shape(3), Size (3), Stride (3), Dilation (3)) );
+    end Auto_Padding_3;
+
+    function Auto_Padding_4 (Input_Shape, Size, Stride, Dilation: Tiny_Positive_Vector_4) return Padding_Type_4 is
+    begin
+        return ( Auto_Padding_Extent (Input_Shape(1), Size (1), Stride (1), Dilation (1)),
+            Auto_Padding_Extent (Input_Shape(2), Size (2), Stride (2), Dilation (2)),
+            Auto_Padding_Extent (Input_Shape(3), Size (3), Stride (3), Dilation (3)),
+            Auto_Padding_Extent (Input_Shape(4), Size (4), Stride (4), Dilation (4)) );
+    end Auto_Padding_4;
 
     procedure Conv
        (Input, Filter    : Real_Tensor_3D; Bias : Real_Matrix := Scalar_2D_0;
@@ -1215,7 +1213,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((1 => Input'Length(3)), (1 => Filter'Length(3)), Stride1, Dilation1);
+            Padding1 := Auto_Padding_1 ((1 => Input'Length(3)), (1 => Filter'Length(3)), Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1263,7 +1261,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(3), Input'Length(4)), (Filter'Length(3), Filter'Length(4)), Stride1, Dilation1);
+            Padding1 := Auto_Padding_2 ((Input'Length(3), Input'Length(4)), (Filter'Length(3), Filter'Length(4)), Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1312,7 +1310,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((1 => Output'Length(3)), (1 => Filter'Length(3)), Stride1, Dilation1);
+            Padding1 := Auto_Padding_1 ((1 => Output'Length(3)), (1 => Filter'Length(3)), Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1361,7 +1359,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Output'Length(3), Output'Length(4)), (Filter'Length(3), Filter'Length(4)), Stride1, Dilation1);
+            Padding1 := Auto_Padding_2 ((Output'Length(3), Output'Length(4)), (Filter'Length(3), Filter'Length(4)), Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1389,7 +1387,7 @@ package body Generic_Real_Arrays.Operators is
         Output: out Real_Tensor_3D)
     is
         --  Input_Shape: Positive_Vector := Shape_Of(Input);
-        Kernel_Size: Real := Real(Size(1) * Size(2) * Size(3));
+        Kernel_Size: constant Real := Real(Size(1) * Size(2) * Size(3));
         --  Stride1: Positive_Vector := Selection(Stride'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Stride);
         --  Dilation1: Positive_Vector := Selection(Dilation'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Dilation);
         --  Padding1: Padding_Type := Selection(Padding'Length = 0, Auto_Padding (Input_Shape, Size, Stride1, Dilation1), Padding);
@@ -1410,20 +1408,20 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(1), Input'Length(2), Input'Length(3)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_3 ((Input'Length(1), Input'Length(2), Input'Length(3)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
         Pool (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
-                For_Each(Output, Kernel_Size, Div_Function, Output);
+                For_Each(Div_Function, Output, Kernel_Size, Output);
             elsif Border = Border_Mode_Ignore then
                 declare
                     Tensor: Real_Tensor_3D(Output'Range(1), Output'Range(2), Output'Range(3)) := (others => (others => (others => 0.0)));
                 begin
                     Pool_Area (Shape_Of(Input), Size, Padding1, Stride1, Dilation1, Tensor);
-                    For_Each(Output, Tensor, Div_Function, Output);
+                    For_Each(Div_Function, Output, Tensor, Output);
                 end;
             end if;
         end if;
@@ -1440,7 +1438,7 @@ package body Generic_Real_Arrays.Operators is
         Output: out Real_Tensor_4D)
     is
         --  Input_Shape: Positive_Vector := Shape_Of(Input);
-        Kernel_Size: Real := Real(Size(1) * Size(2) * Size(3) * Size(4));
+        Kernel_Size: constant Real := Real(Size(1) * Size(2) * Size(3) * Size(4));
         --  Stride1: Positive_Vector := Selection(Stride'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Stride);
         --  Dilation1: Positive_Vector := Selection(Dilation'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Dilation);
         --  Padding1: Padding_Type := Selection(Padding'Length = 0, Auto_Padding (Input_Shape, Size, Stride1, Dilation1), Padding);
@@ -1461,20 +1459,20 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_4 ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
         Pool (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
-                For_Each(Output, Kernel_Size, Div_Function, Output);
+                For_Each(Div_Function, Output, Kernel_Size, Output);
             elsif Border = Border_Mode_Ignore then
                 declare
                     Tensor: Real_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4)) := (others => (others => (others => (others => 0.0))));
                 begin
                     Pool_Area (Shape_Of(Input), Size, Padding1, Stride1, Dilation1, Tensor);
-                    For_Each(Output, Tensor, Div_Function, Output);
+                    For_Each(Div_Function, Output, Tensor, Output);
                 end;
             end if;
         end if;
@@ -1492,7 +1490,7 @@ package body Generic_Real_Arrays.Operators is
         Output: out Real_Tensor_3D)
     is
         --  Input_Shape: Positive_Vector := Shape_Of(Input);
-        Kernel_Size: Real := Real(Size(1) * Size(2) * Size(3));
+        Kernel_Size: constant Real := Real(Size(1) * Size(2) * Size(3));
         --  Stride1: Positive_Vector := Selection(Stride'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Stride);
         --  Dilation1: Positive_Vector := Selection(Dilation'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Dilation);
         --  Padding1: Padding_Type := Selection(Padding'Length = 0, Auto_Padding (Input_Shape, Size, Stride1, Dilation1), Padding);
@@ -1513,20 +1511,20 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Output'Length(1), Output'Length(2), Output'Length(3)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_3 ((Output'Length(1), Output'Length(2), Output'Length(3)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
         Pool_Transposed (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
-                For_Each(Output, Kernel_Size, Div_Function, Output);
+                For_Each(Div_Function, Output, Kernel_Size, Output);
             elsif Border = Border_Mode_Ignore then
                 declare
                     Tensor: Real_Tensor_3D(Output'Range(1), Output'Range(2), Output'Range(3)) := (others => (others => (others => 0.0)));
                 begin
                     Pool_Area_Transposed (Shape_Of(Input), Size, Padding1, Stride1, Dilation1, Tensor);
-                    For_Each(Output, Tensor, Div_Function, Output);
+                    For_Each(Div_Function, Output, Tensor, Output);
                 end;
             end if;
         end if;
@@ -1544,7 +1542,7 @@ package body Generic_Real_Arrays.Operators is
         Output: out Real_Tensor_4D)
     is
         --  Input_Shape: Positive_Vector := Shape_Of(Input);
-        Kernel_Size: Real := Real(Size(1) * Size(2) * Size(3) * Size(4));
+        Kernel_Size: constant Real := Real(Size(1) * Size(2) * Size(3) * Size(4));
         --  Stride1: Positive_Vector := Selection(Stride'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Stride);
         --  Dilation1: Positive_Vector := Selection(Dilation'Length = 0, Positive_Vector'(Input_Shape'Range => 1), Dilation);
         --  Padding1: Padding_Type := Selection(Padding'Length = 0, Auto_Padding (Input_Shape, Size, Stride1, Dilation1), Padding);
@@ -1565,20 +1563,20 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Output'Length(1), Output'Length(2), Output'Length(3), Output'Length(4)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_4 ((Output'Length(1), Output'Length(2), Output'Length(3), Output'Length(4)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
         Pool_Transposed (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
-                For_Each(Output, Kernel_Size, Div_Function, Output);
+                For_Each(Div_Function, Output, Kernel_Size, Output);
             elsif Border = Border_Mode_Ignore then
                 declare
                     Tensor: Real_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4)) := (others => (others => (others => (others => 0.0))));
                 begin
                     Pool_Area_Transposed (Shape_Of(Input), Size, Padding1, Stride1, Dilation1, Tensor);
-                    For_Each(Output, Tensor, Div_Function, Output);
+                    For_Each(Div_Function, Output, Tensor, Output);
                 end;
             end if;
         end if;
@@ -1614,7 +1612,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(1), Input'Length(2), Input'Length(3)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_3 ((Input'Length(1), Input'Length(2), Input'Length(3)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1651,7 +1649,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_4 ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1687,7 +1685,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(1), Input'Length(2), Input'Length(3)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_3 ((Input'Length(1), Input'Length(2), Input'Length(3)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1724,7 +1722,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_4 ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1761,7 +1759,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Output'Length(1), Output'Length(2), Output'Length(3)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_3 ((Output'Length(1), Output'Length(2), Output'Length(3)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -1799,7 +1797,7 @@ package body Generic_Real_Arrays.Operators is
             Dilation1 := Dilation;
         end if;
         if Padding'Length = 0 then
-            Padding1 := Auto_Padding ((Output'Length(1), Output'Length(2), Output'Length(3), Output'Length(4)), Size, Stride1, Dilation1);
+            Padding1 := Auto_Padding_4 ((Output'Length(1), Output'Length(2), Output'Length(3), Output'Length(4)), Size, Stride1, Dilation1);
         else
             Padding1 := Padding;
         end if;
@@ -2003,151 +2001,151 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Sum_Reduce (Input: Real_Vector; Normalize : Boolean := False; Output: out Real_Vector) is
     begin
-        Reduce(Input, Add_Function, Output => Output);
+        Reduce(Add_Function, Input, Output => Output);
         if Normalize then
-            For_Each(Output, Real(Input'Length), Div_Function, Output);
+            For_Each(Div_Function, Output, Real(Input'Length), Output);
         end if;
     end Sum_Reduce;
 
     procedure Sum_Reduce (Input : Real_Matrix; Axes: Tiny_Positive_Vector; Normalize : Boolean := False; Output: out Real_Matrix) is
     begin
-        Reduce(Input, Axes, Add_Function, Output => Output);
+        Reduce(Add_Function, Input, Axes, Output => Output);
         if Normalize then
             declare
-                Input_Shape: Tiny_Positive_Vector := Shape_Of(Input);
+                Input_Shape: Tiny_Positive_Vector_2 := Shape_Of(Input);
                 P: Positive := 1;
             begin
                 for I in Axes'Range loop
                     P := P * Input_Shape(Axes(I));
                 end loop;
-                For_Each(Output, Real(P), Div_Function, Output);
+                For_Each(Div_Function, Output, Real(P), Output);
             end;
         end if;
     end Sum_Reduce;
 
     procedure Sum_Reduce (Input     : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Normalize : Boolean := False; Output: out Real_Tensor_3D) is
     begin
-        Reduce(Input, Axes, Add_Function, Output => Output);
+        Reduce(Add_Function, Input, Axes, Output => Output);
         if Normalize then
             declare
-                Input_Shape: Tiny_Positive_Vector := Shape_Of(Input);
+                Input_Shape: Tiny_Positive_Vector_3 := Shape_Of(Input);
                 P: Positive := 1;
             begin
                 for I in Axes'Range loop
                     P := P * Input_Shape(Axes(I));
                 end loop;
-                For_Each(Output, Real(P), Div_Function, Output);
+                For_Each(Div_Function, Output, Real(P), Output);
             end;
         end if;
     end Sum_Reduce;
 
     procedure Sum_Reduce (Input     : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Normalize : Boolean := False; Output: out Real_Tensor_4D) is
     begin
-        Reduce(Input, Axes, Add_Function, Output => Output);
+        Reduce(Add_Function, Input, Axes, Output => Output);
         if Normalize then
             declare
-                Input_Shape: Tiny_Positive_Vector := Shape_Of(Input);
+                Input_Shape: Tiny_Positive_Vector_4 := Shape_Of(Input);
                 P: Positive := 1;
             begin
                 for I in Axes'Range loop
                     P := P * Input_Shape(Axes(I));
                 end loop;
-                For_Each(Output, Real(P), Div_Function, Output);
+                For_Each(Div_Function, Output, Real(P), Output);
             end;
         end if;
     end Sum_Reduce;
 
     procedure Max_Reduce (Input : Real_Vector; Output: out Real_Vector) is
     begin
-        Reduce(Input, Max_Function, Output => Output);
+        Reduce(Max_Function, Input, Output => Output);
     end Max_Reduce;
 
     procedure Max_Reduce (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Real_Matrix) is
     begin
-        Reduce(Input, Axes, Max_Function, Output => Output);
+        Reduce(Max_Function, Input, Axes, Output => Output);
     end Max_Reduce;
 
     procedure Max_Reduce (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_3D) is
     begin
-        Reduce(Input, Axes, Max_Function, Output => Output);
+        Reduce(Max_Function, Input, Axes, Output => Output);
     end Max_Reduce;
 
     procedure Max_Reduce (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_4D) is
     begin
-        Reduce(Input, Axes, Max_Function, Output => Output);
+        Reduce(Max_Function, Input, Axes, Output => Output);
     end Max_Reduce;
 
     procedure Min_Reduce (Input : Real_Vector; Output: out Real_Vector) is
     begin
-        Reduce(Input, Min_Function, Output => Output);
+        Reduce(Min_Function, Input, Output => Output);
     end Min_Reduce;
 
     procedure Min_Reduce (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Real_Matrix) is
     begin
-        Reduce(Input, Axes, Min_Function, Output => Output);
+        Reduce(Min_Function, Input, Axes, Output => Output);
     end Min_Reduce;
 
     procedure Min_Reduce (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_3D) is
     begin
-        Reduce(Input, Axes, Min_Function, Output => Output);
+        Reduce(Min_Function, Input, Axes, Output => Output);
     end Min_Reduce;
 
     procedure Min_Reduce (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_4D) is
     begin
-        Reduce(Input, Axes, Min_Function, Output => Output);
+        Reduce(Min_Function, Input, Axes, Output => Output);
     end Min_Reduce;
 
     procedure Argmax_Reduce (Input : Real_Vector; Output: out Natural_Vector) is
     begin
-        Arg_Reduce (Input, Gt_Function, Output);
+        Arg_Reduce (Gt_Function, Input, Output);
     end Argmax_Reduce;
 
     procedure Argmax_Reduce
        (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix)
     is
     begin
-        Arg_Reduce (Input, Axes, Gt_Function, Output);
+        Arg_Reduce (Gt_Function, Input, Axes, Output);
     end Argmax_Reduce;
 
     procedure Argmax_Reduce
        (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D)
     is
     begin
-        Arg_Reduce (Input, Axes, Gt_Function, Output);
+        Arg_Reduce (Gt_Function, Input, Axes, Output);
     end Argmax_Reduce;
 
     procedure Argmax_Reduce
        (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D)
     is
     begin
-        Arg_Reduce (Input, Axes, Gt_Function, Output);
+        Arg_Reduce (Gt_Function, Input, Axes, Output);
     end Argmax_Reduce;
 
     procedure Argmin_Reduce (Input : Real_Vector; Output: out Natural_Vector) is
         --  Output : Natural_Vector (Input'First .. Input'First);
     begin
-        Arg_Reduce (Input, Lt_Function, Output);
+        Arg_Reduce (Lt_Function, Input, Output);
     end Argmin_Reduce;
 
     procedure Argmin_Reduce
        (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix)
     is
     begin
-        Arg_Reduce (Input, Axes, Lt_Function, Output);
+        Arg_Reduce (Lt_Function, Input, Axes, Output);
     end Argmin_Reduce;
 
     procedure Argmin_Reduce
        (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D)
     is
     begin
-        Arg_Reduce (Input, Axes, Lt_Function, Output);
+        Arg_Reduce (Lt_Function, Input, Axes, Output);
     end Argmin_Reduce;
 
     procedure Argmin_Reduce
        (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D)
     is
     begin
-        Arg_Reduce (Input, Axes, Lt_Function, Output);
+        Arg_Reduce (Lt_Function, Input, Axes, Output);
     end Argmin_Reduce;
 
     procedure Mean_Reduce (Input : Real_Vector; Output: out Real_Vector) is
@@ -2432,240 +2430,240 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Sigmoid (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Logistic_Function, Y);
+        For_Each (Logistic_Function, X, Y);
     end Sigmoid;
     procedure Sigmoid (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Logistic_Function, Y);
+        For_Each (Logistic_Function, X, Y);
     end Sigmoid;
     procedure Sigmoid (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Logistic_Function, Y);
+        For_Each (Logistic_Function, X, Y);
     end Sigmoid;
     procedure Sigmoid (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Logistic_Function, Y);
+        For_Each (Logistic_Function, X, Y);
     end Sigmoid;
 
     procedure Relu (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Relu_Function, Y);
+        For_Each (Relu_Function, X, Y);
     end Relu;
     procedure Relu (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Relu_Function, Y);
+        For_Each (Relu_Function, X, Y);
     end Relu;
     procedure Relu (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Relu_Function, Y);
+        For_Each (Relu_Function, X, Y);
     end Relu;
     procedure Relu (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Relu_Function, Y);
+        For_Each (Relu_Function, X, Y);
     end Relu;
 
     procedure Prelu (X : Real_Vector; Alpha : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Alpha, Prelu_Function, Y);
+        For_Each (Prelu_Function, X, Alpha, Y);
     end Prelu;
     procedure Prelu (X : Real_Matrix; Alpha : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Alpha, Prelu_Function, Y);
+        For_Each (Prelu_Function, X, Alpha, Y);
     end Prelu;
     procedure Prelu
        (X : Real_Tensor_3D; Alpha : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Alpha, Prelu_Function, Y);
+        For_Each (Prelu_Function, X, Alpha, Y);
     end Prelu;
     procedure Prelu
        (X : Real_Tensor_4D; Alpha : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Alpha, Prelu_Function, Y);
+        For_Each (Prelu_Function, X, Alpha, Y);
     end Prelu;
 
     procedure Leaky_Relu (X : Real_Vector; Alpha : Real; Y: out Real_Vector) is
     begin
-        For_Each (X, Alpha, Leaky_Relu_Function, Y);
+        For_Each (Leaky_Relu_Function, X, Alpha, Y);
     end Leaky_Relu;
     procedure Leaky_Relu (X : Real_Matrix; Alpha : Real; Y: out Real_Matrix) is
     begin
-        For_Each (X, Alpha, Leaky_Relu_Function, Y);
+        For_Each (Leaky_Relu_Function, X, Alpha, Y);
     end Leaky_Relu;
     procedure Leaky_Relu
        (X : Real_Tensor_3D; Alpha : Real; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Alpha, Leaky_Relu_Function, Y);
+        For_Each (Leaky_Relu_Function, X, Alpha, Y);
     end Leaky_Relu;
     procedure Leaky_Relu
        (X : Real_Tensor_4D; Alpha : Real; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Alpha, Leaky_Relu_Function, Y);
+        For_Each (Leaky_Relu_Function, X, Alpha, Y);
     end Leaky_Relu;
 
     procedure Elu (X : Real_Vector; Alpha : Real := 1.0; Y: out Real_Vector) is
     begin
-        For_Each (X, Alpha, Elu_Function, Y);
+        For_Each (Elu_Function, X, Alpha, Y);
     end Elu;
     procedure Elu (X : Real_Matrix; Alpha : Real := 1.0; Y: out Real_Matrix) is
     begin
-        For_Each (X, Alpha, Elu_Function, Y);
+        For_Each (Elu_Function, X, Alpha, Y);
     end Elu;
     procedure Elu
        (X : Real_Tensor_3D; Alpha : Real := 1.0; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Alpha, Elu_Function, Y);
+        For_Each (Elu_Function, X, Alpha, Y);
     end Elu;
     procedure Elu
        (X : Real_Tensor_4D; Alpha : Real := 1.0; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Alpha, Elu_Function, Y);
+        For_Each (Elu_Function, X, Alpha, Y);
     end Elu;
 
     procedure Selu
        (X      : Real_Vector; Alpha : Real := 1.673_263_19;
         Lambda : Real := 1.050_701_02; Y: out Real_Vector) is
     begin
-        For_Each (X, Alpha, Lambda, Selu_Function, Y);
+        For_Each (Selu_Function, X, Alpha, Lambda, Y);
     end Selu;
     procedure Selu
        (X      : Real_Matrix; Alpha : Real := 1.673_263_19;
         Lambda : Real := 1.050_701_02; Y: out Real_Matrix) is
     begin
-        For_Each (X, Alpha, Lambda, Selu_Function, Y);
+        For_Each (Selu_Function, X, Alpha, Lambda, Y);
     end Selu;
     procedure Selu
        (X      : Real_Tensor_3D; Alpha : Real := 1.673_263_19;
         Lambda : Real := 1.050_701_02; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Alpha, Lambda, Selu_Function, Y);
+        For_Each (Selu_Function, X, Alpha, Lambda, Y);
     end Selu;
     procedure Selu
        (X      : Real_Tensor_4D; Alpha : Real := 1.673_263_19;
         Lambda : Real := 1.050_701_02; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Alpha, Lambda, Selu_Function, Y);
+        For_Each (Selu_Function, X, Alpha, Lambda, Y);
     end Selu;
 
     procedure Gelu (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Gelu_Function, Y);
+        For_Each (Gelu_Function, X, Y);
     end Gelu;
     procedure Gelu (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Gelu_Function, Y);
+        For_Each (Gelu_Function, X, Y);
     end Gelu;
     procedure Gelu (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Gelu_Function, Y);
+        For_Each (Gelu_Function, X, Y);
     end Gelu;
     procedure Gelu (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Gelu_Function, Y);
+        For_Each (Gelu_Function, X, Y);
     end Gelu;
 
     procedure Silu (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Silu_Function, Y);
+        For_Each (Silu_Function, X, Y);
     end Silu;
     procedure Silu (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Silu_Function, Y);
+        For_Each (Silu_Function, X, Y);
     end Silu;
     procedure Silu (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Silu_Function, Y);
+        For_Each (Silu_Function, X, Y);
     end Silu;
     procedure Silu (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Silu_Function, Y);
+        For_Each (Silu_Function, X, Y);
     end Silu;
 
     procedure Softmax (X : Real_Vector; Y: out Real_Vector) is
-        Reduced_Shape: Tiny_Positive_Vector := Reduce_Shape(Shape_Of(X), (1 => 1));
+        Reduced_Shape: Tiny_Positive_Vector_1 := Reduce_Shape(Shape_Of(X), (1 => 1));
         M, S: Real_Vector(1..Reduced_Shape(1));
         E: Real_Vector(X'Range);
     begin
         Max_Reduce (X, Output => M);
         --  Sub (X, M, E);
-        For_Reduced (X, M, Sub_Function, E);
+        For_Reduced (Sub_Function, X, M, E);
         Exp (E, E);
         Sum_Reduce (E, Output => S);
         --  Div (E, S, Y);
-        For_Reduced (E, S, Div_Function, Y);
+        For_Reduced (Div_Function, E, S, Y);
     end Softmax;
     procedure Softmax (X : Real_Matrix; Axes : Tiny_Positive_Vector := (1 => 2); Y: out Real_Matrix)
     is
-        Reduced_Shape: Tiny_Positive_Vector := Reduce_Shape(Shape_Of(X), Axes);
+        Reduced_Shape: Tiny_Positive_Vector_2 := Reduce_Shape(Shape_Of(X), Axes);
         M, S: Real_Matrix(1..Reduced_Shape(1), 1..Reduced_Shape(2));
         E: Real_Matrix(X'Range(1), X'Range(2));
     begin
         Max_Reduce (X, Axes, Output => M);
         --  Sub (X, M, E);
-        For_Reduced (X, M, Sub_Function, E);
+        For_Reduced (Sub_Function, X, M, E);
         Exp (E, E);
         Sum_Reduce (E, Axes, Output => S);
         --  Div (E, S, Y);
-        For_Reduced (E, S, Div_Function, Y);
+        For_Reduced (Div_Function, E, S, Y);
     end Softmax;
     procedure Softmax
        (X : Real_Tensor_3D; Axes : Tiny_Positive_Vector := (1 => 2); Y: out Real_Tensor_3D)
     is
-        Reduced_Shape: Tiny_Positive_Vector := Reduce_Shape(Shape_Of(X), Axes);
+        Reduced_Shape: Tiny_Positive_Vector_3 := Reduce_Shape(Shape_Of(X), Axes);
         M, S: Real_Tensor_3D(1..Reduced_Shape(1), 1..Reduced_Shape(2), 1..Reduced_Shape(3));
         E: Real_Tensor_3D(X'Range(1), X'Range(2), X'Range(3));
     begin
         Max_Reduce (X, Axes, Output => M);
         --  Sub (X, M, E);
-        For_Reduced (X, M, Sub_Function, E);
+        For_Reduced (Sub_Function, X, M, E);
         Exp (E, E);
         Sum_Reduce (E, Axes, Output => S);
         --  Div (E, S, Y);
-        For_Reduced (E, S, Div_Function, Y);
+        For_Reduced (Div_Function, E, S, Y);
     end Softmax;
     procedure Softmax
        (X : Real_Tensor_4D; Axes : Tiny_Positive_Vector := (1 => 2); Y: out Real_Tensor_4D)
     is
-        Reduced_Shape: Tiny_Positive_Vector := Reduce_Shape(Shape_Of(X), Axes);
+        Reduced_Shape: Tiny_Positive_Vector_4 := Reduce_Shape(Shape_Of(X), Axes);
         M, S: Real_Tensor_4D(1..Reduced_Shape(1), 1..Reduced_Shape(2), 1..Reduced_Shape(3), 1..Reduced_Shape(4));
         E: Real_Tensor_4D(X'Range(1), X'Range(2), X'Range(3), X'Range(4));
     begin
         Max_Reduce (X, Axes, Output => M);
         --  Sub (X, M, E);
-        For_Reduced (X, M, Sub_Function, E);
+        For_Reduced (Sub_Function, X, M, E);
         Exp (E, E);
         Sum_Reduce (E, Axes, Output => S);
         --  Div (E, S, Y);
-        For_Reduced (E, S, Div_Function, Y);
+        For_Reduced (Div_Function, E, S, Y);
     end Softmax;
 
     procedure Softplus (X : Real_Vector; Y: out Real_Vector) is
     begin
-        For_Each (X, Softplus_Function, Y);
+        For_Each (Softplus_Function, X, Y);
     end Softplus;
     procedure Softplus (X : Real_Matrix; Y: out Real_Matrix) is
     begin
-        For_Each (X, Softplus_Function, Y);
+        For_Each (Softplus_Function, X, Y);
     end Softplus;
     procedure Softplus (X : Real_Tensor_3D; Y: out Real_Tensor_3D) is
     begin
-        For_Each (X, Softplus_Function, Y);
+        For_Each (Softplus_Function, X, Y);
     end Softplus;
     procedure Softplus (X : Real_Tensor_4D; Y: out Real_Tensor_4D) is
     begin
-        For_Each (X, Softplus_Function, Y);
+        For_Each (Softplus_Function, X, Y);
     end Softplus;
 
     procedure Linear
        (Input: Real_Vector; Filter : Real_Matrix; Bias : Real_Vector; Output: out Real_Vector) is
     begin
-        MatMult (Input, Filter, TransposeB => true, C => Output);
+        MatMult_TransposeB (Input, Filter, C => Output);
         Add (Output, Bias, Output);
     end Linear;
 
     procedure Linear
        (Input, Filter : Real_Matrix; Bias : Real_Matrix; Output: out Real_Matrix) is
     begin
-        MatMult (Input, Filter, TransposeB => true, C => Output);
+        MatMult_TransposeB (Input, Filter, C => Output);
         Add (Output, Bias, Output);
     end Linear;
 
@@ -2680,13 +2678,13 @@ package body Generic_Real_Arrays.Operators is
     is
         Shape: Tiny_Positive_Vector := Downscaled_Output_Shape(Shape_Of(Input), Size => Shape_Of(Plane_Filter), Padding => Padding, Stride => Stride, Dilation => Dilation);
         Filtered: Real_Tensor_4D(1..Shape(1), 1..Shape(2), 1..Shape(3), 1..Shape(4));
-        Stride1: Tiny_Positive_Vector := (1, 1);
-        Dilation1: Tiny_Positive_Vector := (1, 1);
-        Padding1: Padding_Type := Auto_Padding (Shape_Of(Input), Shape_Of(Point_Filter), Stride1, Dilation1);
+        --  Stride1: Tiny_Positive_Vector := (1, 1);
+        --  Dilation1: Tiny_Positive_Vector := (1, 1);
+        --  Padding1: Padding_Type := Auto_Padding (Shape_Of(Input), Shape_Of(Point_Filter), Stride1, Dilation1);
     begin
         Conv(Input, Plane_Filter, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation, Groups => 0,
             Output => Filtered);
-        Conv (Filtered, Point_Filter, Bias, Padding => Padding1, Stride => Stride1, Dilation => Dilation1, Groups => Groups,
+        Conv (Filtered, Point_Filter, Bias, Padding => Padding_Auto, Stride => Default_Stride, Dilation => Default_Dilation, Groups => Groups,
             Output => Output);
     end Separable_Conv;
 
@@ -2721,14 +2719,14 @@ package body Generic_Real_Arrays.Operators is
       Output: out Real_Tensor_4D) is
         --  Shape: Positive_Vector := Downscaled_Output_Shape(Shape_Of(Input), Size => Size, Padding => Padding, Stride => Stride, Dilation => Dilation);
         --  Index: Natural_Tensor_4D(1..Shape(1), 1..Shape(2), 1..Shape(3), 1..Shape(4));
-        Index: Natural_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4));
+        --  Index: Natural_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4));
     begin
-        Argmax_Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
-            Output => Index);
-        Sample (Input, Index, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
-            Output => Output);
-        --  Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
-        --      F => Max_Function, Output => Output);
+        --  Argmax_Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
+        --      Output => Index);
+        --  Sample (Input, Index, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
+        --      Output => Output);
+        Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
+            F => Max_Function, Output => Output);
     end Max_Pool;
 
     procedure Avg_Pool
@@ -2790,28 +2788,28 @@ package body Generic_Real_Arrays.Operators is
     end Local_Response_Normalization;
 
     procedure Local_Mean_Normalization (Input: Real_Tensor_4D; Size: Tiny_Positive_Vector; Output: out Real_Tensor_4D) is
-        Stride: constant Tiny_Positive_Vector := (1, 1, 1, 1);
-        Dilation: constant Tiny_Positive_Vector := (1, 1, 1, 1);
+        --  Stride: constant Tiny_Positive_Vector := (1, 1, 1, 1);
+        --  Dilation: constant Tiny_Positive_Vector := (1, 1, 1, 1);
         --  Padding: Padding_Type := Auto_Padding (Shape_Of(Input), Size, Stride, Dilation);
         --  Shape: Positive_Vector := Downscaled_Output_Shape(Shape_Of(Input), Size => Size, Padding => Padding, Stride => Stride, Dilation => Dilation);
         --  Mean: Real_Tensor_4D(1..Shape(1), 1..Shape(2), 1..Shape(3), 1..Shape(4));
         Mean: Real_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4)) := (others => (others => (others => (others => 0.0))));
     begin
-        Box (Input, Size => Size, Padding => Padding_Auto, Stride => Stride, Dilation => Dilation, Normalize => true, Output => Mean);
+        Box (Input, Size => Size, Padding => Padding_Auto, Stride => Default_Stride, Dilation => Default_Dilation, Normalize => true, Output => Mean);
         Sub(Input, Mean, Output);
     end Local_Mean_Normalization;
 
     procedure Local_Variance_Normalization (Input : Real_Tensor_4D; Size : Tiny_Positive_Vector;
       Bias : Real := 1.0; Epsilon : Real := 1.0; Output: out Real_Tensor_4D) is
-        Stride: constant Tiny_Positive_Vector := (1, 1, 1, 1);
-        Dilation: constant Tiny_Positive_Vector := (1, 1, 1, 1);
+        --  Stride: constant Tiny_Positive_Vector := (1, 1, 1, 1);
+        --  Dilation: constant Tiny_Positive_Vector := (1, 1, 1, 1);
         --  Padding: Padding_Type := Auto_Padding (Shape_Of(Input), Size, Stride, Dilation);
         --  Shape: Positive_Vector := Downscaled_Output_Shape(Shape_Of(Input), Size => Size, Padding => Padding, Stride => Stride, Dilation => Dilation);
         --  Sigma: Real_Tensor_4D(1..Shape(1), 1..Shape(2), 1..Shape(3), 1..Shape(4));
         Sigma: Real_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4)) := (others => (others => (others => (others => 0.0))));
     begin
         Sqr (Input, Output);
-        Box (Output, Size => Size, Padding => Padding_Auto, Stride => Stride, Dilation => Dilation, Normalize => true, Output => Sigma);
+        Box (Output, Size => Size, Padding => Padding_Auto, Stride => Default_Stride, Dilation => Default_Dilation, Normalize => true, Output => Sigma);
         Sqrt (Sigma, Sigma);
         Add (Sigma, Bias, Sigma);
         Max (Sigma, Epsilon, Sigma);
@@ -2836,7 +2834,7 @@ package body Generic_Real_Arrays.Operators is
         Add (Sigma, Bias, Sigma);
         Max (Sigma, Epsilon, Sigma);
         --  Div (Input, Sigma, Output);
-        For_Reduced (Input, Sigma, Div_Function, Output);
+        For_Reduced (Div_Function, Input, Sigma, Output);
     end L1_Normalization;
 
     procedure L2_Normalization (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector;
@@ -2851,7 +2849,7 @@ package body Generic_Real_Arrays.Operators is
         Add (Sigma, Bias, Sigma);
         Max (Sigma, Epsilon, Sigma);
         --  Div (Input, Sigma, Output);
-        For_Reduced (Input, Sigma, Div_Function, Output);
+        For_Reduced (Div_Function, Input, Sigma, Output);
     end L2_Normalization;
 
     procedure Batch_Normalization (Input, Mean, Variance, Offset, Scale: Real_Tensor_4D; Epsilon : Real := 1.0;

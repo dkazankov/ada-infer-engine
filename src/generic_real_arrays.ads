@@ -40,86 +40,86 @@ package Generic_Real_Arrays is
     Default_Stride: constant Tiny_Positive_Vector := (1..0 => 1);
     Default_Dilation: constant Tiny_Positive_Vector := (1..0 => 1);
 
-    procedure For_Each (X: Real_Vector; F: Unary_Real_Function; Y: out Real_Vector);
+    procedure For_Each (F: Unary_Real_Function; X: Real_Vector; Y: out Real_Vector);
     pragma Precondition (X'Length = Y'Length);
-    procedure For_Each (X : Real_Matrix; F : Unary_Real_Function; Y: out Real_Matrix);
+    procedure For_Each (F : Unary_Real_Function; X : Real_Matrix; Y: out Real_Matrix);
     pragma Precondition (X'Length(1) = Y'Length(1) AND then X'Length(2) = Y'Length(2));
-    procedure For_Each (X : Real_Tensor_3D; F : Unary_Real_Function; Y : out Real_Tensor_3D);
+    procedure For_Each (F : Unary_Real_Function; X : Real_Tensor_3D; Y : out Real_Tensor_3D);
     pragma Precondition (X'Length(1) = Y'Length(1) AND then X'Length(2) = Y'Length(2) AND then X'Length(3) = Y'Length(3));
-    procedure For_Each (X : Real_Tensor_4D; F : Unary_Real_Function; Y : out Real_Tensor_4D);
+    procedure For_Each (F : Unary_Real_Function; X : Real_Tensor_4D; Y : out Real_Tensor_4D);
     pragma Precondition (X'Length(1) = Y'Length(1) AND then X'Length(2) = Y'Length(2) AND then X'Length(3) = Y'Length(3) AND then X'Length(4) = Y'Length(4));
 
-    procedure For_Each (X, Y : Real_Vector; F : Binary_Real_Function; Z : out Real_Vector);
+    procedure For_Each (F : Binary_Real_Function; X, Y : Real_Vector; Z : out Real_Vector);
     pragma Precondition (X'Length = Y'Length AND then X'Length = Z'Length);
-    procedure For_Each (X, Y : Real_Matrix; F : Binary_Real_Function; Z : out Real_Matrix);
+    procedure For_Each (F : Binary_Real_Function; X, Y : Real_Matrix; Z : out Real_Matrix);
     pragma Precondition (X'Length(1) = Y'Length(1) AND then X'Length(1) = Z'Length(1)
         AND then X'Length(2) = Y'Length(2) AND then X'Length(2) = Z'Length(2));
-    procedure For_Each (X, Y : Real_Tensor_3D; F : Binary_Real_Function; Z : out Real_Tensor_3D);
+    procedure For_Each (F : Binary_Real_Function; X, Y : Real_Tensor_3D; Z : out Real_Tensor_3D);
     pragma Precondition (X'Length(1) = Y'Length(1) AND then X'Length(1) = Z'Length(1)
         AND then X'Length(2) = Y'Length(2) AND then X'Length(2) = Z'Length(2)
         AND then X'Length(3) = Y'Length(3) AND then X'Length(3) = Z'Length(3));
-    procedure For_Each (X, Y : Real_Tensor_4D; F : Binary_Real_Function; Z : out Real_Tensor_4D);
+    procedure For_Each (F : Binary_Real_Function; X, Y : Real_Tensor_4D; Z : out Real_Tensor_4D);
     pragma Precondition (X'Length(1) = Y'Length(1) AND then X'Length(1) = Z'Length(1)
         AND then X'Length(2) = Y'Length(2) AND then X'Length(2) = Z'Length(2)
         AND then X'Length(3) = Y'Length(3) AND then X'Length(3) = Z'Length(3)
         AND then X'Length(4) = Y'Length(4) AND then X'Length(4) = Z'Length(4));
 
-    procedure For_Reduced (X, Y : Real_Vector; F : Binary_Real_Function; Z : out Real_Vector);
-    procedure For_Reduced (X, Y : Real_Matrix; F : Binary_Real_Function; Z : out Real_Matrix);
-    procedure For_Reduced (X, Y : Real_Tensor_3D; F : Binary_Real_Function; Z : out Real_Tensor_3D);
-    procedure For_Reduced (X, Y : Real_Tensor_4D; F : Binary_Real_Function; Z : out Real_Tensor_4D);
+    procedure For_Reduced (F : Binary_Real_Function; X, Y : Real_Vector; Z : out Real_Vector);
+    procedure For_Reduced (F : Binary_Real_Function; X, Y : Real_Matrix; Z : out Real_Matrix);
+    procedure For_Reduced (F : Binary_Real_Function; X, Y : Real_Tensor_3D; Z : out Real_Tensor_3D);
+    procedure For_Reduced (F : Binary_Real_Function; X, Y : Real_Tensor_4D; Z : out Real_Tensor_4D);
 
-    procedure For_Each (X : Real_Vector; Y : Real; F : Binary_Real_Function; Z : out Real_Vector);
-    procedure For_Each (X : Real_Matrix; Y : Real; F : Binary_Real_Function; Z : out Real_Matrix);
-    procedure For_Each (X : Real_Tensor_3D; Y : Real; F : Binary_Real_Function; Z : out Real_Tensor_3D);
-    procedure For_Each (X : Real_Tensor_4D; Y : Real; F : Binary_Real_Function; Z : out Real_Tensor_4D);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Vector; Y : Real; Z : out Real_Vector);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Matrix; Y : Real; Z : out Real_Matrix);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Tensor_3D; Y : Real; Z : out Real_Tensor_3D);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Tensor_4D; Y : Real; Z : out Real_Tensor_4D);
 
-    procedure For_Each (X : Real_Vector; Y : Integer_Vector; F : Binary_Real_Function; Z : out Real_Vector);
-    procedure For_Each (X : Real_Matrix; Y : Integer_Matrix; F : Binary_Real_Function; Z : out Real_Matrix);
-    procedure For_Each (X : Real_Tensor_3D; Y : Integer_Tensor_3D; F : Binary_Real_Function; Z : out Real_Tensor_3D);
-    procedure For_Each (X : Real_Tensor_4D; Y : Integer_Tensor_4D; F : Binary_Real_Function; Z : out Real_Tensor_4D);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Vector; Y : Integer_Vector; Z : out Real_Vector);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Matrix; Y : Integer_Matrix; Z : out Real_Matrix);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Tensor_3D; Y : Integer_Tensor_3D; Z : out Real_Tensor_3D);
+    procedure For_Each (F : Binary_Real_Function; X : Real_Tensor_4D; Y : Integer_Tensor_4D; Z : out Real_Tensor_4D);
 
-    procedure For_Each (X, A, B: Real_Vector; F: Ternary_Real_Function; Y: out Real_Vector);
-    procedure For_Each (X, A, B: Real_Matrix; F : Ternary_Real_Function; Y: out Real_Matrix);
-    procedure For_Each (X, A, B: Real_Tensor_3D; F : Ternary_Real_Function; Y : out Real_Tensor_3D);
-    procedure For_Each (X, A, B: Real_Tensor_4D; F : Ternary_Real_Function; Y : out Real_Tensor_4D);
+    procedure For_Each (F: Ternary_Real_Function; X, A, B: Real_Vector; Y: out Real_Vector);
+    procedure For_Each (F : Ternary_Real_Function; X, A, B: Real_Matrix; Y: out Real_Matrix);
+    procedure For_Each (F : Ternary_Real_Function; X, A, B: Real_Tensor_3D; Y : out Real_Tensor_3D);
+    procedure For_Each (F : Ternary_Real_Function; X, A, B: Real_Tensor_4D; Y : out Real_Tensor_4D);
 
-    procedure For_Each (X : Real_Vector; A, B: Real; F : Ternary_Real_Function; Y: out Real_Vector);
-    procedure For_Each (X : Real_Matrix; A, B: Real; F : Ternary_Real_Function; Y : out Real_Matrix);
-    procedure For_Each (X : Real_Tensor_3D; A, B: Real; F : Ternary_Real_Function; Y : out Real_Tensor_3D);
-    procedure For_Each (X : Real_Tensor_4D; A, B: Real; F : Ternary_Real_Function; Y : out Real_Tensor_4D);
+    procedure For_Each (F : Ternary_Real_Function; X : Real_Vector; A, B: Real; Y: out Real_Vector);
+    procedure For_Each (F : Ternary_Real_Function; X : Real_Matrix; A, B: Real; Y : out Real_Matrix);
+    procedure For_Each (F : Ternary_Real_Function; X : Real_Tensor_3D; A, B: Real; Y : out Real_Tensor_3D);
+    procedure For_Each (F : Ternary_Real_Function; X : Real_Tensor_4D; A, B: Real; Y : out Real_Tensor_4D);
 
-    procedure For_Each (X, Y : Real_Vector; F : Compare_Real_Function; Z : out Boolean_Vector);
-    procedure For_Each (X, Y : Real_Matrix; F : Compare_Real_Function; Z : out Boolean_Matrix);
-    procedure For_Each (X, Y : Real_Tensor_3D; F : Compare_Real_Function;  Z : out Boolean_Tensor_3D);
-    procedure For_Each (X, Y : Real_Tensor_4D; F : Compare_Real_Function; Z : out Boolean_Tensor_4D);
+    procedure For_Each (F : Compare_Real_Function; X, Y : Real_Vector; Z : out Boolean_Vector);
+    procedure For_Each (F : Compare_Real_Function; X, Y : Real_Matrix; Z : out Boolean_Matrix);
+    procedure For_Each (F : Compare_Real_Function;  X, Y : Real_Tensor_3D; Z : out Boolean_Tensor_3D);
+    procedure For_Each (F : Compare_Real_Function; X, Y : Real_Tensor_4D; Z : out Boolean_Tensor_4D);
 
-    procedure For_Each (X : Real_Vector; Y : Real; F : Compare_Real_Function; Z : out Boolean_Vector);
-    procedure For_Each (X : Real_Matrix; Y : Real; F : Compare_Real_Function; Z : out Boolean_Matrix);
-    procedure For_Each (X : Real_Tensor_3D; Y : Real; F : Compare_Real_Function; Z : out Boolean_Tensor_3D);
-    procedure For_Each (X : Real_Tensor_4D; Y : Real; F : Compare_Real_Function; Z : out Boolean_Tensor_4D);
+    procedure For_Each (F : Compare_Real_Function; X : Real_Vector; Y : Real; Z : out Boolean_Vector);
+    procedure For_Each (F : Compare_Real_Function; X : Real_Matrix; Y : Real; Z : out Boolean_Matrix);
+    procedure For_Each (F : Compare_Real_Function; X : Real_Tensor_3D; Y : Real; Z : out Boolean_Tensor_3D);
+    procedure For_Each (F : Compare_Real_Function; X : Real_Tensor_4D; Y : Real; Z : out Boolean_Tensor_4D);
 
-    procedure For_Each (C: Boolean_Vector; X, Y : Real_Vector; F : Select_Real_Function; Z : out Real_Vector);
-    procedure For_Each (C: Boolean_Matrix; X, Y : Real_Matrix; F : Select_Real_Function; Z : out Real_Matrix);
-    procedure For_Each (C: Boolean_Tensor_3D; X, Y : Real_Tensor_3D; F : Select_Real_Function; Z : out Real_Tensor_3D);
-    procedure For_Each (C: Boolean_Tensor_4D; X, Y : Real_Tensor_4D; F : Select_Real_Function; Z : out Real_Tensor_4D);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Vector; X, Y : Real_Vector; Z : out Real_Vector);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Matrix; X, Y : Real_Matrix; Z : out Real_Matrix);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Tensor_3D; X, Y : Real_Tensor_3D; Z : out Real_Tensor_3D);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Tensor_4D; X, Y : Real_Tensor_4D; Z : out Real_Tensor_4D);
 
-    procedure For_Each (C: Boolean_Vector; X : Real_Vector; Y : Real; F : Select_Real_Function; Z : out Real_Vector);
-    procedure For_Each (C: Boolean_Matrix; X : Real_Matrix; Y : Real; F : Select_Real_Function; Z : out Real_Matrix);
-    procedure For_Each (C: Boolean_Tensor_3D; X : Real_Tensor_3D; Y : Real; F : Select_Real_Function; Z : out Real_Tensor_3D);
-    procedure For_Each (C: Boolean_Tensor_4D; X : Real_Tensor_4D; Y : Real; F : Select_Real_Function; Z : out Real_Tensor_4D);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Vector; X : Real_Vector; Y : Real; Z : out Real_Vector);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Matrix; X : Real_Matrix; Y : Real; Z : out Real_Matrix);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Tensor_3D; X : Real_Tensor_3D; Y : Real; Z : out Real_Tensor_3D);
+    procedure For_Each (F : Select_Real_Function; C: Boolean_Tensor_4D; X : Real_Tensor_4D; Y : Real; Z : out Real_Tensor_4D);
 
-    procedure Reduce (Input: Real_Vector; F: Binary_Real_Function; Output: out Real_Vector);
-    procedure Reduce (Input: Real_Matrix; Axes: Tiny_Positive_Vector; F: Binary_Real_Function; Output: out Real_Matrix);
-    procedure Reduce (Input: Real_Tensor_3D; Axes: Tiny_Positive_Vector; F: Binary_Real_Function; Output: out Real_Tensor_3D);
-    procedure Reduce (Input: Real_Tensor_4D; Axes: Tiny_Positive_Vector; F: Binary_Real_Function; Output: out Real_Tensor_4D);
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Vector; Output: out Real_Vector);
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Matrix; Axes: Tiny_Positive_Vector; Output: out Real_Matrix);
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Tensor_3D; Axes: Tiny_Positive_Vector; Output: out Real_Tensor_3D);
+    procedure Reduce (F: Binary_Real_Function; Input: Real_Tensor_4D; Axes: Tiny_Positive_Vector; Output: out Real_Tensor_4D);
 
-    procedure Arg_Reduce (Input : Real_Vector; F: Compare_Real_Function; Output: out Natural_Vector);
-    procedure Arg_Reduce (Input : Real_Matrix; Axes : Tiny_Positive_Vector; F: Compare_Real_Function; Output: out Natural_Matrix);
-    procedure Arg_Reduce (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; F: Compare_Real_Function; Output: out Natural_Tensor_3D);
-    procedure Arg_Reduce (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; F: Compare_Real_Function; Output: out Natural_Tensor_4D);
+    procedure Arg_Reduce (F: Compare_Real_Function; Input : Real_Vector; Output: out Natural_Vector);
+    procedure Arg_Reduce (F: Compare_Real_Function; Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix);
+    procedure Arg_Reduce (F: Compare_Real_Function; Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D);
+    procedure Arg_Reduce (F: Compare_Real_Function; Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D);
 
-    procedure Arg_Sort (Vector: Real_Vector; F: Compare_Real_Function; Sorted: out Positive_Vector);
+    procedure Arg_Sort (F: Compare_Real_Function; Vector: Real_Vector; Sorted: out Positive_Vector);
     --  procedure Arg_Sort (Vector: Real_Matrix; F: Compare_Real_Function; Sorted: out Positive_Matrix);
     --  procedure Arg_Sort (Vector: Real_Tensor_3D; F: Compare_Real_Function; Sorted: out Positive_Tensor_3D);
     --  procedure Arg_Sort (Vector: Real_Tensor_4D; F: Compare_Real_Function; Sorted: out Positive_Tensor_4D);
@@ -334,8 +334,16 @@ package Generic_Real_Arrays is
     procedure Inner_Product(A, B: Real_Matrix; C: out Real_Matrix);
     procedure Inner_Product(A: Real_Vector; B: Real_Matrix; C: out Real_Matrix);
     procedure Inner_Product(A: Real_Matrix; B: Real_Vector; C: out Real_Vector);
-    procedure MatMult (A, B : Real_Matrix; TransposeA, TransposeB : Boolean := False; C: out Real_Matrix);
-    procedure MatMult (A: Real_Vector; B : Real_Matrix; TransposeB : Boolean := False; C: out Real_Vector);
+    --  procedure MatMult (A, B : Real_Matrix; TransposeA, TransposeB : Boolean := False; C: out Real_Matrix);
+    --  procedure MatMult (A: Real_Vector; B : Real_Matrix; TransposeB : Boolean := False; C: out Real_Vector);
+
+    procedure MatMult_TransposeAB (A, B : Real_Matrix; C: out Real_Matrix);
+    procedure MatMult_TransposeA (A, B : Real_Matrix; C: out Real_Matrix);
+    procedure MatMult_TransposeB (A, B : Real_Matrix; C: out Real_Matrix);
+    procedure MatMult (A, B : Real_Matrix; C: out Real_Matrix);
+    pragma Inline (MatMult);
+    procedure MatMult_TransposeB (A: Real_Vector; B : Real_Matrix; C: out Real_Vector);
+    procedure MatMult (A: Real_Vector; B : Real_Matrix; C: out Real_Vector);
 
     --  function Row (A : Real_Matrix; N : Integer) return Real_Matrix;
     --  function Row (A : Real_Matrix; N : Integer) return Real_Vector;
