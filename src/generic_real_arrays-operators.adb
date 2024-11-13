@@ -2671,8 +2671,9 @@ package body Generic_Real_Arrays.Operators is
        (Input, Plane_Filter, Point_Filter : Real_Tensor_4D;
         Bias                              : Real_Matrix := Scalar_2D_0;
         Border : Border_Modes    := Border_Mode_Constant;
-        Padding                           : Padding_Type;
-        Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
         Groups                            : Natural := 1;
         Output: out Real_Tensor_4D)
     is
@@ -2682,7 +2683,7 @@ package body Generic_Real_Arrays.Operators is
         --  Dilation1: Tiny_Positive_Vector := (1, 1);
         --  Padding1: Padding_Type := Auto_Padding (Shape_Of(Input), Shape_Of(Point_Filter), Stride1, Dilation1);
     begin
-        Conv(Input, Plane_Filter, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation, Groups => 0,
+        Conv (Input, Plane_Filter, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation, Groups => 0,
             Output => Filtered);
         Conv (Filtered, Point_Filter, Bias, Padding => Padding_Auto, Stride => Default_Stride, Dilation => Default_Dilation, Groups => Groups,
             Output => Output);
@@ -2692,8 +2693,9 @@ package body Generic_Real_Arrays.Operators is
        (Input, Plane_Filter, Point_Filter : Real_Tensor_4D;
         Bias                              : Real_Matrix := Scalar_2D_0;
         Border : Border_Modes    := Border_Mode_Constant;
-        Padding                           : Padding_Type;
-        Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
         --  Output_Shape : Positive_Vector := Empty_Positive_Vector;
         Groups                            : Natural := 1;
         Output: out Real_Tensor_4D)
@@ -2714,18 +2716,37 @@ package body Generic_Real_Arrays.Operators is
      (Input : Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D) is
         --  Shape: Positive_Vector := Downscaled_Output_Shape(Shape_Of(Input), Size => Size, Padding => Padding, Stride => Stride, Dilation => Dilation);
         --  Index: Natural_Tensor_4D(1..Shape(1), 1..Shape(2), 1..Shape(3), 1..Shape(4));
         --  Index: Natural_Tensor_4D(Output'Range(1), Output'Range(2), Output'Range(3), Output'Range(4));
+        Stride1: Tiny_Positive_Vector (1..4);
+        Dilation1: Tiny_Positive_Vector (1..4);
+        Padding1: Padding_Type(1..4);
     begin
+        if Stride'Length = 0 then
+            Stride1 := (1, 1, 1, 1);
+        else
+            Stride1 := Stride;
+        end if;
+        if Dilation'Length = 0 then
+            Dilation1 := (1, 1, 1, 1);
+        else
+            Dilation1 := Dilation;
+        end if;
+        if Padding'Length = 0 then
+            Padding1 := Auto_Padding_4 ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
+        else
+            Padding1 := Padding;
+        end if;
         --  Argmax_Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
         --      Output => Index);
         --  Sample (Input, Index, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
         --      Output => Output);
-        Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
+        Pool (Input, Size => Size, Border => Border, Padding => Padding1, Stride => Stride1, Dilation => Dilation1,
             F => Max_Function, Output => Output);
     end Max_Pool;
 
@@ -2733,8 +2754,9 @@ package body Generic_Real_Arrays.Operators is
      (Input : Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D) is
     begin
         Box (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation, Normalize => true,
@@ -2745,8 +2767,9 @@ package body Generic_Real_Arrays.Operators is
      (Input : in out Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D) is
         T: Real_Tensor_4D(Input'Range(1), Input'Range(2), Input'Range(3), Input'Range(4));
     begin
@@ -2760,11 +2783,30 @@ package body Generic_Real_Arrays.Operators is
      (Input : Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D) is
+        Stride1: Tiny_Positive_Vector (1..4);
+        Dilation1: Tiny_Positive_Vector (1..4);
+        Padding1: Padding_Type(1..4);
     begin
-        Pool (Input, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
+        if Stride'Length = 0 then
+            Stride1 := (1, 1, 1, 1);
+        else
+            Stride1 := Stride;
+        end if;
+        if Dilation'Length = 0 then
+            Dilation1 := (1, 1, 1, 1);
+        else
+            Dilation1 := Dilation;
+        end if;
+        if Padding'Length = 0 then
+            Padding1 := Auto_Padding_4 ((Input'Length(1), Input'Length(2), Input'Length(3), Input'Length(4)), Size, Stride1, Dilation1);
+        else
+            Padding1 := Padding;
+        end if;
+        Pool (Input, Size => Size, Border => Border, Padding => Padding1, Stride => Stride1, Dilation => Dilation1,
             F => Min_Function, Output => Output);
     end Min_Pool;
 

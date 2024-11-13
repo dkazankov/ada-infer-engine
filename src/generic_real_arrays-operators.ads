@@ -1001,8 +1001,9 @@ package Generic_Real_Arrays.Operators is
        (Input, Plane_Filter, Point_Filter : Real_Tensor_4D;
         Bias                              : Real_Matrix := Scalar_2D_0;
         Border : Border_Modes    := Border_Mode_Constant;
-        Padding                           : Padding_Type;
-        Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
         Groups                            : Natural := 1;
         Output: out Real_Tensor_4D);
 
@@ -1010,8 +1011,9 @@ package Generic_Real_Arrays.Operators is
        (Input, Plane_Filter, Point_Filter : Real_Tensor_4D;
         Bias                              : Real_Matrix := Scalar_2D_0;
         Border : Border_Modes    := Border_Mode_Constant;
-        Padding                           : Padding_Type;
-        Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
         Groups                            : Natural := 1;
         Output: out Real_Tensor_4D);
 
@@ -1021,8 +1023,9 @@ package Generic_Real_Arrays.Operators is
      (Input : Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D);
     pragma Inline (Max_Pool);
 
@@ -1030,8 +1033,9 @@ package Generic_Real_Arrays.Operators is
      (Input : Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D);
     pragma Inline (Avg_Pool);
 
@@ -1039,16 +1043,18 @@ package Generic_Real_Arrays.Operators is
      (Input : in out Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D);
 
     procedure Min_Pool
      (Input : Real_Tensor_4D;
       Size : Tiny_Positive_Vector;
       Border                            : Border_Modes := Border_Mode_Constant;
-      Padding                           : Padding_Type;
-      Stride, Dilation : Tiny_Positive_Vector;
+        Padding          : Padding_Type := Padding_Auto;
+        Stride : Tiny_Positive_Vector := Default_Stride;
+        Dilation : Tiny_Positive_Vector := Default_Dilation;
       Output: out Real_Tensor_4D);
     pragma Inline (Min_Pool);
 
