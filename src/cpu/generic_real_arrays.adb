@@ -872,50 +872,165 @@ package body Generic_Real_Arrays is
         end loop;
     end;
 
-    function Border_Value_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector; Border: Border_Modes) return Tiny_Integer_Vector is
-        Result: Tiny_Integer_Vector := Index;
+    --  function Border_Value_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector; Border: Border_Modes) return Tiny_Integer_Vector is
+    --      Result: Tiny_Integer_Vector := Index;
+    --  begin
+    --      for I in Index'Range loop
+    --          if Index(I) < First(I) then
+    --              case Border is
+    --                  when Border_Mode_Replicate =>
+    --                      Result(I) := First(I);
+    --                  when Border_Mode_Reflect =>
+    --                      Result(I) := First(I) - Index(I) + 1;
+    --                  when Border_Mode_Reflect_Even =>
+    --                      Result(I) := First(I) - Index(I);
+    --                  when others =>
+    --                      null;
+    --              end case;
+    --          elsif Index(I) > Last(I) then
+    --              case Border is
+    --                  when Border_Mode_Replicate =>
+    --                      Result(I) := Last(I);
+    --                  when Border_Mode_Reflect =>
+    --                      Result(I) := Last(I) - (Index(I)-Last(I));
+    --                  when Border_Mode_Reflect_Even =>
+    --                      Result(I) := Last(I) - (Index(I)-Last(I)-1);
+    --                  when others =>
+    --                      null;
+    --              end case;
+    --          end if;
+    --      end loop;
+    --      return Result;
+    --  end Border_Value_Index;
+
+    function Border_Value_Index (Index: Integer; First, Last: Positive; Border: Border_Modes) return Integer is
     begin
-        for I in Index'Range loop
-            if Index(I) < First(I) then
-                case Border is
-                    when Border_Mode_Replicate =>
-                        Result(I) := First(I);
-                    when Border_Mode_Reflect =>
-                        Result(I) := First(I) - Index(I) + 1;
-                    when Border_Mode_Reflect_Even =>
-                        Result(I) := First(I) - Index(I);
-                    when others =>
-                        null;
-                end case;
-            elsif Index(I) > Last(I) then
-                case Border is
-                    when Border_Mode_Replicate =>
-                        Result(I) := Last(I);
-                    when Border_Mode_Reflect =>
-                        Result(I) := Last(I) - (Index(I)-Last(I));
-                    when Border_Mode_Reflect_Even =>
-                        Result(I) := Last(I) - (Index(I)-Last(I)-1);
-                    when others =>
-                        null;
-                end case;
-            end if;
-        end loop;
-        return Result;
+        if Index < First then
+            case Border is
+                when Border_Mode_Replicate =>
+                    return First;
+                when Border_Mode_Reflect =>
+                    return First - Index + 1;
+                when Border_Mode_Reflect_Even =>
+                    return First - Index;
+                when others =>
+                    return Index;
+            end case;
+        elsif Index > Last then
+            case Border is
+                when Border_Mode_Replicate =>
+                    return Last;
+                when Border_Mode_Reflect =>
+                    return Last - (Index-Last);
+                when Border_Mode_Reflect_Even =>
+                    return Last - (Index-Last-1);
+                when others =>
+                    return Index;
+            end case;
+        else
+            return Index;
+        end if;
     end Border_Value_Index;
 
-    function Is_Border_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector) return Boolean is
+    function Border_Value_Index_3 (Index: Tiny_Integer_Vector_3; First, Last: Tiny_Positive_Vector_3; Border: Border_Modes) return Tiny_Integer_Vector_3 is
     begin
-        for I in Index'Range loop
-            if Index(I) < First(I) OR else Index(I) > Last(I) then
-                return true;
-            end if;
-        end loop;
-        return false;
-    end Is_Border_Index;
+        return ( Border_Value_Index (Index (1), First (1), Last (1), Border),
+            Border_Value_Index (Index (2), First (2), Last (2), Border),
+            Border_Value_Index (Index (3), First (3), Last (3), Border) );
+    end Border_Value_Index_3;
 
-    procedure Get_Input_Value (Input: Real_Tensor_3D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean) is
+    function Border_Value_Index_4 (Index: Tiny_Integer_Vector_4; First, Last: Tiny_Positive_Vector_4; Border: Border_Modes) return Tiny_Integer_Vector_4 is
     begin
-        if Is_Border_Index (Index,
+        return ( Border_Value_Index (Index (1), First (1), Last (1), Border),
+            Border_Value_Index (Index (2), First (2), Last (2), Border),
+            Border_Value_Index (Index (3), First (3), Last (3), Border),
+            Border_Value_Index (Index (4), First (4), Last (4), Border) );
+    end Border_Value_Index_4;
+
+    --  function Is_Border_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector) return Boolean is
+    --  begin
+    --      for I in Index'Range loop
+    --          if Index(I) < First(I) OR else Index(I) > Last(I) then
+    --              return true;
+    --          end if;
+    --      end loop;
+    --      return false;
+    --  end Is_Border_Index;
+
+    function Is_Border_Index_3 (Index: Tiny_Integer_Vector_3; First, Last: Tiny_Positive_Vector_3) return Boolean is
+    begin
+        return Index(3) < First(3) OR else Index(3) > Last(3) OR else
+            Index(2) < First(2) OR else Index(2) > Last(2) OR else
+            Index(1) < First(1) OR else Index(1) > Last(1);
+    end Is_Border_Index_3;
+
+    function Is_Border_Index_4 (Index: Tiny_Integer_Vector_4; First, Last: Tiny_Positive_Vector_4) return Boolean is
+    begin
+        return Index(4) < First(4) OR else Index(4) > Last(4) OR else
+            Index(3) < First(3) OR else Index(3) > Last(3) OR else
+            Index(2) < First(2) OR else Index(2) > Last(2) OR else
+            Index(1) < First(1) OR else Index(1) > Last(1);
+    end Is_Border_Index_4;
+
+    --  procedure Get_Input_Value (Input: Real_Tensor_3D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean) is
+    --  begin
+    --      if Is_Border_Index (Index,
+    --          (Input'First(1), Input'First(2), Input'First(3)),
+    --          (Input'Last(1), Input'Last(2), Input'Last(3))) then
+    --          if Border = Border_Mode_Constant then
+    --              Value := Border_Constant_Value;
+    --          elsif Border = Border_Mode_Ignore then
+    --              Value := Border_Constant_Value;
+    --              Ignore := true;
+    --              return;
+    --          else
+    --              declare
+    --                  Idx: Tiny_Integer_Vector := Border_Value_Index(Index,
+    --                      (Input'First(1), Input'First(2), Input'First(3)),
+    --                      (Input'Last(1), Input'Last(2), Input'Last(3)),
+    --                      Border
+    --                  );
+    --              begin
+    --                  Value := Input(Idx(1), Idx(2), Idx(3));
+    --              end;
+    --          end if;
+    --      else
+    --          Value := Input(Index(1), Index(2), Index(3));
+    --      end if;
+    --      Ignore := false;
+    --  end Get_Input_Value;
+
+    --  procedure Get_Input_Value (Input: Real_Tensor_4D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean) is
+    --  begin
+    --      if Is_Border_Index (Index,
+    --          (Input'First(1), Input'First(2), Input'First(3), Input'First(4)),
+    --          (Input'Last(1), Input'Last(2), Input'Last(3), Input'Last(4))) then
+    --          if Border = Border_Mode_Constant then
+    --              Value := Border_Constant_Value;
+    --          elsif Border = Border_Mode_Ignore then
+    --              Value := Border_Constant_Value;
+    --              Ignore := true;
+    --              return;
+    --          else
+    --              declare
+    --                  Idx: Tiny_Integer_Vector := Border_Value_Index(Index,
+    --                      (Input'First(1), Input'First(2), Input'First(3), Input'First(4)),
+    --                      (Input'Last(1), Input'Last(2), Input'Last(3), Input'Last(4)),
+    --                      Border
+    --                  );
+    --              begin
+    --                  Value := Input(Idx(1), Idx(2), Idx(3), Idx(4));
+    --              end;
+    --          end if;
+    --      else
+    --          Value := Input(Index(1), Index(2), Index(3), Index(4));
+    --      end if;
+    --      Ignore := false;
+    --  end Get_Input_Value;
+
+    procedure Get_Input_Value_3 (Input: Real_Tensor_3D; Index: Tiny_Integer_Vector_3; Border: Border_Modes; Value: out Real; Ignore: out Boolean) is
+    begin
+        if Is_Border_Index_3 (Index,
             (Input'First(1), Input'First(2), Input'First(3)),
             (Input'Last(1), Input'Last(2), Input'Last(3))) then
             if Border = Border_Mode_Constant then
@@ -926,7 +1041,7 @@ package body Generic_Real_Arrays is
                 return;
             else
                 declare
-                    Idx: Tiny_Integer_Vector := Border_Value_Index(Index,
+                    Idx: Tiny_Integer_Vector_3 := Border_Value_Index_3 (Index,
                         (Input'First(1), Input'First(2), Input'First(3)),
                         (Input'Last(1), Input'Last(2), Input'Last(3)),
                         Border
@@ -939,11 +1054,11 @@ package body Generic_Real_Arrays is
             Value := Input(Index(1), Index(2), Index(3));
         end if;
         Ignore := false;
-    end Get_Input_Value;
+    end Get_Input_Value_3;
 
-    procedure Get_Input_Value (Input: Real_Tensor_4D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean) is
+    procedure Get_Input_Value_4 (Input: Real_Tensor_4D; Index: Tiny_Integer_Vector_4; Border: Border_Modes; Value: out Real; Ignore: out Boolean) is
     begin
-        if Is_Border_Index (Index,
+        if Is_Border_Index_4 (Index,
             (Input'First(1), Input'First(2), Input'First(3), Input'First(4)),
             (Input'Last(1), Input'Last(2), Input'Last(3), Input'Last(4))) then
             if Border = Border_Mode_Constant then
@@ -954,7 +1069,7 @@ package body Generic_Real_Arrays is
                 return;
             else
                 declare
-                    Idx: Tiny_Integer_Vector := Border_Value_Index(Index,
+                    Idx: Tiny_Integer_Vector_4 := Border_Value_Index_4 (Index,
                         (Input'First(1), Input'First(2), Input'First(3), Input'First(4)),
                         (Input'Last(1), Input'Last(2), Input'Last(3), Input'Last(4)),
                         Border
@@ -967,7 +1082,7 @@ package body Generic_Real_Arrays is
             Value := Input(Index(1), Index(2), Index(3), Index(4));
         end if;
         Ignore := false;
-    end Get_Input_Value;
+    end Get_Input_Value_4;
 
     procedure Set_Bias (Bias: Real_Matrix; Output: out Real_Tensor_3D) is
         Fill_Value: Real;
@@ -1022,7 +1137,7 @@ package body Generic_Real_Arrays is
         for I1 in Output'Range (3) loop
             for J1 in Filter'Range (3) loop
                 Idx1 := (I1-1) * Stride + (J1-1) * Dilation - Padding (1) + Input'First(3);
-                Get_Input_Value (Input, (Input_Index(1), Input_Index(2), Idx1), Border, Input_Value, Ignore);
+                Get_Input_Value_3 (Input, (Input_Index(1), Input_Index(2), Idx1), Border, Input_Value, Ignore);
                 if NOT Ignore then
                     Output(Output_Index(1), Output_Index(2), I1) := Output(Output_Index(1), Output_Index(2), I1) +
                         Input_Value * Filter (Filter_Index(1), Filter_Index(2), J1);
@@ -1099,7 +1214,7 @@ package body Generic_Real_Arrays is
                     Idx1 := (I1-1) * Stride (1) + (J1-1) * Dilation (1) - Padding (1)(1) + Input'First(3);
                     for J2 in Filter'Range (4) loop
                         Idx2 := (I2-1) * Stride (2) + (J2-1) * Dilation (2) - Padding (2)(1) + Input'First(4);
-                        Get_Input_Value (Input, (Input_Index(1), Input_Index(2), Idx1, Idx2), Border, Input_Value, Ignore);
+                        Get_Input_Value_4 (Input, (Input_Index(1), Input_Index(2), Idx1, Idx2), Border, Input_Value, Ignore);
                         if NOT Ignore then
                             Output(Output_Index(1), Output_Index(2), I1, I2) := Output(Output_Index(1), Output_Index(2), I1, I2) +
                                 Input_Value * Filter (Filter_Index(1), Filter_Index(2), J1, J2);
@@ -1177,7 +1292,7 @@ package body Generic_Real_Arrays is
                 Idx1 := (I1-1) + Padding (1) - (J1-1) * Dilation;
                 if Idx1 rem Stride = 0 then
                     Idx1 := Idx1 / Stride + Input'First(3);
-                    Get_Input_Value (Input, (Input_Index(1), Input_Index(2), Idx1), Border, Input_Value, Ignore);
+                    Get_Input_Value_3 (Input, (Input_Index(1), Input_Index(2), Idx1), Border, Input_Value, Ignore);
                     if NOT Ignore then
                         Output(Output_Index(1), Output_Index(2), I1) := Output(Output_Index(1), Output_Index(2), I1) +
                             Input_Value * Filter (Filter_Index(1), Filter_Index(2), J1);
@@ -1259,7 +1374,7 @@ package body Generic_Real_Arrays is
                             Idx2 := (I2-1) + Padding (2)(1) - (J2-1) * Dilation (2);
                             if Idx2 rem Stride (1) = 0 then
                                 Idx2 := Idx2 / Stride (2) + Input'First(4);
-                                Get_Input_Value (Input, (Input_Index(1), Input_Index(2), Idx1, Idx2), Border, Input_Value, Ignore);
+                                Get_Input_Value_4 (Input, (Input_Index(1), Input_Index(2), Idx1, Idx2), Border, Input_Value, Ignore);
                                 if NOT Ignore then
                                     Output(Output_Index(1), Output_Index(2), I1, I2) := Output(Output_Index(1), Output_Index(2), I1, I2) +
                                         Input_Value * Filter (Filter_Index(1), Filter_Index(2), J1, J2);
@@ -1345,7 +1460,7 @@ package body Generic_Real_Arrays is
                             Input_Index(2) := (I2-1) * Stride (2) + (J2-1) * Dilation (2) - Padding (2)(1) + Input'First(2);
                             for J3 in 1..Size(3) loop
                                 Input_Index(3) := (I3-1) * Stride (3) + (J3-1) * Dilation (3) - Padding (3)(1) + Input'First(3);
-                                Get_Input_Value (Input, Input_Index, Border, Input_Value, Ignore);
+                                Get_Input_Value_3 (Input, Input_Index, Border, Input_Value, Ignore);
                                 if NOT Ignore then
                                     if First_Index then
                                         Output (I1, I2, I3) := Input_Value;
@@ -1388,7 +1503,7 @@ package body Generic_Real_Arrays is
                                     Input_Index(3) := (I3-1) * Stride (3) + (J3-1) * Dilation (3) - Padding (3)(1) + Input'First(3);
                                     for J4 in 1..Size(4) loop
                                         Input_Index(4) := (I4-1) * Stride (4) + (J4-1) * Dilation (4) - Padding (4)(1) + Input'First(4);
-                                        Get_Input_Value (Input, Input_Index, Border, Input_Value, Ignore);
+                                        Get_Input_Value_4 (Input, Input_Index, Border, Input_Value, Ignore);
                                         if NOT Ignore then
                                             if First_Index then
                                                 Output (I1, I2, I3, I4) := Input_Value;
@@ -1436,7 +1551,7 @@ package body Generic_Real_Arrays is
                                         Input_Index(3) := (I3-1) + Padding (3)(1) - (J3-1) * Dilation (3);
                                         if Input_Index(3) rem Stride (3) = 0 then
                                             Input_Index(3) := Input_Index(3) / Stride (3) + Input'First(3);
-                                            Get_Input_Value (Input, Input_Index, Border, Input_Value, Ignore);
+                                            Get_Input_Value_3 (Input, Input_Index, Border, Input_Value, Ignore);
                                             if NOT Ignore then
                                                 if First_Index then
                                                     Output (I1, I2, I3) := Input_Value;
@@ -1490,7 +1605,7 @@ package body Generic_Real_Arrays is
                                                     Input_Index(4) := (I4-1) + Padding (4)(1) - (J4-1) * Dilation (4);
                                                     if Input_Index(4) rem Stride (4) = 0 then
                                                         Input_Index(4) := Input_Index(4) / Stride (4) + Input'First(4);
-                                                        Get_Input_Value (Input, Input_Index, Border, Input_Value, Ignore);
+                                                        Get_Input_Value_4 (Input, Input_Index, Border, Input_Value, Ignore);
                                                         if NOT Ignore then
                                                             if First_Index then
                                                                 Output (I1, I2, I3, I4) := Input_Value;
@@ -1702,7 +1817,7 @@ package body Generic_Real_Arrays is
                             Input_Index(2) := (I2-1) * Stride (2) + J2 * Dilation (2) - Padding (2)(1) + Input'First(2);
                             for J3 in 0..Size(3)-1 loop
                                 Input_Index(3) := (I3-1) * Stride (3) + J3 * Dilation (3) - Padding (3)(1) + Input'First(3);
-                                Get_Input_Value (Input, Input_Index, Border, Input_Value, Ignore);
+                                Get_Input_Value_3 (Input, Input_Index, Border, Input_Value, Ignore);
                                 if NOT Ignore then
                                     if First_Index then
                                         Output (I1, I2, I3) := J3 + Size (3) * (J2 + Size (2) * J1);
@@ -1753,7 +1868,7 @@ package body Generic_Real_Arrays is
                                     Input_Index(3) := (I3-1) * Stride (3) + J3 * Dilation (3) - Padding (3)(1) + Input'First(3);
                                     for J4 in 0..Size(4)-1 loop
                                         Input_Index(4) := (I4-1) * Stride (4) + J4 * Dilation (4) - Padding (4)(1) + Input'First(4);
-                                        Get_Input_Value (Input, Input_Index, Border, Input_Value, Ignore);
+                                        Get_Input_Value_4 (Input, Input_Index, Border, Input_Value, Ignore);
                                         if NOT Ignore then
                                             if First_Index then
                                                 Output (I1, I2, I3, I4) := J4 + Size (4) * (J3 + Size (3) * (J2 + Size (2) * J1));
@@ -1797,7 +1912,7 @@ package body Generic_Real_Arrays is
                     Idx1 := (I1-1) * Stride (1) + J1 * Dilation (1) - Padding (1)(1) + 1;
                     Idx2 := (I2-1) * Stride (2) + J2 * Dilation (2) - Padding (2)(1) + 1;
                     Idx3 := (I3-1) * Stride (3) + J3 * Dilation (3) - Padding (3)(1) + 1;
-                    Get_Input_Value (Input, (Idx1, Idx2, Idx3), Border, Input_Value, Ignore);
+                    Get_Input_Value_3 (Input, (Idx1, Idx2, Idx3), Border, Input_Value, Ignore);
                     if NOT Ignore then
                         Output (I1, I2, I3) := Input_Value;
                     end if;
@@ -1830,7 +1945,7 @@ package body Generic_Real_Arrays is
                         Idx2 := (I2-1) * Stride (2) + J2 * Dilation (2) - Padding (2)(1) + 1;
                         Idx3 := (I3-1) * Stride (3) + J3 * Dilation (3) - Padding (3)(1) + 1;
                         Idx4 := (I4-1) * Stride (4) + J4 * Dilation (4) - Padding (4)(1) + 1;
-                        Get_Input_Value (Input, (Idx1, Idx2, Idx3, Idx4), Border, Input_Value, Ignore);
+                        Get_Input_Value_4 (Input, (Idx1, Idx2, Idx3, Idx4), Border, Input_Value, Ignore);
                         if NOT Ignore then
                             Output (I1, I2, I3, I4) := Input_Value;
                         end if;
@@ -1865,7 +1980,7 @@ package body Generic_Real_Arrays is
                     Idx2 := Idx2 / Stride (2) + 1;
                     Idx3 := (I3-1) + Padding (3)(1) - J3 * Dilation (3);
                     Idx3 := Idx3 / Stride (3) + 1;
-                    Get_Input_Value (Input, (Idx1, Idx2, Idx3), Border, Input_Value, Ignore);
+                    Get_Input_Value_3 (Input, (Idx1, Idx2, Idx3), Border, Input_Value, Ignore);
                     Output (I1, I2, I3) := 0.0;
                     if NOT Ignore then
                         Output (I1, I2, I3) := Output (I1, I2, I3) + Input_Value;
@@ -1903,7 +2018,7 @@ package body Generic_Real_Arrays is
                         Idx3 := Idx3 / Stride (3) + 1;
                         Idx4 := (I4-1) + Padding (4)(1) - J4 * Dilation (4);
                         Idx4 := Idx4 / Stride (4) + 1;
-                        Get_Input_Value (Input, (Idx1, Idx2, Idx3, Idx4), Border, Input_Value, Ignore);
+                        Get_Input_Value_4 (Input, (Idx1, Idx2, Idx3, Idx4), Border, Input_Value, Ignore);
                         Output (I1, I2, I3, I4) := 0.0;
                         if NOT Ignore then
                             Output (I1, I2, I3, I4) := Output (I1, I2, I3, I4) + Input_Value;
@@ -2262,7 +2377,7 @@ package body Generic_Real_Arrays is
                     VK := K - Padding(3)(1);
                     for L in Output'Range(4) loop
                         VL := L - Padding(4)(1);
-                        Get_Input_Value (Input, (VI, VJ, VK, VL), Border, Input_Value, Ignore);
+                        Get_Input_Value_4 (Input, (VI, VJ, VK, VL), Border, Input_Value, Ignore);
                         if NOT Ignore then
                             Output (I, J, K, L) := Input_Value;
                         end if;

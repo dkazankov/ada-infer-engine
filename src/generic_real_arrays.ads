@@ -128,10 +128,24 @@ package Generic_Real_Arrays is
 
     Border_Constant_Value: constant Real := 0.0;
 
-    function Border_Value_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector; Border: Border_Modes) return Tiny_Integer_Vector;
-    function Is_Border_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector) return Boolean;
-    procedure Get_Input_Value (Input: Real_Tensor_3D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean);
-    procedure Get_Input_Value (Input: Real_Tensor_4D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean);
+    --  function Border_Value_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector; Border: Border_Modes) return Tiny_Integer_Vector;
+    function Border_Value_Index (Index: Integer; First, Last: Positive; Border: Border_Modes) return Integer;
+    pragma Inline (Border_Value_Index);
+    function Border_Value_Index_3 (Index: Tiny_Integer_Vector_3; First, Last: Tiny_Positive_Vector_3; Border: Border_Modes) return Tiny_Integer_Vector_3;
+    pragma Inline (Border_Value_Index_3);
+    function Border_Value_Index_4 (Index: Tiny_Integer_Vector_4; First, Last: Tiny_Positive_Vector_4; Border: Border_Modes) return Tiny_Integer_Vector_4;
+    pragma Inline (Border_Value_Index_4);
+    --  function Is_Border_Index (Index: Tiny_Integer_Vector; First, Last: Tiny_Positive_Vector) return Boolean;
+    function Is_Border_Index_3 (Index: Tiny_Integer_Vector_3; First, Last: Tiny_Positive_Vector_3) return Boolean;
+    pragma Inline (Is_Border_Index_3);
+    function Is_Border_Index_4 (Index: Tiny_Integer_Vector_4; First, Last: Tiny_Positive_Vector_4) return Boolean;
+    pragma Inline (Is_Border_Index_4);
+    --  procedure Get_Input_Value (Input: Real_Tensor_3D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean);
+    --  procedure Get_Input_Value (Input: Real_Tensor_4D; Index: Tiny_Integer_Vector; Border: Border_Modes; Value: out Real; Ignore: out Boolean);
+    procedure Get_Input_Value_3 (Input: Real_Tensor_3D; Index: Tiny_Integer_Vector_3; Border: Border_Modes; Value: out Real; Ignore: out Boolean);
+    pragma Inline (Get_Input_Value_3);
+    procedure Get_Input_Value_4 (Input: Real_Tensor_4D; Index: Tiny_Integer_Vector_4; Border: Border_Modes; Value: out Real; Ignore: out Boolean);
+    pragma Inline (Get_Input_Value_4);
 
     procedure Set_Bias (Bias: Real_Matrix; Output: out Real_Tensor_3D);
     procedure Set_Bias (Bias: Real_Matrix; Output: out Real_Tensor_4D);
