@@ -2001,6 +2001,7 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Sum_Reduce (Input: Real_Vector; Normalize : Boolean := False; Output: out Real_Vector) is
     begin
+        Output := (others => 0.0);
         Reduce(Add_Function, Input, Output => Output);
         if Normalize then
             For_Each(Div_Function, Output, Real(Input'Length), Output);
@@ -2009,6 +2010,7 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Sum_Reduce (Input : Real_Matrix; Axes: Tiny_Positive_Vector; Normalize : Boolean := False; Output: out Real_Matrix) is
     begin
+        Output := (others => (others => 0.0));
         Reduce(Add_Function, Input, Axes, Output => Output);
         if Normalize then
             declare
@@ -2025,6 +2027,7 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Sum_Reduce (Input     : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Normalize : Boolean := False; Output: out Real_Tensor_3D) is
     begin
+        Output := (others => (others => (others => 0.0)));
         Reduce(Add_Function, Input, Axes, Output => Output);
         if Normalize then
             declare
@@ -2041,6 +2044,7 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Sum_Reduce (Input     : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Normalize : Boolean := False; Output: out Real_Tensor_4D) is
     begin
+        Output := (others => (others => (others => (others => 0.0))));
         Reduce(Add_Function, Input, Axes, Output => Output);
         if Normalize then
             declare
@@ -2057,46 +2061,55 @@ package body Generic_Real_Arrays.Operators is
 
     procedure Max_Reduce (Input : Real_Vector; Output: out Real_Vector) is
     begin
+        Output := (others => Real'Safe_First);
         Reduce(Max_Function, Input, Output => Output);
     end Max_Reduce;
 
     procedure Max_Reduce (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Real_Matrix) is
     begin
+        Output := (others => (others => Real'Safe_First));
         Reduce(Max_Function, Input, Axes, Output => Output);
     end Max_Reduce;
 
     procedure Max_Reduce (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_3D) is
     begin
+        Output := (others => (others => (others => Real'Safe_First)));
         Reduce(Max_Function, Input, Axes, Output => Output);
     end Max_Reduce;
 
     procedure Max_Reduce (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_4D) is
     begin
+        Output := (others => (others => (others => (others => Real'Safe_First))));
         Reduce(Max_Function, Input, Axes, Output => Output);
     end Max_Reduce;
 
     procedure Min_Reduce (Input : Real_Vector; Output: out Real_Vector) is
     begin
+        Output := (others => Real'Safe_Last);
         Reduce(Min_Function, Input, Output => Output);
     end Min_Reduce;
 
     procedure Min_Reduce (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Real_Matrix) is
     begin
+        Output := (others => (others => Real'Safe_Last));
         Reduce(Min_Function, Input, Axes, Output => Output);
     end Min_Reduce;
 
     procedure Min_Reduce (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_3D) is
     begin
+        Output := (others => (others => (others => Real'Safe_Last)));
         Reduce(Min_Function, Input, Axes, Output => Output);
     end Min_Reduce;
 
     procedure Min_Reduce (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Real_Tensor_4D) is
     begin
+        Output := (others => (others => (others => (others => Real'Safe_Last))));
         Reduce(Min_Function, Input, Axes, Output => Output);
     end Min_Reduce;
 
     procedure Argmax_Reduce (Input : Real_Vector; Output: out Natural_Vector) is
     begin
+        Output := (others => 0);
         Arg_Reduce (Gt_Function, Input, Output);
     end Argmax_Reduce;
 
@@ -2104,6 +2117,7 @@ package body Generic_Real_Arrays.Operators is
        (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix)
     is
     begin
+        Output := (others => (others => 0));
         Arg_Reduce (Gt_Function, Input, Axes, Output);
     end Argmax_Reduce;
 
@@ -2111,6 +2125,7 @@ package body Generic_Real_Arrays.Operators is
        (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D)
     is
     begin
+        Output := (others => (others => (others => 0)));
         Arg_Reduce (Gt_Function, Input, Axes, Output);
     end Argmax_Reduce;
 
@@ -2118,12 +2133,14 @@ package body Generic_Real_Arrays.Operators is
        (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D)
     is
     begin
+        Output := (others => (others => (others => (others => 0))));
         Arg_Reduce (Gt_Function, Input, Axes, Output);
     end Argmax_Reduce;
 
     procedure Argmin_Reduce (Input : Real_Vector; Output: out Natural_Vector) is
         --  Output : Natural_Vector (Input'First .. Input'First);
     begin
+        Output := (others => 0);
         Arg_Reduce (Lt_Function, Input, Output);
     end Argmin_Reduce;
 
@@ -2131,6 +2148,7 @@ package body Generic_Real_Arrays.Operators is
        (Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix)
     is
     begin
+        Output := (others => (others => 0));
         Arg_Reduce (Lt_Function, Input, Axes, Output);
     end Argmin_Reduce;
 
@@ -2138,6 +2156,7 @@ package body Generic_Real_Arrays.Operators is
        (Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D)
     is
     begin
+        Output := (others => (others => (others => 0)));
         Arg_Reduce (Lt_Function, Input, Axes, Output);
     end Argmin_Reduce;
 
@@ -2145,6 +2164,7 @@ package body Generic_Real_Arrays.Operators is
        (Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D)
     is
     begin
+        Output := (others => (others => (others => (others => 0))));
         Arg_Reduce (Lt_Function, Input, Axes, Output);
     end Argmin_Reduce;
 

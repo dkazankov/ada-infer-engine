@@ -43,46 +43,6 @@ package body Boolean_Arrays is
         end loop;
     end For_Each;
 
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Vector) is
-    begin
-        for I in Y'Range loop
-            Y (I) := Call(F, X);
-        end loop;
-    end For_Each;
-
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Matrix) is
-    begin
-        for I in Y'Range(1) loop
-            for J in Y'Range(2) loop
-                Y (I, J) := Call (F, X);
-            end loop;
-        end loop;
-    end For_Each;
-
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Tensor_3D) is
-    begin
-        for I in Y'Range(1) loop
-            for J in Y'Range(2) loop
-                for K in Y'Range(3) loop
-                    Y (I, J, K) := Call (F, X);
-                end loop;
-            end loop;
-        end loop;
-    end For_Each;
-
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Tensor_4D) is
-    begin
-        for I in Y'Range(1) loop
-            for J in Y'Range(2) loop
-                for K in Y'Range(3) loop
-                    for L in Y'Range(4) loop
-                        Y (I, J, K, L) := Call (F, X);
-                    end loop;
-                end loop;
-            end loop;
-        end loop;
-    end For_Each;
-
     procedure For_Each (F: Binary_Boolean_Function; X, Y: Boolean_Vector; Z: out Boolean_Vector) is
     begin
         for I in X'Range loop
@@ -284,49 +244,49 @@ package body Boolean_Arrays is
 
     procedure All_Reduce(Input: Boolean_Vector; Output: out Boolean_Vector) is
     begin
-        For_Each (Identity_Function, true, Output);
+        Output := (others => true);
         Reduce (And_Function, Input, Output);
     end All_Reduce;
 
     procedure All_Reduce(Input: Boolean_Matrix; Axes: Tiny_Positive_Vector; Output: out Boolean_Matrix) is
     begin
-        For_Each (Identity_Function, true, Output);
+        Output := (others => (others => true));
         Reduce (And_Function, Input, Axes, Output);
     end All_Reduce;
 
     procedure All_Reduce(Input: Boolean_Tensor_3D; Axes: Tiny_Positive_Vector; Output: out Boolean_Tensor_3D) is
     begin
-        For_Each (Identity_Function, true, Output);
+        Output := (others => (others => (others => true)));
         Reduce (And_Function, Input, Axes, Output);
     end All_Reduce;
 
     procedure All_Reduce(Input: Boolean_Tensor_4D; Axes: Tiny_Positive_Vector; Output: out Boolean_Tensor_4D) is
     begin
-        For_Each (Identity_Function, true, Output);
+        Output := (others => (others => (others => (others => true))));
         Reduce (And_Function, Input, Axes, Output);
     end All_Reduce;
 
     procedure Any_Reduce(Input: Boolean_Vector; Output: out Boolean_Vector) is
     begin
-        For_Each (Identity_Function, false, Output);
+        Output := (others => false);
         Reduce (Or_Function, Input, Output);
     end Any_Reduce;
 
     procedure Any_Reduce(Input: Boolean_Matrix; Axes: Tiny_Positive_Vector; Output: out Boolean_Matrix) is
     begin
-        For_Each (Identity_Function, false, Output);
+        Output := (others => (others => false));
         Reduce (Or_Function, Input, Axes, Output);
     end Any_Reduce;
 
     procedure Any_Reduce(Input: Boolean_Tensor_3D; Axes: Tiny_Positive_Vector; Output: out Boolean_Tensor_3D) is
     begin
-        For_Each (Identity_Function, false, Output);
+        Output := (others => (others => (others => false)));
         Reduce (Or_Function, Input, Axes, Output);
     end Any_Reduce;
 
     procedure Any_Reduce(Input: Boolean_Tensor_4D; Axes: Tiny_Positive_Vector; Output: out Boolean_Tensor_4D) is
     begin
-        For_Each (Identity_Function, false, Output);
+        Output := (others => (others => (others => (others => false))));
         Reduce (Or_Function, Input, Axes, Output);
     end Any_Reduce;
 

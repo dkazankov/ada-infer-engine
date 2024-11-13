@@ -86,11 +86,6 @@ package Boolean_Arrays is
     procedure For_Each (F: Binary_Boolean_Function; X, Y: Boolean_Tensor_3D; Z: out Boolean_Tensor_3D);
     procedure For_Each (F: Binary_Boolean_Function; X, Y: Boolean_Tensor_4D; Z: out Boolean_Tensor_4D);
 
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Vector);
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Matrix);
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Tensor_3D);
-    procedure For_Each (F: Unary_Boolean_Function; X: Boolean; Y: out Boolean_Tensor_4D);
-
     procedure Reduce (F: Binary_Boolean_Function; Input: Boolean_Vector; Output: out Boolean_Vector);
     procedure Reduce (F: Binary_Boolean_Function; Input: Boolean_Matrix; Axes: Tiny_Positive_Vector; Output: out Boolean_Matrix);
     procedure Reduce (F: Binary_Boolean_Function; Input: Boolean_Tensor_3D; Axes: Tiny_Positive_Vector; Output: out Boolean_Tensor_3D);

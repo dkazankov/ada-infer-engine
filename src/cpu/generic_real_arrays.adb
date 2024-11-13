@@ -614,53 +614,51 @@ package body Generic_Real_Arrays is
     end For_Each;
 
     procedure Reduce (F: Binary_Real_Function; Input: Real_Vector; Output: out Real_Vector) is
-        Value: Real := Input (Input'First);
     begin
-        for I in Input'First+1..Input'Last loop
-            Value := Call (F, Value, Input (I));
+        for I in Input'Range loop
+            pragma Warnings (Off, "may be referenced before it has a value");
+            Output (Output'First) := Call (F, Output (Output'First), Input (I));
+            pragma Warnings (On, "may be referenced before it has a value");
         end loop;
-        Output (Output'First) := Value;
     end Reduce;
 
     procedure Reduce (F: Binary_Real_Function; Input: Real_Matrix; Axes: Tiny_Positive_Vector; Output: out Real_Matrix)
     is
-        First: Tiny_Positive_Vector := (Input'First (1), Input'First (2));
-        Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2));
-        DI: Natural_Vector := (1, 1);
-        First_Index: Boolean := true;
-        VI, VJ : Positive;
+        DI, DJ: Natural := 1;
+        VI, VJ: Positive;
     begin
         for I in Axes'Range loop
-            Last(Axes(I)) := First(Axes(I));
-            DI(Axes(I)) := 0;
+            case Axes(I) is
+                when 1 => DI := 0;
+                when 2 => DJ := 0;
+                when others => null;
+            end case;
         end loop;
         VI := Output'First(1);
         for I in Input'Range (1) loop
             VJ := Output'First(2);
             for J in Input'Range (2) loop
-                if First_Index then
-                    Output (VI, VJ) := Input (I, J);
-                    First_Index := false;
-                else
-                    Output (VI, VJ) := Call (F, Output (VI, VJ), Input (I, J));
-                end if;
-                VJ := VJ + DI (2);
+                pragma Warnings (Off, "may be referenced before it has a value");
+                Output (VI, VJ) := Call (F, Output (VI, VJ), Input (I, J));
+                pragma Warnings (On, "may be referenced before it has a value");
+                VJ := VJ + DJ;
             end loop;
-            VI := VI + DI (1);
+            VI := VI + DI;
         end loop;
     end Reduce;
 
     procedure Reduce (F: Binary_Real_Function; Input: Real_Tensor_3D; Axes: Tiny_Positive_Vector; Output: out Real_Tensor_3D)
     is
-        First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3));
-        Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3));
-        DI: Natural_Vector := (1, 1, 1);
-        First_Index: Boolean := true;
-        VI, VJ, VK : Positive;
+        DI, DJ, DK: Natural := 1;
+        VI, VJ, VK: Positive;
     begin
         for I in Axes'Range loop
-            Last(Axes(I)) := First(Axes(I));
-            DI(Axes(I)) := 0;
+            case Axes(I) is
+                when 1 => DI := 0;
+                when 2 => DJ := 0;
+                when 3 => DK := 0;
+                when others => null;
+            end case;
         end loop;
         VI := Output'First(1);
         for I in Input'Range (1) loop
@@ -668,31 +666,30 @@ package body Generic_Real_Arrays is
             for J in Input'Range (2) loop
                 VK := Output'First(3);
                 for K in Input'Range (3) loop
-                    if First_Index then
-                        Output (VI, VJ, VK) := Input (I, J, K);
-                        First_Index := false;
-                    else
-                        Output (VI, VJ, VK) := Call (F, Output (VI, VJ, VK), Input (I, J, K));
-                    end if;
-                    VK := VK + DI (3);
+                    pragma Warnings (Off, "may be referenced before it has a value");
+                    Output (VI, VJ, VK) := Call (F, Output (VI, VJ, VK), Input (I, J, K));
+                    pragma Warnings (On, "may be referenced before it has a value");
+                    VK := VK + DK;
                 end loop;
-                VJ := VJ + DI (2);
+                VJ := VJ + DJ;
             end loop;
-            VI := VI + DI (1);
+            VI := VI + DI;
         end loop;
     end Reduce;
 
     procedure Reduce (F: Binary_Real_Function; Input: Real_Tensor_4D; Axes: Tiny_Positive_Vector; Output: out Real_Tensor_4D)
     is
-        First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3), Input'First (4));
-        Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3), Input'Last (4));
-        DI: Natural_Vector := (1, 1, 1, 1);
-        First_Index: Boolean := true;
-        VI, VJ, VK, VL : Positive;
+        DI, DJ, DK, DL: Natural := 1;
+        VI, VJ, VK, VL: Positive;
     begin
         for I in Axes'Range loop
-            Last(Axes(I)) := First(Axes(I));
-            DI(Axes(I)) := 0;
+            case Axes(I) is
+                when 1 => DI := 0;
+                when 2 => DJ := 0;
+                when 3 => DK := 0;
+                when 4 => DL := 0;
+                when others => null;
+            end case;
         end loop;
         VI := Output'First(1);
         for I in Input'Range (1) loop
@@ -702,85 +699,82 @@ package body Generic_Real_Arrays is
                 for K in Input'Range (3) loop
                     VL := Output'First(4);
                     for L in Input'Range (4) loop
-                        if First_Index then
-                            Output (VI, VJ, VK, VL) := Input (I, J, K, L);
-                            First_Index := false;
-                        else
-                            Output (VI, VJ, VK, VL) := Call (F, Output (VI, VJ, VK, VL), Input (I, J, K, L));
-                        end if;
-                        VL := VL + DI (4);
+                        pragma Warnings (Off, "may be referenced before it has a value");
+                        Output (VI, VJ, VK, VL) := Call (F, Output (VI, VJ, VK, VL), Input (I, J, K, L));
+                        pragma Warnings (On, "may be referenced before it has a value");
+                        VL := VL + DL;
                     end loop;
-                    VK := VK + DI (3);
+                    VK := VK + DK;
                 end loop;
-                VJ := VJ + DI (2);
+                VJ := VJ + DJ;
             end loop;
-            VI := VI + DI (1);
+            VI := VI + DI;
         end loop;
     end Reduce;
 
     procedure Arg_Reduce (F: Compare_Real_Function; Input : Real_Vector; Output: out Natural_Vector) is
-        Arg_Value: Real := Input (Input'First);
-        Value: Natural := 0;
+        VI: Positive;
+        SI: Positive;
     begin
-        for I in Input'First+1 .. Input'Last loop
-            if Call (F, Input (I), Arg_Value) then
-                Value := (I-Input'First);
-                Arg_Value := Input (I);
+        SI := Input'First;
+        VI := Output'First;
+        for I in Input'Range loop
+            if Call (F, Input (I), Input (SI)) then
+                Output (VI) := (I-Input'First);
+                SI := I;
             end if;
         end loop;
-        Output (Output'First) := Value;
     end Arg_Reduce;
 
     procedure Arg_Reduce
        (F: Compare_Real_Function; Input : Real_Matrix; Axes : Tiny_Positive_Vector; Output: out Natural_Matrix)
     is
-        First: Tiny_Positive_Vector := (Input'First (1), Input'First (2));
-        Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2));
-        DI: Natural_Vector := (1, 1);
-        First_Index: Boolean := true;
+        DI, DJ: Natural := 1;
         VI, VJ: Positive;
-        Input_Value, Arg_Value: Real;
+        SI, SJ: Positive;
+        L2: constant Natural := Input'Length(2);
     begin
         for I in Axes'Range loop
-            Last(Axes(I)) := First(Axes(I));
-            DI(Axes(I)) := 0;
+            case Axes(I) is
+                when 1 => DI := 0;
+                when 2 => DJ := 0;
+                when others => null;
+            end case;
         end loop;
         VI := Output'First(1);
         for I in Input'Range (1) loop
             VJ := Output'First(2);
             for J in Input'Range (2) loop
-                Input_Value := Input (I, J);
-                if First_Index then
-                    Output (VI, VJ) :=
-                        (J-Input'First(2)) + Input'Length(2) * (I-Input'First(1));
-                    Arg_Value := Input_Value;
-                    First_Index := false;
-                else
-                    if Call (F, Input_Value, Arg_Value) then
-                        Output (VI, VJ) :=
-                            (J-Input'First(2)) + Input'Length(2) * (I-Input'First(1));
-                        Arg_Value := Input_Value;
-                    end if;
+                pragma Warnings (Off, "may be referenced before it has a value");
+                SI := Input'First(1) + Output (VI, VJ) / L2;
+                SJ := Input'First(2) + Output (VI, VJ) rem L2;
+                pragma Warnings (On, "may be referenced before it has a value");
+                if Call (F, Input (I, J), Input (SI, SJ)) then
+                    Output (VI, VJ) := (J-Input'First(2)) + L2 * (I-Input'First(1));
                 end if;
-                VJ := VJ + DI (2);
+                VJ := VJ + DJ;
             end loop;
-            VI := VI + DI (1);
+            VI := VI + DI;
         end loop;
     end Arg_Reduce;
 
     procedure Arg_Reduce
        (F: Compare_Real_Function; Input : Real_Tensor_3D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_3D)
     is
-        First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3));
-        Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3));
-        DI: Natural_Vector := (1, 1, 1);
-        First_Index: Boolean := true;
+        DI, DJ, DK: Natural := 1;
         VI, VJ, VK: Positive;
-        Input_Value, Arg_Value: Real;
+        SI, SJ, SK: Positive;
+        L2: constant Natural := Input'Length(2);
+        L3: constant Natural := Input'Length(3);
+        L23: constant Natural := L2 * L3;
     begin
         for I in Axes'Range loop
-            Last(Axes(I)) := First(Axes(I));
-            DI(Axes(I)) := 0;
+            case Axes(I) is
+                when 1 => DI := 0;
+                when 2 => DJ := 0;
+                when 3 => DK := 0;
+                when others => null;
+            end case;
         end loop;
         VI := Output'First(1);
         for I in Input'Range (1) loop
@@ -788,40 +782,42 @@ package body Generic_Real_Arrays is
             for J in Input'Range (2) loop
                 VK := Output'First(3);
                 for K in Input'Range (3) loop
-                    Input_Value := Input (I, J, K);
-                    if First_Index then
-                        Output (VI, VJ, VK) :=
-                            (K-Input'First(3)) + Input'Length(3) * ((J-Input'First(2)) + Input'Length(2) * (I-Input'First(1)));
-                        Arg_Value := Input_Value;
-                        First_Index := false;
-                    else
-                        if Call (F, Input_Value, Arg_Value) then
-                            Output (VI, VJ, VK) :=
-                                (K-Input'First(3)) + Input'Length(3) * ((J-Input'First(2)) + Input'Length(2) * (I-Input'First(1)));
-                            Arg_Value := Input_Value;
-                        end if;
+                    pragma Warnings (Off, "may be referenced before it has a value");
+                    SI := Input'First(1) + Output (VI, VJ, VK) / L23;
+                    SJ := Input'First(2) + Output (VI, VJ, VK) / L3 rem L2;
+                    SK := Input'First(3) + Output (VI, VJ, VK) rem L3;
+                    pragma Warnings (On, "may be referenced before it has a value");
+                    if Call (F, Input (I, J, K), Input (SI, SJ, SK)) then
+                        Output (VI, VJ, VK) := (K-Input'First(3)) + L3 * ((J-Input'First(2)) + L2 * (I-Input'First(1)));
                     end if;
-                    VK := VK + DI (3);
+                    VK := VK + DK;
                 end loop;
-                VJ := VJ + DI (2);
+                VJ := VJ + DJ;
             end loop;
-            VI := VI + DI (1);
+            VI := VI + DI;
         end loop;
     end Arg_Reduce;
 
     procedure Arg_Reduce
        (F: Compare_Real_Function; Input : Real_Tensor_4D; Axes : Tiny_Positive_Vector; Output: out Natural_Tensor_4D)
     is
-        First: Tiny_Positive_Vector := (Input'First (1), Input'First (2), Input'First (3), Input'First (4));
-        Last: Tiny_Positive_Vector := (Input'Last (1), Input'Last (2), Input'Last (3), Input'Last (4));
-        DI: Natural_Vector := (1, 1, 1, 1);
-        First_Index: Boolean := true;
-        VI, VJ, VK, VL : Positive;
-        Input_Value, Arg_Value: Real;
+        DI, DJ, DK, DL: Natural := 1;
+        VI, VJ, VK, VL: Positive;
+        SI, SJ, SK, SL: Positive;
+        L2: constant Natural := Input'Length(2);
+        L3: constant Natural := Input'Length(3);
+        L4: constant Natural := Input'Length(4);
+        L34: constant Natural := L3 * L4;
+        L234: constant Natural := L2 * L34;
     begin
         for I in Axes'Range loop
-            Last(Axes(I)) := First(Axes(I));
-            DI(Axes(I)) := 0;
+            case Axes(I) is
+                when 1 => DI := 0;
+                when 2 => DJ := 0;
+                when 3 => DK := 0;
+                when 4 => DL := 0;
+                when others => null;
+            end case;
         end loop;
         VI := Output'First(1);
         for I in Input'Range (1) loop
@@ -831,26 +827,22 @@ package body Generic_Real_Arrays is
                 for K in Input'Range (3) loop
                     VL := Output'First(4);
                     for L in Input'Range (4) loop
-                        Input_Value := Input (I, J, K, L);
-                        if First_Index then
-                            Output (VI, VJ, VK, VL) :=
-                                (L-Input'First(4)) + Input'Length(4) * ((K-Input'First(3)) + Input'Length(3) * ((J-Input'First(2)) + Input'Length(2) * (I-Input'First(1))));
-                            Arg_Value := Input_Value;
-                            First_Index := false;
-                        else
-                            if Call (F, Input_Value, Arg_Value) then
-                                Output (VI, VJ, VK, VL) :=
-                                    (L-Input'First(4)) + Input'Length(4) * ((K-Input'First(3)) + Input'Length(3) * ((J-Input'First(2)) + Input'Length(2) * (I-Input'First(1))));
-                                Arg_Value := Input_Value;
-                            end if;
+                        pragma Warnings (Off, "may be referenced before it has a value");
+                        SI := Input'First(1) + Output (VI, VJ, VK, VL) / L234;
+                        SJ := Input'First(2) + Output (VI, VJ, VK, VL) / L34 rem L2;
+                        SK := Input'First(3) + Output (VI, VJ, VK, VL) / L4 rem L3;
+                        SL := Input'First(4) + Output (VI, VJ, VK, VL) rem L4;
+                        pragma Warnings (On, "may be referenced before it has a value");
+                        if Call (F, Input (I, J, K, L), Input (SI, SJ, SK, SL)) then
+                            Output (VI, VJ, VK, VL) := (L-Input'First(4)) + L4 * ((K-Input'First(3)) + L3 * ((J-Input'First(2)) + L2 * (I-Input'First(1))));
                         end if;
-                        VL := VL + DI (4);
+                        VL := VL + DL;
                     end loop;
-                    VK := VK + DI (3);
+                    VK := VK + DK;
                 end loop;
-                VJ := VJ + DI (2);
+                VJ := VJ + DJ;
             end loop;
-            VI := VI + DI (1);
+            VI := VI + DI;
         end loop;
     end Arg_Reduce;
 
