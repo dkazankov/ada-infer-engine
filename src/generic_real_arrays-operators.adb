@@ -1412,6 +1412,7 @@ package body Generic_Real_Arrays.Operators is
         else
             Padding1 := Padding;
         end if;
+        Output := (others => (others => (others => 0.0)));
         Pool (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
@@ -1463,6 +1464,7 @@ package body Generic_Real_Arrays.Operators is
         else
             Padding1 := Padding;
         end if;
+        Output := (others => (others => (others => (others => 0.0))));
         Pool (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
@@ -1515,6 +1517,7 @@ package body Generic_Real_Arrays.Operators is
         else
             Padding1 := Padding;
         end if;
+        Output := (others => (others => (others => 0.0)));
         Pool_Transposed (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
@@ -1567,6 +1570,7 @@ package body Generic_Real_Arrays.Operators is
         else
             Padding1 := Padding;
         end if;
+        Output := (others => (others => (others => (others => 0.0))));
         Pool_Transposed (Input, Size, Border, Padding1, Stride1, Dilation1, Add_Function, Output);
         if Normalize then
             if Border = Border_Mode_Constant then
@@ -2766,6 +2770,7 @@ package body Generic_Real_Arrays.Operators is
         --      Output => Index);
         --  Sample (Input, Index, Size => Size, Border => Border, Padding => Padding, Stride => Stride, Dilation => Dilation,
         --      Output => Output);
+        Output := (others => (others => (others => (others => Real'Safe_First))));
         Pool (Input, Size => Size, Border => Border, Padding => Padding1, Stride => Stride1, Dilation => Dilation1,
             F => Max_Function, Output => Output);
     end Max_Pool;
@@ -2826,6 +2831,7 @@ package body Generic_Real_Arrays.Operators is
         else
             Padding1 := Padding;
         end if;
+        Output := (others => (others => (others => (others => Real'Safe_Last))));
         Pool (Input, Size => Size, Border => Border, Padding => Padding1, Stride => Stride1, Dilation => Dilation1,
             F => Min_Function, Output => Output);
     end Min_Pool;

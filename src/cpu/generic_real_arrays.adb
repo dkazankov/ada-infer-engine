@@ -1440,12 +1440,10 @@ package body Generic_Real_Arrays is
         Input_Value: Real;
         Ignore: Boolean;
         Input_Index: Tiny_Integer_Vector_3;
-        First_Index: Boolean;
     begin
         for I1 in Output'Range(1) loop
             for I2 in Output'Range(2) loop
                 for I3 in Output'Range(3) loop
-                    First_Index := true;
                     for J1 in 1..Size(1) loop
                         Input_Index(1) := (I1-1) * Stride (1) + (J1-1) * Dilation (1) - Padding (1)(1) + Input'First(1);
                         for J2 in 1..Size(2) loop
@@ -1454,12 +1452,9 @@ package body Generic_Real_Arrays is
                                 Input_Index(3) := (I3-1) * Stride (3) + (J3-1) * Dilation (3) - Padding (3)(1) + Input'First(3);
                                 Get_Input_Value_3 (Input, Input_Index, Border, Input_Value, Ignore);
                                 if NOT Ignore then
-                                    if First_Index then
-                                        Output (I1, I2, I3) := Input_Value;
-                                        First_Index := false;
-                                    else
-                                        Output (I1, I2, I3) := Call (F, Output (I1, I2, I3), Input_Value);
-                                    end if;
+                                    pragma Warnings (Off, "may be referenced before it has a value");
+                                    Output (I1, I2, I3) := Call (F, Output (I1, I2, I3), Input_Value);
+                                    pragma Warnings (On, "may be referenced before it has a value");
                                 end if;
                             end loop;
                         end loop;
@@ -1480,13 +1475,11 @@ package body Generic_Real_Arrays is
         Input_Value: Real;
         Ignore: Boolean;
         Input_Index: Tiny_Integer_Vector_4;
-        First_Index: Boolean;
     begin
         for I1 in Output'Range(1) loop
             for I2 in Output'Range(2) loop
                 for I3 in Output'Range(3) loop
                     for I4 in Output'Range(4) loop
-                        First_Index := true;
                         for J1 in 1..Size(1) loop
                             Input_Index(1) := (I1-1) * Stride (1) + (J1-1) * Dilation (1) - Padding (1)(1) + Input'First(1);
                             for J2 in 1..Size(2) loop
@@ -1497,12 +1490,9 @@ package body Generic_Real_Arrays is
                                         Input_Index(4) := (I4-1) * Stride (4) + (J4-1) * Dilation (4) - Padding (4)(1) + Input'First(4);
                                         Get_Input_Value_4 (Input, Input_Index, Border, Input_Value, Ignore);
                                         if NOT Ignore then
-                                            if First_Index then
-                                                Output (I1, I2, I3, I4) := Input_Value;
-                                                First_Index := false;
-                                            else
-                                                Output (I1, I2, I3, I4) := Call (F, Output (I1, I2, I3, I4), Input_Value);
-                                            end if;
+                                            pragma Warnings (Off, "may be referenced before it has a value");
+                                            Output (I1, I2, I3, I4) := Call (F, Output (I1, I2, I3, I4), Input_Value);
+                                            pragma Warnings (On, "may be referenced before it has a value");
                                         end if;
                                     end loop;
                                 end loop;
@@ -1525,12 +1515,10 @@ package body Generic_Real_Arrays is
         Input_Value: Real;
         Ignore: Boolean;
         Input_Index: Tiny_Integer_Vector_3;
-        First_Index: Boolean;
     begin
         for I1 in Output'Range(1) loop
             for I2 in Output'Range(2) loop
                 for I3 in Output'Range(3) loop
-                    First_Index := true;
                     for J1 in 1..Size(1) loop
                         Input_Index(1) := (I1-1) + Padding (1)(1) - (J1-1) * Dilation (1);
                         if Input_Index(1) rem Stride (1) = 0 then
@@ -1545,12 +1533,9 @@ package body Generic_Real_Arrays is
                                             Input_Index(3) := Input_Index(3) / Stride (3) + Input'First(3);
                                             Get_Input_Value_3 (Input, Input_Index, Border, Input_Value, Ignore);
                                             if NOT Ignore then
-                                                if First_Index then
-                                                    Output (I1, I2, I3) := Input_Value;
-                                                    First_Index := false;
-                                                else
-                                                    Output (I1, I2, I3) := Call (F, Output (I1, I2, I3), Input_Value);
-                                                end if;
+                                                pragma Warnings (Off, "may be referenced before it has a value");
+                                                Output (I1, I2, I3) := Call (F, Output (I1, I2, I3), Input_Value);
+                                                pragma Warnings (On, "may be referenced before it has a value");
                                             end if;
                                         end if;
                                     end loop;
@@ -1574,13 +1559,11 @@ package body Generic_Real_Arrays is
         Input_Value: Real;
         Ignore: Boolean;
         Input_Index: Tiny_Integer_Vector_4;
-        First_Index: Boolean;
     begin
         for I1 in Output'Range(1) loop
             for I2 in Output'Range(2) loop
                 for I3 in Output'Range(3) loop
                     for I4 in Output'Range(4) loop
-                        First_Index := true;
                         for J1 in 1..Size(1) loop
                             Input_Index(1) := (I1-1) + Padding (1)(1) - (J1-1) * Dilation (1);
                             if Input_Index(1) rem Stride (1) = 0 then
@@ -1599,12 +1582,9 @@ package body Generic_Real_Arrays is
                                                         Input_Index(4) := Input_Index(4) / Stride (4) + Input'First(4);
                                                         Get_Input_Value_4 (Input, Input_Index, Border, Input_Value, Ignore);
                                                         if NOT Ignore then
-                                                            if First_Index then
-                                                                Output (I1, I2, I3, I4) := Input_Value;
-                                                                First_Index := false;
-                                                            else
-                                                                Output (I1, I2, I3, I4) := Call (F, Output (I1, I2, I3, I4), Input_Value);
-                                                            end if;
+                                                            pragma Warnings (Off, "may be referenced before it has a value");
+                                                            Output (I1, I2, I3, I4) := Call (F, Output (I1, I2, I3, I4), Input_Value);
+                                                            pragma Warnings (On, "may be referenced before it has a value");
                                                         end if;
                                                     end if;
                                                 end loop;
@@ -1793,16 +1773,16 @@ package body Generic_Real_Arrays is
         Output           : out Natural_Tensor_3D) is
         Input_Value, Arg_Value: Real;
         Ignore: Boolean;
-        Input_Index, Value_Index: Tiny_Integer_Vector_3;
-        First_Index: Boolean;
-        Input_First: Tiny_Positive_Vector_3 := (Input'First(1), Input'First(2), Input'First(3));
-        Input_Last: Tiny_Positive_Vector_3 := (Input'Last(1), Input'Last(2), Input'Last(3));
-        C: Boolean;
+        Input_Index: Tiny_Integer_Vector_3;
     begin
         for I1 in Output'Range(1) loop
             for I2 in Output'Range(2) loop
                 for I3 in Output'Range(3) loop
-                    First_Index := true;
+                    Output (I1, I2, I3) := 0;
+                    Input_Index(1) := (I1-1) * Stride (1) + Padding (1)(1) + Input'First(1);
+                    Input_Index(2) := (I2-1) * Stride (2) + Padding (2)(1) + Input'First(2);
+                    Input_Index(3) := (I3-1) * Stride (3) + Padding (3)(1) + Input'First(3);
+                    Get_Input_Value_3 (Input, Input_Index, Border, Arg_Value, Ignore);
                     for J1 in 0..Size(1)-1 loop
                         Input_Index(1) := (I1-1) * Stride (1) + J1 * Dilation (1) - Padding (1)(1) + Input'First(1);
                         for J2 in 0..Size(2)-1 loop
@@ -1811,15 +1791,9 @@ package body Generic_Real_Arrays is
                                 Input_Index(3) := (I3-1) * Stride (3) + J3 * Dilation (3) - Padding (3)(1) + Input'First(3);
                                 Get_Input_Value_3 (Input, Input_Index, Border, Input_Value, Ignore);
                                 if NOT Ignore then
-                                    if First_Index then
+                                    if Call (F, Input_Value, Arg_Value) then
                                         Output (I1, I2, I3) := J3 + Size (3) * (J2 + Size (2) * J1);
                                         Arg_Value := Input_Value;
-                                        First_Index := false;
-                                    else
-                                        if Call (F, Input_Value, Arg_Value) then
-                                            Output (I1, I2, I3) := J3 + Size (3) * (J2 + Size (2) * J1);
-                                            Arg_Value := Input_Value;
-                                        end if;
                                     end if;
                                 end if;
                             end loop;
@@ -1840,18 +1814,18 @@ package body Generic_Real_Arrays is
         Output           : out Natural_Tensor_4D) is
         Input_Value, Arg_Value: Real;
         Ignore: Boolean;
-        Input_Index, Value_Index: Tiny_Integer_Vector_4;
-        First_Index: Boolean;
-        Input_First: Tiny_Positive_Vector_4 := (Input'First(1), Input'First(2), Input'First(3), Input'First(4));
-        Input_Last: Tiny_Positive_Vector_4 := (Input'Last(1), Input'Last(2), Input'Last(3), Input'Last(4));
-        Index: Natural;
-        C: Boolean;
+        Input_Index: Tiny_Integer_Vector_4;
     begin
         for I1 in Output'Range(1) loop
             for I2 in Output'Range(2) loop
                 for I3 in Output'Range(3) loop
                     for I4 in Output'Range(4) loop
-                        First_Index := true;
+                        Output (I1, I2, I3, I4) := 0;
+                        Input_Index(1) := (I1-1) * Stride (1) + Padding (1)(1) + Input'First(1);
+                        Input_Index(2) := (I2-1) * Stride (2) + Padding (2)(1) + Input'First(2);
+                        Input_Index(3) := (I3-1) * Stride (3) + Padding (3)(1) + Input'First(3);
+                        Input_Index(4) := (I4-1) * Stride (4) + Padding (4)(1) + Input'First(4);
+                        Get_Input_Value_4 (Input, Input_Index, Border, Arg_Value, Ignore);
                         for J1 in 0..Size(1)-1 loop
                             Input_Index(1) := (I1-1) * Stride (1) + J1 * Dilation (1) - Padding (1)(1) + Input'First(1);
                             for J2 in 0..Size(2)-1 loop
@@ -1862,15 +1836,9 @@ package body Generic_Real_Arrays is
                                         Input_Index(4) := (I4-1) * Stride (4) + J4 * Dilation (4) - Padding (4)(1) + Input'First(4);
                                         Get_Input_Value_4 (Input, Input_Index, Border, Input_Value, Ignore);
                                         if NOT Ignore then
-                                            if First_Index then
+                                            if Call (F, Input_Value, Arg_Value) then
                                                 Output (I1, I2, I3, I4) := J4 + Size (4) * (J3 + Size (3) * (J2 + Size (2) * J1));
                                                 Arg_Value := Input_Value;
-                                                First_Index := false;
-                                            else
-                                                if Call (F, Input_Value, Arg_Value) then
-                                                    Output (I1, I2, I3, I4) := J4 + Size (4) * (J3 + Size (3) * (J2 + Size (2) * J1));
-                                                    Arg_Value := Input_Value;
-                                                end if;
                                             end if;
                                         end if;
                                     end loop;
