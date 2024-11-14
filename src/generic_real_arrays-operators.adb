@@ -2421,35 +2421,36 @@ package body Generic_Real_Arrays.Operators is
         null;
     end Roi_Resample;
 
-    procedure Avg_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector;
+    procedure Avg_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector_4;
       Resize_Method: Interpolation_Method := Interpolation_Method_Symmetric; Output: out Real_Tensor_4D) is
-        --  Size: Positive_Vector(Output_Size'Range);
+        Output_Size: Tiny_Positive_Vector_4 := (Output'Length(1), Output'Length(2), Output'Length(3), Output'Length(4));
+        Size: Tiny_Positive_Vector_4;
     begin
-        --  for I in Output_Size'Range loop
-        --      Size(I) := Output_Size(I) * Sampling_Rate(I);
-        --  end loop;
-        --  declare
-        --      Resized: Real_Tensor_4D := ;
-        --  begin
-        --      Roi_Resample(Input, Rois, Batch_Index, Output_Size => Size, Method => Resize_Method, Output => Resized);
-        --      Avg_Pool(Resized, Size => Sampling_Rate, Stride => Sampling_Rate, Output => Resized);
-        --  end;
-        null;
+        for I in Output_Size'Range loop
+            Size(I) := Output_Size(I) * Sampling_Rate(I);
+        end loop;
+        declare
+            Resized: Real_Tensor_4D (1..Size(1), 1..Size(2), 1..Size(3), 1..Size(4));
+        begin
+            Roi_Resample(Input, Rois, Batch_Index, Method => Resize_Method, Output => Resized);
+            Avg_Pool(Resized, Size => Sampling_Rate, Stride => Sampling_Rate, Output => Output);
+        end;
     end Avg_Roi_Align;
    
-    procedure Max_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector;
+    procedure Max_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector_4;
       Resize_Method: Interpolation_Method := Interpolation_Method_Symmetric; Output: out Real_Tensor_4D) is
-        --  Size: Positive_Vector(Output_Size'Range);
+        Output_Size: Tiny_Positive_Vector_4 := (Output'Length(1), Output'Length(2), Output'Length(3), Output'Length(4));
+        Size: Tiny_Positive_Vector_4;
     begin
-        --  for I in Output_Size'Range loop
-        --      Size(I) := Output_Size(I) * Sampling_Rate(I);
-        --  end loop;
-        --  declare
-        --      Resized: Real_Tensor_4D := Roi_Resample(Input, Rois, Batch_Index, Output_Size => Size, Method => Resize_Method);
-        --  begin
-        --      return Max_Pool(Resized, Size => Sampling_Rate, Stride => Sampling_Rate);
-        --  end;
-        null;
+        for I in Output_Size'Range loop
+            Size(I) := Output_Size(I) * Sampling_Rate(I);
+        end loop;
+        declare
+            Resized: Real_Tensor_4D (1..Size(1), 1..Size(2), 1..Size(3), 1..Size(4));
+        begin
+            Roi_Resample(Input, Rois, Batch_Index, Method => Resize_Method, Output => Resized);
+            Max_Pool(Resized, Size => Sampling_Rate, Stride => Sampling_Rate, Output => Output);
+        end;
     end Max_Roi_Align;
 
     procedure Sigmoid (X : Real_Vector; Y: out Real_Vector) is

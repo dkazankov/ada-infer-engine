@@ -886,10 +886,10 @@ package Generic_Real_Arrays.Operators is
     procedure Roi_Resample (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix;
       Method: Interpolation_Method := Interpolation_Method_Symmetric; Output: out Real_Tensor_4D);
 
-    procedure Avg_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector;
+    procedure Avg_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector_4;
       Resize_Method: Interpolation_Method := Interpolation_Method_Symmetric; Output: out Real_Tensor_4D);
    
-    procedure Max_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector;
+    procedure Max_Roi_Align (Input: Real_Tensor_4D; Rois: Real_Matrix; Batch_Index: Integer_Matrix; Sampling_Rate: Tiny_Positive_Vector_4;
       Resize_Method: Interpolation_Method := Interpolation_Method_Symmetric; Output: out Real_Tensor_4D);
 
     -- 4.7 Matrix multiplication
