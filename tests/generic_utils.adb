@@ -1,4 +1,5 @@
 pragma Ada_95;
+pragma Profile (Ravenscar);
 
 with Ada.Streams.Stream_IO;
 with GID;

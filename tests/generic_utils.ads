@@ -1,4 +1,6 @@
 pragma Ada_95;
+pragma Profile (Ravenscar);
+pragma Elaboration_Checks (Static);
 
 with Ada.Text_IO;
 with Generic_Real_Arrays;
