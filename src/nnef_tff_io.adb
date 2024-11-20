@@ -1,22 +1,36 @@
 pragma Ada_95;
 pragma Profile (Ravenscar);
 
+with System; use System;
 with Ada.Unchecked_Conversion;
 with Ada.Numerics.Generic_Elementary_Functions;
 
 package body NNEF_TFF_IO is
 
-   procedure Read_TFF_Header (Stream: not null access Root_Stream_Type'Class; Header: out TFF_Header_Type) is
-      Magic: Stream_Element;
+   procedure Test (Header: TFF_Header_Type) is
    begin
-      Stream_Element'Read(Stream, Magic);
-      if Magic /= 16#4E# then
+      if Header.Rank > 8 then
+         raise TFF_Rank_Error;
+      end if;
+      if Header.Number_Of_Bits > 64 OR else Header.Number_Of_Bits = 0 then
+         raise TFF_Bits_Per_Item_Error;
+      end if;
+      if Header.Item_Type_Code.Vendor_Code /= 2#0000# then
+         raise TFF_Unknown_Vendor_Error;
+      end if;
+   end Test;
+
+   procedure Read_TFF_Header (Stream: not null access Root_Stream_Type'Class; Header: out TFF_Header_Type) is
+      Magic: NNEF_TFF_Magic_Type := (0, 0);
+   begin
+      NNEF_TFF_Magic_Type'Read(Stream, Magic);
+      if Magic /= NNEF_TFF_Magic then
          raise TFF_Signature_Error;
       end if;
-      Stream_Element'Read(Stream, Magic);
-      if Magic /= 16#EF# then
-         raise TFF_Signature_Error;
-      end if;
+      --  Stream_Element'Read(Stream, Magic);
+      --  if Magic /= 16#EF# then
+      --     raise TFF_Signature_Error;
+      --  end if;
       TFF_Header_Type'Read(Stream, Header);
       if Header.Rank > 8 then
          raise TFF_Rank_Error;
@@ -45,6 +59,13 @@ package body NNEF_TFF_IO is
       end loop;
    end Increment_Index;
 
+   procedure Swap (Left, Right: in out Stream_Element) is
+      T: Stream_Element := Right;
+   begin
+      Right := Left;
+      Left := T;
+   end Swap;
+
    procedure Generic_Read_TFF_Data (Stream: not null access Root_Stream_Type'Class; Header: TFF_Header_Type) is
       Element_Size: constant Stream_Element_Offset := Stream_Element_Offset (Unsigned_32'Max (Header.Number_Of_Bits / 8, 1));
       Number_Of_Elements: constant Stream_Element_Offset := Stream_Element_Offset (Header.Length_In_Bytes) / Element_Size;
@@ -60,6 +81,13 @@ package body NNEF_TFF_IO is
             if Last < Element'Last then
                raise TFF_Format_Error;
             end if;
+            if Default_Bit_Order = High_Order_First then
+               if Element_Size > 1 then
+                  for B in 1..Element_Size/2 loop
+                     Swap (Element (B), Element (Element_Size - B + 1));
+                  end loop;
+               end if;
+            end if;
             Callback (Index, Element);
             Increment_Index (Index, Header.Extents);
          end loop;
@@ -70,10 +98,14 @@ package body NNEF_TFF_IO is
             if Last < Element'Last then
                raise TFF_Format_Error;
             end if;
-            for J in 1..8/Header.Number_Of_Bits loop
-               Callback (Index, (1 => Stream_Element (Shift_Right (To_Unsigned_8 (Element (1..1)), Natural (J*Header.Number_Of_Bits))) AND 1));
-               Increment_Index (Index, Header.Extents);
-            end loop;
+            declare
+               Mask: Unsigned_8 := 2 ** Natural(Header.Number_Of_Bits) - 1;
+            begin
+               for J in 0..8/Header.Number_Of_Bits-1 loop
+                  Callback (Index, (1 => Stream_Element (Shift_Right (Unsigned_8(Element (1)), Natural (J*Header.Number_Of_Bits)) AND Mask)));
+                  Increment_Index (Index, Header.Extents);
+               end loop;
+            end;
          end loop;
       end if;
       if Unsigned_32(Bytes_Read) /= Header.Length_In_Bytes then
@@ -106,6 +138,13 @@ package body NNEF_TFF_IO is
             end if;
          else
             Callback (Index, Element);
+            if Default_Bit_Order = High_Order_First then
+               if Element_Size > 1 then
+                  for B in 1..Element_Size/2 loop
+                     Swap (Element (B), Element (Element_Size - B + 1));
+                  end loop;
+               end if;
+            end if;
          end if;
          Increment_Index (Index, Header.Extents);
          if Header.Number_Of_Bits >= 8 OR else Bits >= 8 then

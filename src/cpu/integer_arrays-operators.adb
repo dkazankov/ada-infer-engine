@@ -1,7 +1,7 @@
 pragma Ada_95;
 pragma Profile (Ravenscar);
 
-package body Integer_Arrays is
+package body Integer_Arrays.Operators is
 
     function Selection (Condition: Boolean; True_Value, False_Value: Integer'Base) return Integer'Base is
     begin
@@ -30,4 +30,4 @@ package body Integer_Arrays is
         end if;
     end Selection;
 
-end Integer_Arrays;
+end Integer_Arrays.Operators;

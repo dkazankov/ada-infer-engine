@@ -5,14 +5,11 @@ pragma Elaboration_Checks (Static);
 with Ada.Numerics.Generic_Elementary_Functions;
 
 generic
-
     type Float_Type is digits <>;
-
-package Generic_Real_Functions is
-    pragma Preelaborate;
-
-    package Elementary_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float_Type => Float_Type);
+    with package Elementary_Functions is new Ada.Numerics.Generic_Elementary_Functions(Float_Type => Float_Type);
     use Elementary_Functions;
+package Generic_Real_Functions is
+    pragma Preelaborate (Generic_Real_Functions);
 
     function Copy (X: Float_Type'Base) return Float_Type'Base;
     pragma Inline(Copy);

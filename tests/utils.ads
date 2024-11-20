@@ -3,18 +3,9 @@ pragma Profile (Ravenscar);
 pragma Elaboration_Checks (Static);
 
 with Ada.Text_IO;
-with Generic_Real_Arrays;
-with Generic_Real_Arrays.IO;
+with Float_Arrays; use Float_Arrays;
 
-generic
-
-    type Real is digits <>;
-    with package Real_Arrays is new Generic_Real_Arrays(Real => Real);
-    use Real_Arrays;
-
-package Generic_Utils is
-
-    package IO is new Real_Arrays.IO;
+package Utils is
 
     procedure Load_Image_Content (Path: String; Index: Positive; Tensor: out Real_Tensor_4D);
 
@@ -34,4 +25,4 @@ package Generic_Utils is
     procedure Put (Tensor: Real_Matrix; Path: String);
     procedure Put (Tensor: Real_Tensor_4D; Path: String);
 
-end Generic_Utils;
+end Utils;

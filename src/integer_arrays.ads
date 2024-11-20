@@ -1,12 +1,11 @@
 pragma Ada_95;
-pragma Profile (Ravenscar);
-pragma Elaboration_Checks (Static);
 
 with Generic_Integer_Arrays;
 
 package Integer_Arrays is
 
     pragma Pure (Integer_Arrays);
+    pragma Remote_Types (Integer_Arrays);
 
     package Integer_Arrays is new Generic_Integer_Arrays(Integer_Type => Integer);
     subtype Integer_Vector is Integer_Arrays.Vector;
@@ -34,13 +33,5 @@ package Integer_Arrays is
     subtype Tiny_Positive_Vector_2 is Tiny_Positive_Vector (1..2);
     subtype Tiny_Positive_Vector_3 is Tiny_Positive_Vector (1..3);
     subtype Tiny_Positive_Vector_4 is Tiny_Positive_Vector (1..4);
-
-    function Selection (Condition: Boolean; True_Value, False_Value: Integer'Base) return Integer'Base;
-    pragma Inline (Selection);
-
-    function Selection (Condition: Boolean; True_Value, False_Value: Tiny_Positive_Vector) return Tiny_Positive_Vector;
-    pragma Inline (Selection);
-    function Selection (Condition: Boolean; True_Value, False_Value: Tiny_Integer_Vector) return Tiny_Integer_Vector;
-    pragma Inline (Selection);
 
 end Integer_Arrays;

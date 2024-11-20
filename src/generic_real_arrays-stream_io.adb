@@ -1,156 +1,48 @@
 pragma Ada_95;
 pragma Profile (Ravenscar);
 
-with Ada.Strings.Fixed;
-with Interfaces;
-with NNEF_TFF_IO;
---  with Ada.Unchecked_Conversion;
+with Interfaces; use Interfaces;
+with NNEF_TFF_IO; use NNEF_TFF_IO;
 
-package body Generic_Real_Arrays.IO is
+package body Generic_Real_Arrays.Stream_IO is
 
-   procedure Put (Item: Real_Vector;
-                  Fore : Field := Default_Fore;
-                  Aft  : Field := Default_Aft;
-                  Exp  : Field := Default_Exp;
-                  Delimiter: String := Default_Delimiter
-                 ) is
+   procedure Read_Elements (Stream: not null access Root_Stream_Type'Class) is
+      Magic: Stream_Element_Array (1..2);
    begin
-      Put(File => Standard_Output, Item => Item, Fore => Fore, Aft => Aft, Exp => Exp, Delimiter => Delimiter);
-   end Put;
-
-   procedure Put (Item: Real_Matrix;
-                  Fore : Field := Default_Fore;
-                  Aft  : Field := Default_Aft;
-                  Exp  : Field := Default_Exp;
-                  Delimiter: String := Default_Delimiter
-                 ) is
-   begin
-      Put(File => Standard_Output, Item => Item, Fore => Fore, Aft => Aft, Exp => Exp, Delimiter => Delimiter);
-   end Put;
-
-   procedure Put (File: File_Type;
-                  Item: Real_Vector;
-                  Fore : Field := Default_Fore;
-                  Aft  : Field := Default_Aft;
-                  Exp  : Field := Default_Exp;
-                  Delimiter: String := Default_Delimiter
-                 ) is
-      use Ada.Strings, Ada.Strings.Fixed;
-   begin
-      Put_Line(File => File, Item => Trim(Source => Positive'Image (Item'First), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last), Side => Both));
-      for I in Item'Range loop
-         Put(File => File, Item => Item(I), Fore => Fore, Aft => Aft, Exp => Exp);
-         if I /= Item'Last then
-            New_Line(File => File);
-         end if;
-      end loop;
-   end Put;
-
-   procedure Put (File: File_Type;
-                  Item: Real_Matrix;
-                  Fore : Field := Default_Fore;
-                  Aft  : Field := Default_Aft;
-                  Exp  : Field := Default_Exp;
-                  Delimiter: String := Default_Delimiter
-                 ) is
-      use Ada.Strings, Ada.Strings.Fixed;
-   begin
-      Put_Line(File => File, Item => Trim(Source => Positive'Image (Item'First(1)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(1)), Side => Both) &
-         Delimiter &
-         Trim(Source => Positive'Image (Item'First(2)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(2)), Side => Both));
-      for I in Item'Range(1) loop
-         for J in Item'Range(2) loop
-            if J /= Item'First(2) then
-               Put(File => File, Item => Delimiter);
-            end if;
-            Put(File => File, Item => Item(I, J), Fore => Fore, Aft => Aft, Exp => Exp);
-         end loop;
-         if I /= Item'Last(1) then
-            New_Line(File => File);
-         end if;
-      end loop;
-   end Put;
-
-   procedure Put (File: File_Type;
-                  Item: Real_Tensor_3D;
-                  Fore : Field := Default_Fore;
-                  Aft  : Field := Default_Aft;
-                  Exp  : Field := Default_Exp;
-                  Delimiter: String := Default_Delimiter
-                 ) is
-      use Ada.Strings, Ada.Strings.Fixed;
-   begin
-      Put_Line(File => File, Item => Trim(Source => Positive'Image (Item'First(1)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(1)), Side => Both) &
-         Delimiter &
-         Trim(Source => Positive'Image (Item'First(2)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(2)), Side => Both) &
-         Delimiter &
-         Trim(Source => Positive'Image (Item'First(3)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(3)), Side => Both));
-      for I in Item'Range(1) loop
-         for J in Item'Range(2) loop
-            if J /= Item'First(2) then
-               New_Line(File => File);
-            end if;
-            for K in Item'Range(3) loop
-               if K /= Item'First(3) then
-                  Put(File => File, Item => Delimiter);
-               end if;
-               Put(File => File, Item => Item(I, J, K), Fore => Fore, Aft => Aft, Exp => Exp);
-            end loop;
-            if J /= Item'Last(2) then
-               New_Line(File => File);
-            end if;
-         end loop;
-         if I /= Item'Last(1) then
-            New_Line(File => File);
-         end if;
-      end loop;
-   end Put;
-
-   procedure Put (File: File_Type;
-                  Item: Real_Tensor_4D;
-                  Fore : Field := Default_Fore;
-                  Aft  : Field := Default_Aft;
-                  Exp  : Field := Default_Exp;
-                  Delimiter: String := Default_Delimiter
-                 ) is
-      use Ada.Strings, Ada.Strings.Fixed;
-   begin
-      Put_Line(File => File, Item => Trim(Source => Positive'Image (Item'First(1)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(1)), Side => Both) &
-         Delimiter &
-         Trim(Source => Positive'Image (Item'First(2)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(2)), Side => Both) &
-         Delimiter &
-         Trim(Source => Positive'Image (Item'First(3)), Side => Both) & ".." & Trim(Source => Positive'Image (Item'Last(3)), Side => Both));
-      for I in Item'Range(1) loop
-         for J in Item'Range(2) loop
-            for K in Item'Range(3) loop
-               if I /= Item'First(3) then
-                  New_Line(File => File);
-               end if;
-               for L in Item'Range(4) loop
-                  if L /= Item'First(4) then
-                     Put(File => File, Item => Delimiter);
-                  end if;
-                  Put(File => File, Item => Item(I, J, K, L), Fore => Fore, Aft => Aft, Exp => Exp);
+      Stream_Element_Array'Read(Stream, Magic);
+      if Magic (1) = NNEF_TFF_Magic (1)
+            AND then Magic (2) = NNEF_TFF_Magic (2) then
+         declare
+            Header: TFF_Header_Type;
+            procedure Got_Element(Value: Real; Index: Index_Type) renames Element;
+            function To_Real is new Generic_To_Float(Result_Type => Real);
+            procedure Callback(Index: Unsigned_32_Array; Element: Stream_Element_Array) is
+               Index1: Index_Type (Natural(Index'First)..Natural(Index'Last));
+            begin
+               for I in Index'Range loop
+                  Index1 (Natural(I)) := Natural (Index (I));
                end loop;
-               if K /= Item'Last(3) then
-                  New_Line(File => File);
-               end if;
-            end loop;
-            if J /= Item'Last(2) then
-               New_Line(File => File);
+               Got_Element (To_Real (Element, Header), Index1);
+            end;
+            pragma Inline (Callback);
+            procedure Read_Data is new Generic_Read_TFF_Data(Callback => Callback);
+         begin
+            TFF_Header_Type'Read(Stream, Header);
+            Test (Header);
+            if Header.Number_Of_Bits > Real'Size then
+               raise TFF_Item_Type_Error;
             end if;
-         end loop;
-         if I /= Item'Last(1) then
-            New_Line(File => File);
-         end if;
-      end loop;
-   end Put;
+            if Header.Item_Type_Code.Item_Type /= 2#0000# AND then
+               Header.Item_Type_Code.Item_Type /= 2#0010# AND then
+               Header.Item_Type_Code.Item_Type /= 2#0011# then
+               raise TFF_Item_Type_Error;
+            end if;
+            Read_Data (Stream, Header);
+         end;
+      end if;
+   end Read_Elements;
 
-   use NNEF_TFF_IO;
-   use Interfaces;
-
-   procedure Read_TFF (File: Stream_IO.File_Type; Tensor: out Real_Vector) is
-      use Ada.Streams.Stream_IO;
+   procedure Read_TFF (File: File_Type; Tensor: out Real_Vector) is
       In_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Real is new Generic_To_Float(Result_Type => Real);
@@ -183,8 +75,7 @@ package body Generic_Real_Arrays.IO is
       Read_Data (In_Stream, Header);
    end Read_TFF;
 
-   procedure Read_TFF (File: Stream_IO.File_Type; Tensor: out Real_Matrix) is
-      use Ada.Streams.Stream_IO;
+   procedure Read_TFF (File: File_Type; Tensor: out Real_Matrix) is
       In_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Real is new Generic_To_Float(Result_Type => Real);
@@ -219,8 +110,7 @@ package body Generic_Real_Arrays.IO is
       Read_Data (In_Stream, Header);
    end Read_TFF;
 
-   procedure Read_TFF (File: Stream_IO.File_Type; Tensor: out Real_Tensor_3D) is
-      use Ada.Streams.Stream_IO;
+   procedure Read_TFF (File: File_Type; Tensor: out Real_Tensor_3D) is
       In_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Real is new Generic_To_Float(Result_Type => Real);
@@ -255,8 +145,7 @@ package body Generic_Real_Arrays.IO is
       Read_Data (In_Stream, Header);
    end Read_TFF;
 
-   procedure Read_TFF (File: Stream_IO.File_Type; Tensor: out Real_Tensor_4D) is
-      use Ada.Streams.Stream_IO;
+   procedure Read_TFF (File: File_Type; Tensor: out Real_Tensor_4D) is
       In_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Real is new Generic_To_Float(Result_Type => Real);
@@ -292,8 +181,7 @@ package body Generic_Real_Arrays.IO is
       Read_Data (In_Stream, Header);
    end Read_TFF;
 
-    procedure Write_TFF (Tensor: Real_Vector; File: Stream_IO.File_Type) is
-      use Ada.Streams.Stream_IO;
+    procedure Write_TFF (Tensor: Real_Vector; File: File_Type) is
       Out_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Array is new Generic_From_Float(Element_Type => Real);
@@ -314,8 +202,7 @@ package body Generic_Real_Arrays.IO is
       Write_Data (Header, Out_Stream);
    end Write_TFF;
 
-    procedure Write_TFF (Tensor: Real_Matrix; File: Stream_IO.File_Type) is
-      use Ada.Streams.Stream_IO;
+    procedure Write_TFF (Tensor: Real_Matrix; File: File_Type) is
       Out_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Array is new Generic_From_Float(Element_Type => Real);
@@ -336,8 +223,7 @@ package body Generic_Real_Arrays.IO is
       Write_Data (Header, Out_Stream);
    end Write_TFF;
 
-    procedure Write_TFF (Tensor: Real_Tensor_3D; File: Stream_IO.File_Type) is
-      use Ada.Streams.Stream_IO;
+    procedure Write_TFF (Tensor: Real_Tensor_3D; File: File_Type) is
       Out_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Array is new Generic_From_Float(Element_Type => Real);
@@ -358,8 +244,7 @@ package body Generic_Real_Arrays.IO is
       Write_Data (Header, Out_Stream);
    end Write_TFF;
     
-    procedure Write_TFF (Tensor: Real_Tensor_4D; File: Stream_IO.File_Type) is
-      use Ada.Streams.Stream_IO;
+    procedure Write_TFF (Tensor: Real_Tensor_4D; File: File_Type) is
       Out_Stream: Stream_Access := Stream(File);
       Header: TFF_Header_Type;
       function To_Array is new Generic_From_Float(Element_Type => Real);
@@ -380,4 +265,4 @@ package body Generic_Real_Arrays.IO is
       Write_Data (Header, Out_Stream);
    end Write_TFF;
 
-end Generic_Real_Arrays.IO;
+end Generic_Real_Arrays.Stream_IO;

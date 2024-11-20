@@ -1,12 +1,11 @@
 pragma Ada_95;
-pragma Profile (Ravenscar);
-pragma Elaboration_Checks (Static);
 
 generic
     type Integer_Type is range <>;
 package Generic_Integer_Arrays is
 
     pragma Pure (Generic_Integer_Arrays);
+    pragma Remote_Types (Generic_Integer_Arrays);
 
     type Vector is array (Positive range <>) of aliased Integer_Type'Base;
     pragma Pack(Vector);

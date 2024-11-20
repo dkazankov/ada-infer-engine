@@ -3,10 +3,10 @@ pragma Profile (Ravenscar);
 
 with Ada.Streams.Stream_IO;
 with GID;
-with NNEF_TFF_IO;
-with Interfaces.C;
+with Float_Arrays_Stream_IO;
+with Float_Arrays_Text_IO;
 
-package body Generic_Utils is
+package body Utils is
 
     procedure Load_Image_Content (Path: String; Index: Positive; Tensor: out Real_Tensor_4D) is
         use Ada.Streams.Stream_IO;
@@ -31,9 +31,9 @@ package body Generic_Utils is
         begin
             if mX in Tensor'Range(4) AND then mY in Tensor'Range(3) then
                 -- Load image to BGR format
-                Tensor (Index, 1, mY, mX) := Real (Blue);
-                Tensor (Index, 2, mY, mX) := Real (Green);
-                Tensor (Index, 3, mY, mX) := Real (Red);
+                Tensor (Index, 1, mY, mX) := Float (Blue);
+                Tensor (Index, 2, mY, mX) := Float (Green);
+                Tensor (Index, 3, mY, mX) := Float (Red);
             end if;
             mX := mX + 1;
         end Put_Pixel;
@@ -107,7 +107,7 @@ package body Generic_Utils is
     end Get_Line;
 
     procedure Load_TFF_Data (Path: String; Tensor: out Real_Vector) is
-        use IO;
+        use Float_Arrays_Stream_IO;
         use Ada.Streams.Stream_IO;
         File: File_Type;
     begin
@@ -123,7 +123,7 @@ package body Generic_Utils is
     end Load_TFF_Data;
 
     procedure Load_TFF_Data (Path: String; Tensor: out Real_Matrix) is
-        use IO;
+        use Float_Arrays_Stream_IO;
         use Ada.Streams.Stream_IO;
         File: File_Type;
     begin
@@ -139,7 +139,7 @@ package body Generic_Utils is
     end Load_TFF_Data;
 
     procedure Load_TFF_Data (Path: String; Tensor: out Real_Tensor_4D) is
-        use IO;
+        use Float_Arrays_Stream_IO;
         use Ada.Streams.Stream_IO;
         File: File_Type;
     begin
@@ -155,7 +155,7 @@ package body Generic_Utils is
     end Load_TFF_Data;
 
     procedure Write_TFF_Data (Tensor: Real_Vector; Path: String) is
-        use IO;
+        use Float_Arrays_Stream_IO;
         use Ada.Streams.Stream_IO;
         File: File_Type;
     begin
@@ -171,7 +171,7 @@ package body Generic_Utils is
     end Write_TFF_Data;
 
     procedure Write_TFF_Data (Tensor: Real_Matrix; Path: String) is
-        use IO;
+        use Float_Arrays_Stream_IO;
         use Ada.Streams.Stream_IO;
         File: File_Type;
     begin
@@ -187,7 +187,7 @@ package body Generic_Utils is
     end Write_TFF_Data;
 
     procedure Write_TFF_Data (Tensor: Real_Tensor_4D; Path: String) is
-        use IO;
+        use Float_Arrays_Stream_IO;
         use Ada.Streams.Stream_IO;
         File: File_Type;
     begin
@@ -203,7 +203,7 @@ package body Generic_Utils is
     end Write_TFF_Data;
 
     procedure Put (Tensor: Real_Vector; Path: String) is
-        use IO;
+        use Float_Arrays_Text_IO;
         use Ada.Text_IO;
         File: File_Type;
     begin
@@ -219,7 +219,7 @@ package body Generic_Utils is
     end Put;
 
     procedure Put (Tensor: Real_Matrix; Path: String) is
-        use IO;
+        use Float_Arrays_Text_IO;
         use Ada.Text_IO;
         File: File_Type;
     begin
@@ -235,7 +235,7 @@ package body Generic_Utils is
     end Put;
 
     procedure Put (Tensor: Real_Tensor_4D; Path: String) is
-        use IO;
+        use Float_Arrays_Text_IO;
         use Ada.Text_IO;
         File: File_Type;
     begin
@@ -250,4 +250,4 @@ package body Generic_Utils is
             raise;
     end Put;
 
-end Generic_Utils;
+end Utils;

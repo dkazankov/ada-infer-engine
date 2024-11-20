@@ -7,6 +7,8 @@ with Interfaces;
 
 package NNEF_TFF_IO is
 
+    pragma Preelaborate (NNEF_TFF_IO);
+
     use Ada.Streams, Interfaces;
 
     -- NNEF Tensor File Format
@@ -33,6 +35,11 @@ package NNEF_TFF_IO is
         Item_Type at 2 range 0 .. 15;
     end record;
     for TFF_Item_Type'Size use 4 * 8;
+
+    type NNEF_TFF_Magic_Type is new Stream_Element_Array (1..2);
+    for NNEF_TFF_Magic_Type'Size use 2 * 8;
+
+    NNEF_TFF_Magic: constant NNEF_TFF_Magic_Type := ( 16#4E#, 16#EF# );
 
     type TFF_Header_Type is record
         Version_Info: TFF_Version_Info;
@@ -64,9 +71,16 @@ package NNEF_TFF_IO is
     TFF_Bits_Per_Item_Error: exception;
     TFF_Rank_Error: exception;
 
+    procedure Test (Header: TFF_Header_Type);
+
     procedure Read_TFF_Header (Stream: not null access Root_Stream_Type'Class; Header: out TFF_Header_Type);
 
     procedure Write_TFF_Header (Header: TFF_Header_Type; Stream: not null access Root_Stream_Type'Class);
+
+    procedure Increment_Index (Index: in out Unsigned_32_Array; Extents: Unsigned_32_Array);
+
+    procedure Swap (Left, Right: in out Stream_Element);
+    pragma Inline (Swap);
 
     generic
         with procedure Callback(Index: Unsigned_32_Array; Element: Stream_Element_Array);
@@ -97,102 +111,102 @@ package NNEF_TFF_IO is
     function IEEE_Float_32_To_16 (Value: IEEE_Float_32) return IEEE_Float_16;
 
     function To_Boolean(Byte: Stream_Element_Array) return Boolean;
-    pragma Inline(To_Boolean);
+    pragma Inline (To_Boolean);
 
     function To_Boolean(Byte: Stream_Element_Array; Bit: Natural) return Boolean;
-    pragma Inline(To_Boolean);
+    pragma Inline (To_Boolean);
 
     function To_Unsigned_8(Byte: Stream_Element_Array) return Unsigned_8;
-    pragma Inline(To_Unsigned_8);
+    pragma Inline (To_Unsigned_8);
 
     function To_Unsigned_16(Bytes: Stream_Element_Array) return Unsigned_16;
-    pragma Inline(To_Unsigned_16);
+    pragma Inline (To_Unsigned_16);
 
     function To_Unsigned_32(Bytes: Stream_Element_Array) return Unsigned_32;
-    pragma Inline(To_Unsigned_32);
+    pragma Inline (To_Unsigned_32);
 
     function To_Unsigned_64(Bytes: Stream_Element_Array) return Unsigned_64;
-    pragma Inline(To_Unsigned_64);
+    pragma Inline (To_Unsigned_64);
 
     function To_Integer_8(Byte: Stream_Element_Array) return Integer_8;
-    pragma Inline(To_Integer_8);
+    pragma Inline (To_Integer_8);
 
     function To_Integer_16(Bytes: Stream_Element_Array) return Integer_16;
-    pragma Inline(To_Integer_16);
+    pragma Inline (To_Integer_16);
 
     function To_Integer_32(Bytes: Stream_Element_Array) return Integer_32;
-    pragma Inline(To_Integer_32);
+    pragma Inline (To_Integer_32);
 
     function To_Integer_64(Bytes: Stream_Element_Array) return Integer_64;
-    pragma Inline(To_Integer_64);
+    pragma Inline (To_Integer_64);
 
     function To_IEEE_Float_16(Bytes: Stream_Element_Array) return IEEE_Float_16;
-    pragma Inline(To_IEEE_Float_16);
+    pragma Inline (To_IEEE_Float_16);
 
     function To_IEEE_Float_32(Bytes: Stream_Element_Array) return IEEE_Float_32;
-    pragma Inline(To_IEEE_Float_32);
+    pragma Inline (To_IEEE_Float_32);
 
     function To_IEEE_Float_64(Bytes: Stream_Element_Array) return IEEE_Float_64;
-    pragma Inline(To_IEEE_Float_64);
+    pragma Inline (To_IEEE_Float_64);
 
     function To_Stream_Element_Array(Value: IEEE_Float_64) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: IEEE_Float_32) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: IEEE_Float_16) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Integer_64) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Integer_32) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Integer_16) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Integer_8) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Unsigned_64) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Unsigned_32) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Unsigned_16) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Unsigned_8) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function To_Stream_Element_Array(Value: Boolean) return Stream_Element_Array;
-    pragma Inline(To_Stream_Element_Array);
+    pragma Inline (To_Stream_Element_Array);
 
     function Encode_Linear_Quantization(X, Min, Max: IEEE_Float_32) return Integer_32;
-    pragma Inline(Encode_Linear_Quantization);
+    pragma Inline (Encode_Linear_Quantization);
 
     function Encode_Linear_Quantization(X, Min, Max: IEEE_Float_32) return Unsigned_32;
-    pragma Inline(Encode_Linear_Quantization);
+    pragma Inline (Encode_Linear_Quantization);
 
     function Decode_Linear_Quantization(Q: Integer_32; Min, Max: IEEE_Float_32) return IEEE_Float_32;
-    pragma Inline(Decode_Linear_Quantization);
+    pragma Inline (Decode_Linear_Quantization);
 
     function Decode_Linear_Quantization(Q: Unsigned_32; Min, Max: IEEE_Float_32) return IEEE_Float_32;
-    pragma Inline(Decode_Linear_Quantization);
+    pragma Inline (Decode_Linear_Quantization);
 
     function Encode_Logarithmic_Quantization(X, Min, Max: IEEE_Float_32) return Integer_32;
-    pragma Inline(Encode_Logarithmic_Quantization);
+    pragma Inline (Encode_Logarithmic_Quantization);
 
     function Encode_Logarithmic_Quantization(X, Min, Max: IEEE_Float_32) return Unsigned_32;
-    pragma Inline(Encode_Logarithmic_Quantization);
+    pragma Inline (Encode_Logarithmic_Quantization);
 
     function Decode_Logarithmic_Quantization(Q: Integer_32; Min, Max: IEEE_Float_32) return IEEE_Float_32;
-    pragma Inline(Decode_Logarithmic_Quantization);
+    pragma Inline (Decode_Logarithmic_Quantization);
 
     function Decode_Logarithmic_Quantization(Q: Unsigned_32; Min, Max: IEEE_Float_32) return IEEE_Float_32;
-    pragma Inline(Decode_Logarithmic_Quantization);
+    pragma Inline (Decode_Logarithmic_Quantization);
 
 end NNEF_TFF_IO;

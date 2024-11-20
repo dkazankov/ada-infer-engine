@@ -1,7 +1,7 @@
 pragma Ada_95;
 pragma Profile (Ravenscar);
 
-package body Boolean_Arrays is
+package body Boolean_Arrays.Operators is
 
     procedure For_Each (F: Unary_Boolean_Function; X: Boolean_Vector; Y: out Boolean_Vector) is
     begin
@@ -290,4 +290,4 @@ package body Boolean_Arrays is
         Reduce (Or_Function, Input, Axes, Output);
     end Any_Reduce;
 
-end Boolean_Arrays;
+end Boolean_Arrays.Operators;
