@@ -3,6 +3,28 @@
 	"tasks": [
         {
             "type": "ada",
+            "command": "gnatdist",
+            "options": {
+                "cwd": "${workspaceFolder}/tests"
+            },
+            "args": [
+                "-aL../lib", "-aL../obj", "-aLgid/obj/fast_unchecked",
+                "-aO../lib", "-aO../obj", "-aOgid/obj/fast_unchecked",
+                "-aI../src", "-aIgid",
+                "-L../lib", "-L../obj", "-Lgid/obj/fast_unchecked",
+                "alexnet_dist.cfg",
+                "-cargs", "-gnatn", "-gnatp", "-O3", "-Ofast", "-gnatpn", "-ffunction-sections",
+                "-bargs", "-s",
+                "-largs", "-laie"
+            ],
+            "problemMatcher": [
+                "$ada"
+            ],
+            "group": "build",
+            "label": "ada: Build Distributed AlexNet project"
+        },
+        {
+            "type": "ada",
             "command": "gprbuild",
             "args": ["-XBUILD=Debug", "-XGID_Build_Mode=Debug", "-P", "tests/tests.gpr"],
             "problemMatcher": [

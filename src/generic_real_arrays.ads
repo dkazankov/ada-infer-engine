@@ -5,7 +5,6 @@ generic
 package Generic_Real_Arrays is
 
     pragma Pure (Generic_Real_Arrays);
-    pragma Remote_Types (Generic_Real_Arrays);
 
     type Real_Vector is array (Positive range <>) of aliased Real'Base;
     pragma Pack(Real_Vector);

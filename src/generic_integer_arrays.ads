@@ -5,7 +5,6 @@ generic
 package Generic_Integer_Arrays is
 
     pragma Pure (Generic_Integer_Arrays);
-    pragma Remote_Types (Generic_Integer_Arrays);
 
     type Vector is array (Positive range <>) of aliased Integer_Type'Base;
     pragma Pack(Vector);

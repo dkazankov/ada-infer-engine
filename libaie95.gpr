@@ -20,7 +20,8 @@ library project LibAIE95 is
     for Object_Dir use "obj";
 
     for Library_Name use "aie";
-    for Library_Kind use "relocatable";
+    -- for Library_Kind use "relocatable";
+    for Library_Kind use "static-pic";
     for Library_Dir use "lib";
 
     package Builder is

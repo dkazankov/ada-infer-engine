@@ -4,7 +4,7 @@ pragma Elaboration_Checks (Static);
 
 package Boolean_Functions is
 
-    pragma Preelaborate;
+    pragma Preelaborate (Boolean_Functions);
 
     type Unary_Boolean_Function is private;
     function Call (F: Unary_Boolean_Function; X: Boolean'Base) return Boolean'Base;

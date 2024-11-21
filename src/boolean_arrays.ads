@@ -3,7 +3,6 @@ pragma Ada_95;
 package Boolean_Arrays is
 
     pragma Pure (Boolean_Arrays);
-    pragma Remote_Types (Boolean_Arrays);
 
     type Boolean_Vector is array (Positive range <>) of Boolean;
     pragma Pack(Boolean_Vector);

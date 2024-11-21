@@ -5,7 +5,6 @@ with Generic_Integer_Arrays;
 package Integer_Arrays is
 
     pragma Pure (Integer_Arrays);
-    pragma Remote_Types (Integer_Arrays);
 
     package Integer_Arrays is new Generic_Integer_Arrays(Integer_Type => Integer);
     subtype Integer_Vector is Integer_Arrays.Vector;
